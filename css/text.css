@@ -1,0 +1,268 @@
+@font-face {
+  font-family: Junicode;
+  src: url('../fonts/Junicode.ttf') format('truetype');
+}
+.text {
+  font-family: "Junicode", "Arial unicode MS", "times new roman", serif;
+}
+.annotationFormat {
+  display: block;
+  float: left;
+  font-size: 11px;
+  color: #777;
+  font-family: sans-serif;
+  width: 100px;
+  line-height: 16px;
+  font-style: normal;
+  border-top: 2px solid #00B3B0;
+  padding-top: 6px;
+}
+.capitalsize4 {
+  display: block;
+  font-size: 2.8em;
+  font-weight: 200;
+}
+.capitalsize3 {
+  display: block;
+  font-size: 2em;
+  font-weight: 100;
+}
+.capitalsize2 {
+  display: block;
+  font-size: 1.4em;
+  font-weight: 300;
+}
+.capitalsize1 {
+  display: block;
+  font-size: .9em;
+  font-weight: 300;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 50px;
+}
+.superscript {
+  position: relative;
+  bottom: 0.5em;
+  font-size: 0.8em;
+}
+.linenr {
+  font-family: "Courier New", "Lucida Console";
+  margin-right: 1em;
+}
+/* nog onbekend wat dit moet worden */
+span.rubric {
+  display: inline;
+  color: red;
+}
+.mentioned {
+  font-style: italic;
+}
+.footnote {
+  display: block;
+  float: right;
+  width: 45%;
+  position: relative;
+  left: -2em;
+  color: grey;
+}
+.grey {
+  color: grey;
+}
+.green {
+  color: green;
+}
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.bold {
+  font-weight: bold;
+}
+.border {
+  border: thin solid green;
+}
+/* is the expansion of an abbreviation; should be toggle?
+ */
+expan {
+  display: none;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table.half {
+  width: 50%;
+}
+table,
+th,
+td {
+  border: 0px solid black;
+  text-align: left;
+}
+/* Copied some code from Peter Boot (Freckenhorst project) */
+.row {
+  width: 100%;
+  float: left;
+}
+.left {
+  width: 49.6%;
+  float: left;
+}
+.right {
+  width: 49.6%;
+  float: right;
+}
+.nextprev {
+  float: right;
+}
+span.versenum {
+  left: -35px;
+  color: #800080;
+}
+span.add {
+  /*    text-decoration:underline; */
+
+}
+span.del {
+  text-decoration: line-through;
+  color: #ff0000;
+}
+span.ital {
+  font-style: italic;
+}
+span.moveleft {
+  position: relative;
+  left: 50px;
+}
+span.restore {
+  border: thin solid purple;
+}
+span.romannumber {
+  font-variant: small-caps;
+}
+span.noteleft {
+  position: absolute;
+  left: -20px;
+}
+span.noteright {
+  position: absolute;
+  left: 300px;
+  color: black;
+}
+span.textnum {
+  position: absolute;
+  left: 300px;
+}
+span.folionr {
+  position: absolute;
+  left: 300px;
+}
+span.margin {
+  display: none;
+  width: 100px;
+  position: absolute;
+  left: 385px;
+}
+span.transl {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.wvk {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.comment {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.intro {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.annotwg {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.annotvm {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.annotvdg {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.annotbd {
+  display: none;
+  position: absolute;
+  left: 450px;
+}
+span.hide {
+  display: none;
+}
+.woordverklaring .wvk {
+  display: inline;
+  display: block;
+  float: left;
+  font-size: 11px;
+  color: #777;
+  font-family: sans-serif;
+  width: 100px;
+  line-height: 16px;
+  font-style: normal;
+  border-top: 2px solid #00B3B0;
+  padding-top: 6px;
+}
+.marginalia .margin {
+  display: block;
+  display: block;
+  float: left;
+  font-size: 11px;
+  color: #777;
+  font-family: sans-serif;
+  width: 100px;
+  line-height: 16px;
+  font-style: normal;
+  border-top: 2px solid #00B3B0;
+  padding-top: 6px;
+}
+.commentaar .comment {
+  display: inline;
+  display: block;
+  float: left;
+  font-size: 11px;
+  color: #777;
+  font-family: sans-serif;
+  width: 100px;
+  line-height: 16px;
+  font-style: normal;
+  border-top: 2px solid #00B3B0;
+  padding-top: 6px;
+}
+.inleiding .intro {
+  display: inline;
+  display: block;
+  float: left;
+  font-size: 11px;
+  color: #777;
+  font-family: sans-serif;
+  width: 100px;
+  line-height: 16px;
+  font-style: normal;
+  border-top: 2px solid #00B3B0;
+  padding-top: 6px;
+}
+.linenum {
+  font-family: sans-serif;
+  font-size: 10px;
+  color: grey;
+  margin-left: -30px;
+  float: left;
+}
