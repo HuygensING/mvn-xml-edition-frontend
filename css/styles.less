@@ -29,14 +29,10 @@
 
 @textCommentBorderColor: #00b3b0;
 
-
-@font-face {
-  font-family: Junicode;
-  src: url('../fonts/Junicode.ttf') format('truetype');
-}
 @textFont: "Junicode", "Arial unicode MS", "times new roman", serif;
 
-.text {
+.text,
+#container *.text * {
 	font-family: @textFont;
 	font-size: 16px;
 	line-height: 26px;
@@ -48,8 +44,6 @@
 #container * { // overriding Wordpress theme
 	font-size: 12px;
 }
-
-
 
 
 body {
