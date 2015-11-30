@@ -48,11 +48,15 @@ define([
 			this.$('#tabs li').removeClass('active')
 			this.$('.folio-browser').addClass('active');
 			this.showFolioBrowser();
+//			router.navigate("/folium/1r", { trigger: true });
+
 		},
 		show_text_browser: function (e) {
 			this.$('#tabs li').removeClass('active');
 			this.$('.text-browser').addClass('active');
 			this.showTextBrowser();
+//			router.navigate("/tekst/1", { trigger: true });
+
 		},
 		show_search: function () {
 			this.$('#tabs li').removeClass('active');
@@ -135,7 +139,7 @@ define([
 		},
 		doSearch: function () {
 			var searchText = this.$('#search-view input').val();
-      router.navigate('/zoeken/?q=' +  encodeURIComponent(searchText));
+			router.navigate('/zoeken/?q=' +  encodeURIComponent(searchText));
 			search.search(searchText);
 		},
 		showSearch: function () {
