@@ -29,7 +29,7 @@ define([
 			'click #search-view button': 'doSearch',
 
 			'click #folio-browser .close': 'show_view_options',
-			'click #text-browser 	.close': 'show_view_options'
+			'click #text-browser .close': 'show_view_options'
 		},
 		initialize: function () {
 			if (this.options.parent)
@@ -139,14 +139,14 @@ define([
 		},
 		doSearch: function () {
 			var searchText = this.$('#search-view input').val();
-			router.navigate('/zoeken/?q=' +  encodeURIComponent(searchText));
+			this.showSearch();
+			router.navigate('/zoeken/?q=' +  encodeURIComponent(searchText), {trigger: true});
 			search.search(searchText);
 		},
 		showSearch: function () {
 			this.hideAll();
 			this.$('li.search').addClass('active');
 			$('#search-view').show();
-
 			router.navigate('/zoeken', { trigger: true });
 
 			return this;

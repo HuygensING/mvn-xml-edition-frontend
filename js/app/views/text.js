@@ -123,6 +123,17 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 			})
 			return this;
 		},
+		lineJump: function(id, mode) {
+			var ln = null
+			if(mode === "line") {
+				ln = document.getElementById(id);
+			} else {
+				ln = document.querySelector(".folium.folium-" + id);
+			}
+			if(ln) {
+				$(window).scrollTop($(ln).offset().top);
+			}
+		},
 		render: function () {
 			this.$el.html(this.template());
 
@@ -146,6 +157,14 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 				.renderNummering();
 
 			setTimeout(this.renderAnnotations.bind(this), 100);
+			if(dataStructure.get("text-linenum")) {
+				setTimeout(this.lineJump.bind(this, dataStructure.get("text-linenum"), "line"), 100);
+				dataStructure.set("text-linenum", null);
+			}
+			if(dataStructure.get("text-folium")) {
+				setTimeout(this.lineJump.bind(this, dataStructure.get("text-folium"), "folium"), 100);
+				dataStructure.set("text-folium", null);
+			}
 			return this;
 		}
 	});

@@ -163,6 +163,13 @@ define([
 			});
 			return this;
 		},
+		lineJump: function(id) {
+			var ln = null
+			ln = document.getElementById(id);
+			if(ln) {
+				$(window).scrollTop($(ln).offset().top);
+			}
+		},
 		render: function () {
 			this.$el.html( this.template() );
 			this.$('#folium img').attr('src', this.model.get('image'));
@@ -179,7 +186,10 @@ define([
 			this.$el.toggleClass();
 
 			setTimeout(function() { this.repositionAnnotations(); }.bind(this), 10);
-
+			if(dataStructure.get("text-linenum")) {
+				setTimeout(this.lineJump.bind(this, dataStructure.get("text-linenum")), 100);
+				dataStructure.set("text-linenum", null);
+			}
 			return this;
 		}
 	});

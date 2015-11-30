@@ -18,7 +18,9 @@ define([
 	var AppRouter = Backbone.Router.extend({
 		routes: {
 			'folium/:id': 'show_folium',
+			'folium/:id/regel/:num': 'show_folium',
 			'tekst/:id': 'show_text',
+			'tekst/:id/regel/:num': 'show_text',
 			'tekst/:id/:folium': 'show_text_folium',
 			'zoeken': 'show_search',
 			'zoeken/': 'show_search',
@@ -48,12 +50,14 @@ define([
 		show_home: function () {
 			this.show_folium('1r');
 		},
-		show_folium: function (id) {
+		show_folium: function (id, num) {
 			this.view = FoliumView;
 			this.query = {
 				id: id
 			};
+			console.log("show_folium", id, num);
 			dataStructure.set('active-folium', id);
+			dataStructure.set('text-linenum', num);
 		},
 		show_text_folium: function (id, folium) {
 			this.view = TextView;
@@ -61,14 +65,18 @@ define([
 				id: id,
 				folium: folium
 			}
+			console.log("show_text_folium", id, folium);
+
 			dataStructure.set('active-text', id);
+			dataStructure.set('text-folium', folium);
 		},
-		show_text: function (id) {
+		show_text: function (id, num) {
 			this.view = TextView;
 			this.query = {
 				id: id
 			};
 			dataStructure.set('active-text', id);
+			dataStructure.set('text-linenum', num);
 		},
 		show_search: function (query) {
 			this.view = SearchView;
