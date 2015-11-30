@@ -130,7 +130,6 @@ define([
 			var lines = this.$('.text l');
 			var annotations = self.find('.annotations').empty();
 			var overlap = false;
-
 			var prev_bottom = 0;
 			lines.each(function () {
 				var line = $(this);
@@ -142,13 +141,26 @@ define([
 					var height = note.outerHeight();
 
 					if (top < prev_bottom) {
-						overlap = true;
-						note.css('margin-left', '120px');
+						if(!overlap) {
+							overlap = true;
+							note.css('margin-left', '120px');
+						} else {
+							overlap = false;
+							note.css('margin-left', '0px');
+						}
 					}
 
 					prev_bottom = top + height;
 				});
 			})
+			return this;
+		},
+		repositionAnnotations: function() {
+			var self = this.$el;
+			var notes = self.find('.noteright');
+			notes.each(function() {
+				$(this).css({top: $(this).parents("l").offset().top - self.offset().top + 12});
+			});
 			return this;
 		},
 		render: function () {
@@ -165,6 +177,8 @@ define([
 				.renderSchrijfProces()
 				.renderAnnotations();
 			this.$el.toggleClass();
+
+			setTimeout(function() { this.repositionAnnotations(); }.bind(this), 10);
 
 			return this;
 		}

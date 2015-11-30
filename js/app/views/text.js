@@ -1,3 +1,5 @@
+
+
 define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/models/structure', 'app/app', 'app/views/base'], function ($, Backbone, config, displaySettings, dataStructure, App, BaseView) {
 
 	var TextView = BaseView.extend({
@@ -91,10 +93,9 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 		renderAnnotations: function () {
 			var self = this.$el;
 			var lines = this.$('.right.text l');
-			console.log("Lines!", lines, this.$el.html());
 			var annotations = self.find('.annotations').empty();
 			var overlap = false;
-
+			var prev_margin = 0;
 			var prev_bottom = 0;
 			lines.each(function () {
 				var line = $(this);
@@ -104,17 +105,24 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 					var note = $(this);
 					var top = note.offset().top;
 					var height = note.outerHeight();
-
 					if (top < prev_bottom) {
-						overlap = true;
-						note.css('margin-left', '120px');
+						if(prev_margin === 0) {
+							note.css('margin-left', '120px');
+							prev_margin = 120;
+						} else {
+							note.css('margin-left', '0px');
+							prev_margin = 0;
+						}
+					} else {
+						note.css('margin-left', '0px');
+						prev_margin = 0;
 					}
 
 					prev_bottom = top + height;
 				});
 			})
 			return this;
-		},	
+		},
 		render: function () {
 			this.$el.html(this.template());
 
@@ -130,14 +138,14 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 				}) );
 			});
 
-			this.renderAnnotations()
-				.renderPrevious()
+			this.renderPrevious()
 				.renderNext()
 				.renderAfkortingen()
 				.renderAfkortingenCursive()
 				.renderSchrijfProces()
 				.renderNummering();
 
+			setTimeout(this.renderAnnotations.bind(this), 100);
 			return this;
 		}
 	});
