@@ -451,8 +451,22 @@ a {
 		width: 320px;
 		li {
 			cursor: pointer;
+			width: 90%;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 			.no-select;
 			a { color: white; }
+			.noteright {
+				position: static;
+				color: white;
+			}
+			.superscript {
+				display: none;
+			}
+			.capitalsize1 {
+				display: inline;
+			}
 		}
 	}
 	.inner {

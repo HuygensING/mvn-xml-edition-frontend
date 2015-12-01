@@ -29,9 +29,26 @@ define(['backbone', 'app/config'], function (Backbone, config) {
 			Backbone.Events.trigger('folium:loaded:' + this.id, this);
 			return { text: $(html).find('.right .text').html() };
 		},
-		title: function () {
-			// Need to parse this out of the HTML, somehow
-			return "Eerste regel " + this.id;
+		title: function (textId) {
+			var parsedHtml = $(this.get('text'));
+			var firstLine = parsedHtml.find(".textnum > a").filter(function(i, el) {
+				return textId === $(el).text();
+			}).map(function(i, el) {
+				return $(el).parent().nextAll("l")[0];
+			}).toArray()[0];
+			var titleHtml = $(firstLine);
+			var linenum = titleHtml.find(".versenum").detach();
+			var titleText = titleHtml.html();
+			return titleText;
+		},
+		lineNum: function(textId) {
+			var parsedHtml = $(this.get('text'));
+			var firstLine = parsedHtml.find(".textnum > a").filter(function(i, el) {
+				return textId === $(el).text();
+			}).map(function(i, el) {
+				return $(el).parent().nextAll("l")[0];
+			}).toArray()[0];
+			return $(firstLine).attr("id");
 		}
 	});
 
