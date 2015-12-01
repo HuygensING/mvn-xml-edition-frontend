@@ -137,7 +137,7 @@
 	<script type="template/underscore" id="text-browser-tmpl">
 		<ul>
 			<% texts.each(function (t, idx) { 
-				%><li><a href="/tekst/<%= t.id %>/regel/<%= t.get('folio')[0].lineNum(t.id) %>"><%= t.id %> <%= t.get('folio')[0].title(t.id) %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
+				%><li><a href="/tekst/<%= t.id %>/regel/<%= t.get('folio')[0].lineNum(t.id) %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
 			}); %>
 		</ul>
 		<div class="close">x</div>

@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'text!/docs/structure.json', 'app/models/models'],
+define(['underscore', 'backbone', 'text!/docs/config.json', 'app/models/models'],
 	function (_, Backbone, structureJSON, Models) {
 	var Model = Backbone.Model.extend({
 		initialize: function () {
@@ -6,12 +6,11 @@ define(['underscore', 'backbone', 'text!/docs/structure.json', 'app/models/model
 		},
 		parse: function (json) {
 			data = JSON.parse(json);
-
 			var folio = new Models.Folio(
-				_.map(data[1].folio, function (f) {
+				Object.keys(data.folio).map(function (k) {
 					return {
-						id: _.keys(f)[0],
-						texts: _.values(f)[0]
+						id: k,
+						texts: data.folio[k]
 					};
 				})
 			);
@@ -19,10 +18,11 @@ define(['underscore', 'backbone', 'text!/docs/structure.json', 'app/models/model
 
 			//  add reference to text models for relevant folios
 			var texts = new Models.Texts(
-				_.map(data[0].texts, function (t) {
+				Object.keys(data.texts).map(function (k) {
 					return new Models.Text({
-						id: _.keys(t)[0],
-						folio: _.map(_.values(t)[0], function (fid) {
+						id: k,
+						first_line: data.first_lines[k],
+						folio: data.texts[k].map(function (fid) {
 							return folio.get(fid);
 						})
 					});
