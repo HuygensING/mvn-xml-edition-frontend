@@ -113,10 +113,12 @@ define([
 				this.$('.subst').addClass('border');
 				this.$('.del').show();
 				this.$('.add').addClass('green');
+				this.$('.rubric').addClass('black');
 			} else {
 				this.$('.subst').removeClass('border');
 				this.$('.del').hide();
 				this.$('.add').removeClass('green');
+				this.$('.rubric').removeClass('black');
 			}
 			return this;
 		},
