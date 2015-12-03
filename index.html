@@ -136,7 +136,7 @@
 	<!-- Templates -->
 	<script type="template/underscore" id="text-browser-tmpl">
 		<ul>
-			<% texts.each(function (t, idx) { 
+			<% texts.sort().each(function (t, idx) { 
 				%><li><a href="/tekst/<%= t.id %>/regel/<%= t.get('folio')[0].lineNum(t.id) %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
 			}); %>
 		</ul>

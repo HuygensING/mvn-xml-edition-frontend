@@ -20,6 +20,7 @@ define([
 			'folium/:id': 'show_folium',
 			'folium/:id/regel/:num': 'show_folium',
 			'tekst/:id': 'show_text',
+			'tekst/:id/regel/': 'show_text',
 			'tekst/:id/regel/:num': 'show_text',
 			'tekst/:id/:folium': 'show_text_folium',
 			'zoeken': 'show_search',

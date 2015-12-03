@@ -66,6 +66,13 @@ define(['backbone', 'app/config'], function (Backbone, config) {
 
 	Models.Texts = Backbone.Collection.extend({
 		model: Models.Text,
+		comparator: function(a, b) {
+			var partsA = a.get("id").split(".");
+			var partsB = b.get("id").split(".");
+			var valA = (parseInt(partsA[0]) * 100) + (parseInt(partsA[1] || 0));
+			var valB = (parseInt(partsB[0]) * 100) + (parseInt(partsB[1] || 0));
+			return valA < valB ? -1 : 1;
+		},
 		initialize: function () {
 			Backbone.Events.bind('text:previous', this.setPreviousText, this);
 			Backbone.Events.bind('text:next', this.setNextText, this);
