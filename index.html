@@ -4,40 +4,17 @@
 		<meta http-equiv="Cache-Control" content="public">
 		<title></title>
 
+		<link rel="stylesheet" type="text/css" href="/css/themes/style.css" />
+		<link rel="stylesheet" type="text/css" href="/css/themes/5_50.css" />
+		<link rel="stylesheet" type="text/css" href="/css/themes/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.jscrollpane.css" />
+
+		<script data-main="/js/main.js" type="text/javascript" src="/js/require.min.js"></script>
+
 		<script>
-			function includeCSS(href) {
-				var link = document.createElement("link");
-				link.setAttribute("rel", "stylesheet");
-				link.setAttribute("type", "text/css");
-				link.setAttribute("href", href);
-				document.getElementsByTagName("head")[0].appendChild(link);
-			}
-			function includeJS(src) {
-				var fileref=document.createElement('script')
-				fileref.setAttribute("type","text/javascript")
-				fileref.setAttribute("src", src)
-				document.getElementsByTagName("head")[0].appendChild(fileref);
-			}
-
-			function init() {
-				if(typeof require === "undefined") {
-					setTimeout(init, 10);
-				} else {
-					require.config({baseUrl: "/js"});
-					require(["main"]);
-				}
-			}
 			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
-			includeJS("/js/require.min.js");
-
-			includeCSS("/css/themes/style.css");
-			includeCSS("/css/themes/5_50.css");
-			includeCSS("/css/themes/responsive.css");
-			includeCSS("/css/jquery-ui.css");
-			includeCSS("/css/styles.css");
-			includeCSS("/css/jquery.jscrollpane.css");
-			init();
-
 		</script>
 	</head>
 <body>
