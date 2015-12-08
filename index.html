@@ -23,19 +23,19 @@
 				if(typeof require === "undefined") {
 					setTimeout(init, 10);
 				} else {
-					require.config({baseUrl: "/" + PROJECT_ID + "/js"});
+					require.config({baseUrl: "/js"});
 					require(["main"]);
 				}
 			}
 			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
-			includeJS("/" + PROJECT_ID + "/js/require.min.js");
+			includeJS("/js/require.min.js");
 
-			includeCSS("/" + PROJECT_ID + "/css/themes/style.css");
-			includeCSS("/" + PROJECT_ID + "/css/themes/5_50.css");
-			includeCSS("/" + PROJECT_ID + "/css/themes/responsive.css");
-			includeCSS("/" + PROJECT_ID + "/css/jquery-ui.css");
-			includeCSS("/" + PROJECT_ID + "/css/styles.css");
-			includeCSS("/" + PROJECT_ID + "/css/jquery.jscrollpane.css");
+			includeCSS("/css/themes/style.css");
+			includeCSS("/css/themes/5_50.css");
+			includeCSS("/css/themes/responsive.css");
+			includeCSS("/css/jquery-ui.css");
+			includeCSS("/css/styles.css");
+			includeCSS("/css/jquery.jscrollpane.css");
 			init();
 
 		</script>

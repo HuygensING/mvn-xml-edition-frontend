@@ -1,12 +1,12 @@
 requirejs.config({
-	baseUrl: '/' + PROJECT_ID + '/js',
+	baseUrl: '/js',
 	paths: {
-		'jquery': '/' + PROJECT_ID + '/js/lib/jquery.min',
-		'underscore': '/' + PROJECT_ID + '/js/lib/underscore-min',
-		'backbone': '/' + PROJECT_ID + '/js/lib/backbone-min',
-		'async': '/' + PROJECT_ID + '/js/lib/async.min',
-		'domready': '/' + PROJECT_ID + '/js/lib/domReady',
-		'text': '/' + PROJECT_ID + '/js/lib/text'
+		'jquery': '/js/lib/jquery.min',
+		'underscore': '/js/lib/underscore-min',
+		'backbone': '/js/lib/backbone-min',
+		'async': '/js/lib/async.min',
+		'domready': '/js/lib/domReady',
+		'text': '/js/lib/text'
 		// 'html': '../../../html'
 	},
 	shim: {

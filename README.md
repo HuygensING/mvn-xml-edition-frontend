@@ -11,9 +11,20 @@ Draai voor ontwikkelen een lokale apache met in conf/sites-enabled een soortgeli
 
 ``` apacheconf
 LoadModule proxy_http_module /usr/lib/apache2/modules/mod_proxy_http.so
+<VirtualHost *:80>
+    # This first-listed virtual host is also the default for *:80
 
-ProxyPass /docs/VVEVM http://test.mvn.huygens.knaw.nl/docs/VVEVM
-ProxyPassReverse /docs/VVEVM http://test.mvn.huygens.knaw.nl/docs/VVEVM
+    ServerName mvn.local
+    ProxyPass /docs http://[MVN TEST DOMAIN]/docs
+    ProxyPassReverse /docs http://[MVN TEST DOMAIN]/docs
+
+    DocumentRoot "/path/to/mvn-xml-edition-frontend"
+ <Directory "/path/to/mvn-xml-edition-frontend">
+        DirectoryIndex index.html
+        AllowOverride All
+        Require all granted
+</Directory>
+
 
 
 ```
