@@ -22,8 +22,11 @@ define(
 					trigger: true
 				});
 			});
-			
+			$("#title-tag").html(dataStructure.get('title'));
+			$("#signature-tag").html(dataStructure.get('signatuur'));
 			$('#spinner').hide();
+			$("title").html(dataStructure.get('title'));
+			$('.header').css({opacity: "1"});
 			return this;
 		}
 	};

@@ -35,7 +35,8 @@ define([
 		},
 		start: function () {
 			Backbone.history.start({
-				pushState: true
+				pushState: true,
+				root: "/" + PROJECT_ID + "/"
 			});
 			return this;
 		},

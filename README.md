@@ -12,19 +12,10 @@ Draai voor ontwikkelen een lokale apache met in conf/sites-enabled een soortgeli
 ``` apacheconf
 LoadModule proxy_http_module /usr/lib/apache2/modules/mod_proxy_http.so
 
-<VirtualHost *:80>
-    ServerName mvn.local
-    ProxyPass /docs http://[TESTOMGEVING MVN]/docs
-    ProxyPassReverse /docs http://[TESTOMGEVING MVN]/docs
+ProxyPass /docs/VVEVM http://test.mvn.huygens.knaw.nl/docs/VVEVM
+ProxyPassReverse /docs/VVEVM http://test.mvn.huygens.knaw.nl/docs/VVEVM
 
-    DocumentRoot "/path/to/mvn-xml-edition-frontend"
- <Directory "/path/to/mvn-xml-edition-frontend">
-        DirectoryIndex index.html
-        AllowOverride All
-        Require all granted
-</Directory>
 
-</VirtualHost>
 ```
 
 Jenkins

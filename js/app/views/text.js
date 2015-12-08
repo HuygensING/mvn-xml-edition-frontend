@@ -141,11 +141,12 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 			this.$('.heading .tekst span').text(this.model.get('id'));
 
 			this.$('.folio').empty();
+
 			_.each(this.model.get('folio'), function (f) {
 				self.$('.folio').append( self.folium_template({
 					folium: f.id,
 					image: f.get('image'),
-					text: f.get('text') || 'foo'
+					text: f.get('text') || ''
 				}) );
 			});
 

@@ -1,0 +1,119 @@
+.c5_1 {
+	width:132px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_2 {
+	width:314px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_3 {
+	width:496px;
+	margin-left:50px;
+	float:left;
+	}
+	
+.c5_4 {
+	width:678px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_5 {
+	width:860px;
+	margin-left:50px;
+	float:left;
+	}
+	
+	
+/* iPhone [portrait + landscape] */
+@media only screen and (max-device-width: 480px) {
+.c5_1, .c5_2, .c5_3, .c5_4, .c5_5 {
+	float:none;
+	width:860px;
+	margin-left:50px;
+	margin-right:50px;
+	}
+
+}
+
+
+/* iPad [portrait + landscape] */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+
+
+}
+
+
+/* Small Desktop [portrait + landscape] */
+@media only screen and (min-width: 1024px) and (max-width: 1280px){
+.c5_1 {
+	width:132px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_2 {
+	width:314px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_3 {
+	width:496px;
+	margin-left:50px;
+	float:left;
+	}
+	
+.c5_4 {
+	width:678px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_5 {
+	width:860px;
+	margin-left:50px;
+	float:left;
+	}
+
+}
+
+
+/* Desktop [portrait + landscape] */
+@media only screen and (min-width: 1281px) {
+.c5_1 {
+	width:176px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_2 {
+	width:402px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_3 {
+	width:628px;
+	margin-left:50px;
+	float:left;
+	}
+	
+.c5_4 {
+	width:854px;
+	margin-left:50px;
+	float:left;
+	}
+
+.c5_5 {
+	width:1080px;
+	margin-left:50px;
+	float:left;
+	}	
+
+}

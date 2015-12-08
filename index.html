@@ -2,16 +2,43 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="Cache-Control" content="public">
-		<title>Van vrouwen ende van minne</title>
-		<link
-			href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/redmond/jquery-ui.css"
-			rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="http://mvn.huygens.knaw.nl/wp-content/themes/HuygensING_editie/style.css" type="text/css">
-		<link rel="stylesheet" href="http://mvn.huygens.knaw.nl/wp-content/themes/HuygensING_editie/5_50.css" type="text/css">
-		<link rel="stylesheet" href="http://mvn.huygens.knaw.nl/wp-content/themes/HuygensING_editie/responsive.css" type="text/css">
-		<link href="/css/styles.css" rel="stylesheet" type="text/css">
-		<link href="/css/jquery.jscrollpane.css" rel="stylesheet" type="text/css">
-		<script data-main="/js/main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.5/require.min.js"></script>		
+		<title></title>
+
+		<script>
+			function includeCSS(href) {
+				var link = document.createElement("link");
+				link.setAttribute("rel", "stylesheet");
+				link.setAttribute("type", "text/css");
+				link.setAttribute("href", href);
+				document.getElementsByTagName("head")[0].appendChild(link);
+			}
+			function includeJS(src) {
+				var fileref=document.createElement('script')
+				fileref.setAttribute("type","text/javascript")
+				fileref.setAttribute("src", src)
+				document.getElementsByTagName("head")[0].appendChild(fileref);
+			}
+
+			function init() {
+				if(typeof require === "undefined") {
+					setTimeout(init, 10);
+				} else {
+					require.config({baseUrl: "/" + PROJECT_ID + "/js"});
+					require(["main"]);
+				}
+			}
+			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
+			includeJS("/" + PROJECT_ID + "/js/require.min.js");
+
+			includeCSS("/" + PROJECT_ID + "/css/themes/style.css");
+			includeCSS("/" + PROJECT_ID + "/css/themes/5_50.css");
+			includeCSS("/" + PROJECT_ID + "/css/themes/responsive.css");
+			includeCSS("/" + PROJECT_ID + "/css/jquery-ui.css");
+			includeCSS("/" + PROJECT_ID + "/css/styles.css");
+			includeCSS("/" + PROJECT_ID + "/css/jquery.jscrollpane.css");
+			init();
+
+		</script>
 	</head>
 <body>
 	<div class="MVNReeks">
@@ -23,9 +50,12 @@
    	</div>
 	</div>
 	<div class="wrapper">
-		<div class="header">
+		<div class="header" style="opacity: 0">
 			<div class="c5_2 col right">
-				<h1><a href="http://mvn.huygens.knaw.nl/"><img src="http://mvn.huygens.knaw.nl/wp-content/themes/HuygensING_editie/images/vrouwe_minne.jpg" alt=""  /></a></h1><span class="signatuur">Den Haag, Koninklijke Bibliotheek, hs. 75 H 57</span>
+				<h1><a id="title-tag" href="http://mvn.huygens.knaw.nl/">
+					
+				</a></h1>
+				<span id="signature-tag" class="signatuur"></span>
 			</div><!-- /.c5_2.col.right -->
 			<div class="navigation c5_2">
 				<div class="menu-main-container"><ul id="menu-main" class="menu"><li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="http://mvn.huygens.knaw.nl/">Home</a></li>
@@ -63,7 +93,7 @@
 	<div id="container">
 		<div id="wrapper">
 		<div id="app">
-			<div id="spinner"><img src="/img/ajax-loader.gif"></div>
+			<div id="spinner"><img src="img/ajax-loader.gif"></div>
 			<div id="views">
 				<div id="tabs" class="center">
 					<ul>
@@ -94,7 +124,7 @@
 						<div class="center">
 							<input type="text">
 							<button>Zoek</button>
-							<a href="http://mvn.huygens.knaw.nl/help" target="_blank" class="syntax-information"><img src="/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
+							<a href="http://mvn.huygens.knaw.nl/help" target="_blank" class="syntax-information"><img src="img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
 						</div><!-- /.center -->
 					</div><!-- /.grey -->
 					<div class="results center">
@@ -119,8 +149,9 @@
 				<div id="export-options">
 					<div class="center">
 						<ul>
-							<li class="xml"><a href="/docs/VVEVM.xml" target="_new" data-bypass="true">Als XML</a></li>
-							<li class="txt"><a href="/docs/VVEVM.txt" target="_new" data-bypass="true">Als tekst</a></li>
+							<!-- TODO: edition id uit config.json voor export links -->
+							<li class="xml"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.xml'">Als XML</a></li>
+							<li class="txt"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.txt'">Als tekst</a></li>
 						</ul>
 					</div><!-- /.center -->
 				</div><!-- /#export-options -->
@@ -137,7 +168,7 @@
 	<script type="template/underscore" id="text-browser-tmpl">
 		<ul>
 			<% texts.sort().each(function (t, idx) { 
-				%><li><a href="/tekst/<%= t.id %>/regel/<%= t.get('folio')[0].lineNum(t.id) %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
+				%><li><a href="/tekst/<%= t.id %>/regel/<%= t.get('firstLineId') %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
 			}); %>
 		</ul>
 		<div class="close">x</div>
@@ -211,7 +242,7 @@
 </script>
 
 	<script type="template/underscore" id="search-tmpl">
-		<div class="spinner"><img src="/img/ajax-loader.gif"> Aan het zoeken...</div>
+		<div class="spinner"><img src="/<%= PROJECT_ID %>/img/ajax-loader.gif"> Aan het zoeken...</div>
 		<div class="results">
 			<div class="number-of-results"><span class="num"></span> resultaten</div>
 		</div>

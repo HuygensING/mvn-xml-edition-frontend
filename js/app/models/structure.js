@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'text!/docs/config.json', 'app/models/models'],
+define(['underscore', 'backbone', 'text!/docs/' + PROJECT_ID + '/config.json', 'app/models/models'],
 	function (_, Backbone, structureJSON, Models) {
 	var Model = Backbone.Model.extend({
 		initialize: function () {
@@ -10,7 +10,8 @@ define(['underscore', 'backbone', 'text!/docs/config.json', 'app/models/models']
 				Object.keys(data.folio).map(function (k) {
 					return {
 						id: k,
-						texts: data.folio[k]
+						texts: data.folio[k].texts,
+						htmlSource: data.folio[k].htmlSource
 					};
 				})
 			);
@@ -21,8 +22,9 @@ define(['underscore', 'backbone', 'text!/docs/config.json', 'app/models/models']
 				Object.keys(data.texts).map(function (k) {
 					return new Models.Text({
 						id: k,
-						first_line: data.first_lines[k],
-						folio: data.texts[k].map(function (fid) {
+						first_line: data.texts[k].head,
+						firstLineId: data.texts[k].firstLineId,
+						folio: data.texts[k].folia.map(function (fid) {
 							return folio.get(fid);
 						})
 					});
@@ -30,6 +32,8 @@ define(['underscore', 'backbone', 'text!/docs/config.json', 'app/models/models']
 			);	
 			this.set('texts', texts);
 
+			this.set('title', data.edition.title);
+			this.set('signatuur', data.edition.signatuur);
 		}
 	});
 

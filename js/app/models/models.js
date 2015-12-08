@@ -7,7 +7,8 @@ define(['backbone', 'app/config'], function (Backbone, config) {
 		defaults: {
 			'text': undefined
 		},
-		url: function () { return config.urlPrefix + 'docs/VVEVMf' + this.id + '.html'; },
+		// TODO: wordt htmlFile property op folium uit config.json
+		url: function () { return '/docs/' + PROJECT_ID + "/" + this.get('htmlSource'); },
 		initialize: function () {
 			var id = parseInt(this.id) < 10 ? '0' + this.id : this.id; // 01, 02, 03
 			this.set('image', config.urlPrefix + 'images/reduced/f' + id + '_small.jpg');

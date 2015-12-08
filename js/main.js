@@ -1,12 +1,12 @@
 requirejs.config({
-	baseUrl: '/js',
+	baseUrl: '/' + PROJECT_ID + '/js',
 	paths: {
-		'jquery': 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min',
-		'underscore': 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min',
-		'backbone': 'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min',
-		'async': 'http://cdnjs.cloudflare.com/ajax/libs/async/1.22/async.min',
-		'domready': 'http://cdnjs.cloudflare.com/ajax/libs/require-domReady/2.0.1/domReady',
-		'text': 'http://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text'
+		'jquery': '/' + PROJECT_ID + '/js/lib/jquery.min',
+		'underscore': '/' + PROJECT_ID + '/js/lib/underscore-min',
+		'backbone': '/' + PROJECT_ID + '/js/lib/backbone-min',
+		'async': '/' + PROJECT_ID + '/js/lib/async.min',
+		'domready': '/' + PROJECT_ID + '/js/lib/domReady',
+		'text': '/' + PROJECT_ID + '/js/lib/text'
 		// 'html': '../../../html'
 	},
 	shim: {
