@@ -11,7 +11,9 @@ define(['underscore', 'backbone', 'text!/docs/' + PROJECT_ID + '/config.json', '
 					return {
 						id: k,
 						texts: data.folio[k].texts,
-						htmlSource: data.folio[k].htmlSource
+						htmlSource: data.folio[k].htmlSource,
+						thumbnail: data.folio[k].thumbnail,
+						facsimile: data.folio[k].facsimile
 					};
 				})
 			);

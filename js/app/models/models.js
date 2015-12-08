@@ -11,7 +11,6 @@ define(['backbone', 'app/config'], function (Backbone, config) {
 		url: function () { return '/docs/' + PROJECT_ID + "/" + this.get('htmlSource'); },
 		initialize: function () {
 			var id = parseInt(this.id) < 10 ? '0' + this.id : this.id; // 01, 02, 03
-			this.set('image', '/images/reduced/f' + id + '_small.jpg');
 			this.fetch({
 				dataType: 'html',
 				error: function (model, response, options) {

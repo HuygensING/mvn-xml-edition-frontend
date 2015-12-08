@@ -145,7 +145,7 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 			_.each(this.model.get('folio'), function (f) {
 				self.$('.folio').append( self.folium_template({
 					folium: f.id,
-					image: f.get('image'),
+					image: f.get('thumbnail'),
 					text: f.get('text') || ''
 				}) );
 			});

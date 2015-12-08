@@ -48,7 +48,7 @@ define(['backbone', 'app/config', 'app/app', 'app/router', 'app/models/structure
 		},
 		render: function () {
 			this.$el.html(this.template({
-				image: this.model.get('image'),
+				image: this.model.get('thumbnail'),
 				folium: this.model.id,
 				index: this.model.collection.indexOf(this.model)+1
 			}));

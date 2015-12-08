@@ -174,7 +174,7 @@ define([
 		},
 		render: function () {
 			this.$el.html( this.template() );
-			this.$('#folium img').attr('src', this.model.get('image'));
+			this.$('#folium iframe').attr('src', this.model.get('facsimile'));
 			this.$('.folium span').text(this.model.get('id'));
 			this.renderBelongsTo()
 				.renderNummering()
