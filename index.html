@@ -15,6 +15,9 @@
 
 		<script>
 			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
+			if(PROJECT_ID.match(/^[a-z]+$/)) {
+				location.href = location.pathname.replace(/^\/[^\/]+\/?(.*)$/, "/" + PROJECT_ID.toUpperCase() +  "/$1");
+			}
 		</script>
 	</head>
 <body>
