@@ -1,4 +1,14 @@
 define(['underscore', 'backbone'], function (_, Backbone) {
+
+	$.ajax("http://mvn.huygens.knaw.nl/" + PROJECT_ID.toLowerCase() +  "/external/", {
+		crossDomain: true,
+		complete: function(response) {
+			if(response.status >= 200 && response.status < 300) {
+				$(".header .navigation").html(response.responseText)
+			}
+		}
+	});
+
 	return {
 		rootElement: '#app',
 		viewManagerRoot: '#main .view',
