@@ -18,6 +18,7 @@
 			if(PROJECT_ID.match(/^[a-z]+$/)) {
 				location.href = location.pathname.replace(/^\/[^\/]+\/?(.*)$/, "/" + PROJECT_ID.toUpperCase() +  "/$1");
 			}
+			var SEARCH_ENV = location.hostname.split(".")[0] === "test" ? "test." : "";
 		</script>
 	</head>
 <body>
