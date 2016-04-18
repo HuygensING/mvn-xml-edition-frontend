@@ -32,6 +32,8 @@ LoadModule proxy_http_module /usr/lib/apache2/modules/mod_proxy_http.so
 
 ```
 
+En natuurlijk test.mvn.local toevoegen aan /etc/hosts
+
 Navigeer dan naar: http://test.mvn.local/BS/
 
 
