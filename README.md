@@ -1,9 +1,13 @@
 Aandachtspunten mvn-xml-edition-frontend
 ===
 
-Search omgeving
+Apache modules
 ---
-De search omgeving is nu nog hardcoded voor de vvevm editie
+```
+$ sudo a2enmod proxy
+$ sudo a2enmod rewrite
+$ sudo a2enmod headers
+```
 
 Vhost
 ---
@@ -14,20 +18,23 @@ LoadModule proxy_http_module /usr/lib/apache2/modules/mod_proxy_http.so
 <VirtualHost *:80>
     # This first-listed virtual host is also the default for *:80
 
-    ServerName mvn.local
+    ServerName test.mvn.local
     ProxyPass /docs http://[MVN TEST DOMAIN]/docs
     ProxyPassReverse /docs http://[MVN TEST DOMAIN]/docs
 
     DocumentRoot "/path/to/mvn-xml-edition-frontend"
- <Directory "/path/to/mvn-xml-edition-frontend">
-        DirectoryIndex index.html
-        AllowOverride All
-        Require all granted
-</Directory>
-
-Navigeer dan naar: http://mvn.local/VVEVM/
+    <Directory "/path/to/mvn-xml-edition-frontend">
+           DirectoryIndex index.html
+           AllowOverride All
+           Require all granted
+    </Directory>
+</VirtualHost>
 
 ```
+
+Navigeer dan naar: http://test.mvn.local/BS/
+
+
 
 Jenkins
 ---
