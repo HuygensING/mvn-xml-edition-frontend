@@ -970,11 +970,6 @@ a {
 .right.text .bold {
   font-weight: bold;
 }
-#container .folium .text expan,
-#text .text expan,
-.right.text expan {
-  display: none;
-}
 #container .folium .text span.del,
 #text .text span.del,
 .right.text span.del {
@@ -1224,30 +1219,30 @@ a {
 #container .right.text.nummering.regel .linenum {
   visibility: visible;
 }
-#text .solve expan,
-.right.text.solve expan {
-  display: inline;
-}
-#text .solve abbr,
-.right.text.solve abbr {
+#text .solve.cursive ex,
+#text-view .right.text.solve.cursive ex {
   font-style: italic;
 }
-#text .solve.cursive,
-.right.text.solve.cursive {
-  ex: font-style italic;
+#text .solve choice abbr,
+#text-view .right.text.solve choice abbr {
+  display: none;
+  font-style: italic;
+}
+#text .solve choice expan,
+#text-view .right.text.solve choice expan {
+  display: inline;
 }
 .jspContainer .jspHorizontalBar {
   background: transparent;
-  size: 8px;
-  height: size;
+  height: 8px;
 }
 .jspContainer .jspHorizontalBar .jspTrack {
   background: #444;
-  border-radius: size;
+  border-radius: 8px;
 }
 .jspContainer .jspHorizontalBar .jspTrack .jspDrag {
   background-color: #696969;
-  border-radius: size;
+  border-radius: 8px;
 }
 .jspContainer .jspHorizontalBar .jspTrack .jspDrag:hover {
   background-color: #8f8f8f;

@@ -543,9 +543,6 @@ a
 	.border
 			// borderthin solid green
 
-	expan
-		display none
-
 	span.del
 		text-decoration line-through
 		color blue
@@ -661,21 +658,26 @@ a
 	&.regel .linenum
 		visibility visible
 
-#text .solve, .right.text.solve
-	expan
-		display inline
-
-	abbr
-		font-style italic
-
+#text .solve, #text-view .right.text.solve
 	&.cursive
-		ex	font-style italic
+		ex
+			font-style italic
+
+	choice
+		abbr
+			display none
+			font-style italic
+
+		expan
+			display inline
+
 
 .jspContainer
 	.jspHorizontalBar
 		bgColor = #444
+		size = 8px
+
 		background transparent
-		size 8px
 		height size
 
 		.jspTrack
