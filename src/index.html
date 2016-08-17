@@ -195,8 +195,8 @@
 		<%	_.each(results, function (result) { %>
 			<tr>
 				<td class="t"><a href="/tekst/<%= result.textNum %>">Tekst <%= result.textNum %></a></td>
+				<td class="l"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>">Versregel <%= result.lineNum %></a></td>
 				<td class="f"><a href="/folium/<%= result.folio %>">Folium <%= result.folio %></a></td>
-				<td class="l"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>"><%= result.lineNum %></a></td>
 				<td class="description"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>"><%= result.kwic[0] %></a></td></tr>
 		<% }) %>
 	</script>
