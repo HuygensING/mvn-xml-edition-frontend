@@ -5,8 +5,8 @@
 		<title></title>
 
 		<link rel="stylesheet" type="text/css" href="/css/themes/style.css" />
-		<link rel="stylesheet" type="text/css" href="/css/themes/5_50.css" />
-		<link rel="stylesheet" type="text/css" href="/css/themes/responsive.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="/css/themes/5_50.css" /> -->
+		<!-- <link rel="stylesheet" type="text/css" href="/css/themes/responsive.css" /> -->
 		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 		<link rel="stylesheet" type="text/css" href="/css/jquery.jscrollpane.css" />
@@ -16,40 +16,25 @@
 		<script>
 			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
 			if(PROJECT_ID.match(/^[a-z]+$/)) {
-				location.href = location.pathname.replace(/^\/[^\/]+\/?(.*)$/, "/" + PROJECT_ID.toUpperCase() +  "/$1");
+				location.href = location.pathname.replace(/^\/[^\/]+\/?(.*)$/, "/" + PROJECT_ID.toUpperCase() +	"/$1");
 			}
 			var SEARCH_ENV = location.hostname.split(".")[0] === "test" ? "test." : "";
 		</script>
 	</head>
 <body>
 	<div class="MVNReeks">
-    <div class="wrapper">
-    	<div class="c5_5 right">
-         <!-- Dit is deel 1 uit de reeks <a href="http://www.huygens.knaw.nl/mvn/">Middeleeuwse Verzamelhandschriften in de Nederlanden</a>-->
-         Deze tekst moet uit de wordpress komen
-    	</div>
-    	<div class="cclear"></div>
-   	</div>
+		<!-- Dit is deel 1 uit de reeks <a href="http://www.huygens.knaw.nl/mvn/">Middeleeuwse Verzamelhandschriften in de Nederlanden</a>-->
+		Deze tekst moet uit de wordpress komen
 	</div>
-	<div class="wrapper">
-		<div class="header" style="opacity: 0">
-			<div class="c5_2 col right">
-				<h1><a id="title-tag" href="http://mvn.huygens.knaw.nl/">
-					
-				</a></h1>
-				<span id="signature-tag" class="signatuur"></span>
-			</div><!-- /.c5_2.col.right -->
-			<div class="navigation c5_2">
-				<!-- Deze links komen uit de wordpress -->
-			</div><!-- /.navigation -->
-			<div class="c5_1 ">
-				<img src="/img/HuygensINGLogo.jpg" alt="Huygens ING">
-			</div>
-		</div><!--/.header-->
-		<div class="cclear"></div>
-	</div><!-- /.wrapper -->
+	<header>
+		<h1>
+			<a id="title-tag" href="http://mvn.huygens.knaw.nl/"></a>
+			<span id="signature-tag" class="signatuur"></span>
+		</h1>
+		<div class="navigation"></div>
+		<img src="/img/HuygensINGLogo.jpg" alt="Huygens ING">
+	</header>
 	<div id="container">
-		<div id="wrapper">
 		<div id="app">
 			<div id="spinner"><img src="/img/ajax-loader.gif"></div>
 			<div id="views">
@@ -115,7 +100,7 @@
 				</div><!-- /#export-options -->
 			</div><!-- /#views -->
 
-			<div id="main" class="center">
+			<div id="main">
 				<div class="view"></div>
 			</div><!-- /#main -->
 		</div><!-- /#app -->
@@ -125,7 +110,7 @@
 	<!-- Templates -->
 	<script type="template/underscore" id="text-browser-tmpl">
 		<ul>
-			<% texts.sort().each(function (t, idx) { 
+			<% texts.sort().each(function (t, idx) {
 				%><li><a title="<%= t.get("first_line") %>" href="/tekst/<%= t.id %>/regel/<%= t.get('firstLineId') %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
 			}); %>
 		</ul>
@@ -164,7 +149,7 @@
 					<a href="" class="next"><span>2r</span> &#9658;</a>
 				</div>
 				<div class="text">
-				</div>						 
+				</div>
 			</div>
 		</div><!-- /#text -->
 		<div id="sidebar">
@@ -210,7 +195,7 @@
 	</script>
 
 	<script type="template/underscore" id="results-tmpl">
-		<%  _.each(results, function (result) { %>
+		<%	_.each(results, function (result) { %>
 			<tr>
 				<td class="t"><a href="/tekst/<%= result.textNum %>">Tekst <%= result.textNum %></a></td>
 				<td class="f"><a href="/folium/<%= result.folio %>">Folium <%= result.folio %></a></td>

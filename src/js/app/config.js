@@ -4,7 +4,7 @@ define(['underscore', 'backbone'], function (_, Backbone) {
 		crossDomain: true,
 		complete: function(response) {
 			if(response.status >= 200 && response.status < 300) {
-				$(".header .navigation").html(response.responseText)
+				$("header .navigation").html(response.responseText)
 			}
 		}
 	});

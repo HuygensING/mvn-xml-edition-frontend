@@ -2,6 +2,12 @@
   "name": "mvn-frontend",
   "version": "0.0.1",
   "devDependencies": {
-    "less": "^2.7.1"
+    "browser-sync": "^2.14.0",
+    "connect-modrewrite": "^0.9.0",
+    "less": "^2.7.1",
+    "lodash.debounce": "^4.0.8",
+    "proxy-middleware": "^0.15.0",
+    "stylus": "^0.54.5",
+    "url": "^0.11.0"
   }
 }

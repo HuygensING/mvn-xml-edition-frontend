@@ -1,4 +1,4 @@
-/*   
+/*
 Theme Name: Huygens ING project template
 Theme URI: http://www.huygens.knaw.nl
 Description: Start template for Wordpress
@@ -19,16 +19,16 @@ body { background: white; font-family:Helvetica, Arial, sans-serif }
 * {
 	margin:0;
 	padding:0;
-	
+
 	font-family:Helvetica, Arial, sans-serif;
 	font-size:14px;
 	font-weight:300;
 	}
 
 body {
-	
 
-	
+
+
 	}
 
 
@@ -71,28 +71,17 @@ a:hover {
 /*LAYOUT*/
 .wrapper {
 	width: 1180px;
-	
-	
+
+
 	margin-left:auto;
 	margin-right:auto;
 	clear:both;
 	}
 
 
-.header {
+header {
 	clear:both;
 	padding:25px 0px 25px 0px;
-	}
-
-.navigation{
-
-	padding:0px 0px 0px 0px;
-	
-	}
-
-.navigation li ul{
-	display:none;
-	
 	}
 
 .headline {
@@ -128,30 +117,13 @@ a:hover {
 
 /* NAVIGATION */
 
-.navigation li{
-	display:inline;
-	list-style:none;
-	}
-
-.navigation a {
-	display:inline-block;
-	text-decoration:none;
-	color:#333;
-	padding:22px 3px 20px 3px;
-	font-size:12px;
-	}
-
-.navigation a:hover {
-	background-color:#eee;
-	
-}
 
 .currentMain {
 	font-weight:600;
 	}
 
 .submenu-widget{
-	
+
 	}
 
 .submenu-widget li{
@@ -162,7 +134,7 @@ a:hover {
 	color:#333;
 	display:block;
 	padding:3px 5px 3px 5px;
-	
+
 	}
 
 .submenu-widget a:hover{
@@ -178,7 +150,7 @@ a:hover {
 	list-style:none;
 	margin-right:10px;
 	}
-	
+
 .submenu-widget li li a{
 	font-size:12px;
 	color:#999;
@@ -208,14 +180,9 @@ a:hover {
 
 .MVNReeks a{
 	color:#00C091;
-	
+
 	}
 
-
-.signatuur {
-	font-size:11px;
-	color:#999;
-	}
 
 
 .green {
@@ -262,4 +229,4 @@ a:hover {
 .bekijkEditie a:hover {
 	background-color:#E3E3E3;
 	text-decoration:none;
-	}		
+	}

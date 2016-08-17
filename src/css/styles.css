@@ -1,26 +1,69 @@
 /* Mockup */
+header {
+  margin: 0 auto;
+  max-width: 1280px;
+  position: relative;
+  width: 90%;
+  position: relative;
+}
+header h1,
+header .navigation,
+header img {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+header h1 {
+  text-align: left;
+  width: 400px;
+}
+header h1 a#title-tag {
+  color: #b325a0;
+  display: block;
+  font-family: Samba, sans-serif;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+header h1 span#signature-tag {
+  color: #999;
+  display: block;
+  font-size: 11px;
+  text-align: right;
+  top: 6px;
+}
+header .navigation {
+  width: calc(100% - 400px - 101px);
+  text-align: center;
+}
+header .navigation li {
+  display: inline;
+  list-style: none;
+}
+header .navigation li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  padding: 22px 3px 20px 3px;
+  font-size: 12px;
+}
+header .navigation li a:hover {
+  background-color: #eee;
+}
+header img {
+  position: absolute;
+  right: 0;
+  width: 101px;
+}
 @font-face {
   font-family: Junicode;
-  src: url('../fonts/Junicode.ttf') format('truetype');
+  src: url("../fonts/Junicode.ttf") format('truetype');
 }
 @font-face {
   font-family: Samba;
-  src: url('../fonts/Samba-webfont.ttf') format('truetype');
+  src: url("../fonts/Samba-webfont.ttf") format('truetype');
 }
 .text {
   font-family: "Junicode", "Arial unicode MS", "times new roman", serif;
-}
-.annotationFormat {
-  display: block;
-  float: left;
-  font-size: 11px;
-  color: #777;
-  font-family: sans-serif;
-  width: 100px;
-  line-height: 16px;
-  font-style: normal;
-  border-top: 2px solid #00B3B0;
-  padding-top: 6px;
 }
 .capitalsize4 {
   display: inline-block;
@@ -39,7 +82,7 @@
 }
 .capitalsize1 {
   display: inline-block;
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 300;
   font-family: Arial, Helvetica, sans-serif;
   height: 50px;
@@ -53,10 +96,9 @@
   font-family: "Courier New", "Lucida Console";
   margin-right: 1em;
 }
-/* nog onbekend wat dit moet worden */
 span.rubric {
   display: inline;
-  color: red;
+  color: #f00;
 }
 .mentioned {
   font-style: italic;
@@ -67,13 +109,13 @@ span.rubric {
   width: 45%;
   position: relative;
   left: -2em;
-  color: grey;
+  color: #808080;
 }
 .grey {
-  color: grey;
+  color: #808080;
 }
 .green {
-  color: green;
+  color: #008000;
   padding-top: 0;
   background-color: transparent;
 }
@@ -87,10 +129,8 @@ span.rubric {
   font-weight: bold;
 }
 .border {
-  border: thin solid green;
+  borderthin: solid #008000;
 }
-/* is the expansion of an abbreviation; should be toggle?
- */
 expan {
   display: none;
 }
@@ -110,23 +150,19 @@ table.half {
 table,
 th,
 td {
-  border: 0px solid black;
+  border: 0px solid #000;
   text-align: left;
 }
-/* Copied some code from Peter Boot (Freckenhorst project) */
 .nextprev {
   float: right;
 }
 span.versenum {
   left: -35px;
-  color: purple;
-}
-span.add {
-  /*    text-decoration:underline; */
+  color: #800080;
 }
 span.del {
   text-decoration: line-through;
-  color: red;
+  color: #f00;
 }
 span.ital {
   font-style: italic;
@@ -136,7 +172,7 @@ span.moveleft {
   left: 50px;
 }
 span.restore {
-  border: thin solid purple;
+  border: thin solid #800080;
 }
 span.romannumber {
   font-variant: small-caps;
@@ -148,7 +184,7 @@ span.noteleft {
 span.noteright {
   position: absolute;
   left: 300px;
-  color: black;
+  color: #000;
 }
 span.folionr {
   position: absolute;
@@ -213,10 +249,11 @@ span.hide {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
 }
 .marginalia .margin {
+  display: block;
   display: block;
   float: left;
   font-size: 11px;
@@ -225,7 +262,7 @@ span.hide {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
 }
 .commentaar .comment {
@@ -238,7 +275,7 @@ span.hide {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
 }
 .inleiding .intro {
@@ -251,13 +288,13 @@ span.hide {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
 }
 .linenum {
   font-family: sans-serif;
   font-size: 10px;
-  color: grey;
+  color: #808080;
   margin-left: -30px;
   float: left;
 }
@@ -270,7 +307,7 @@ span.hide {
 linegroup_start,
 linegroup_end {
   display: block;
-  padding: .5em;
+  padding: 0.5em;
 }
 linegroup_start + linegroup_end {
   padding: 0;
@@ -285,21 +322,11 @@ linegroup_end + br {
 .textnum + br {
   display: none;
 }
-/* Folio Browser */
 .text,
 #container *.text * {
   font-family: "Junicode", "Arial unicode MS", "times new roman", serif;
   font-size: 16px;
   line-height: 26px;
-}
-.header h1 {
-  text-align: left;
-}
-.header h1 a {
-  font-family: Samba, sans-serif;
-  color: #b325a0;
-  font-size: 1.1em;
-  font-weight: 400;
 }
 #container .text a {
   text-decoration: none;
@@ -317,15 +344,11 @@ body {
 }
 a {
   text-decoration: none;
-  color: #777777;
+  color: #777;
 }
 .center {
   width: 960px;
   margin: 0 auto;
-}
-.signatuur {
-  position: relative;
-  top: 6px;
 }
 .no-select {
   -webkit-touch-callout: none;
@@ -388,7 +411,7 @@ a {
 #tabs ul li {
   float: left;
   background: #f5f5f5;
-  color: #777777;
+  color: #777;
   height: 30px;
   line-height: 30px;
   padding: 0 10px;
@@ -403,8 +426,8 @@ a {
   user-select: none;
 }
 #tabs ul li.active {
-  background-color: #eeeeee;
-  background-image: url('../img/slant.png');
+  background-color: #eee;
+  background-image: url("../img/slant.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
   margin-top: 0;
@@ -413,20 +436,20 @@ a {
 }
 #tabs ul li.folio-browser.active,
 #tabs ul li.text-browser.active {
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
 }
 #search-view {
   display: none;
 }
 #search-view .grey {
-  background: #eeeeee;
+  background: #eee;
 }
 #search-view .center {
   padding: 25px 0;
 }
 #search-view input {
-  border: 1px solid #DADADA;
+  border: 1px solid #dadada;
   height: 33px;
   line-height: 33px;
   padding: 0 10px;
@@ -438,7 +461,7 @@ a {
   padding: 0 20px;
   border: 0;
   border-radius: 3px;
-  background: #FBFBFB;
+  background: #fbfbfb;
 }
 #search-view button:hover {
   background: #f5f5f5;
@@ -471,10 +494,13 @@ a {
   padding-left: 2px;
   line-height: 36px;
   font-size: 12px;
-  border-bottom: 1px solid #F0F0F0;
+  border-bottom: 1px solid #f0f0f0;
+}
+#search-results table tr:hover {
+  background-color: #f0f0f0;
 }
 #search-results table tr em {
-  color: #008B88;
+  color: #008b88;
   font-weight: bold;
 }
 #search-results table tr a {
@@ -498,14 +524,11 @@ a {
   display: inline-block;
   left: 22em;
 }
-#search-results table tr:hover {
-  background-color: #f0f0f0;
-}
 #view-options,
 #export-options {
   display: none;
-  background: #eeeeee;
-  color: #777777;
+  background: #eee;
+  color: #777;
   line-height: 33px;
   height: 33px;
   margin-bottom: 30px;
@@ -513,7 +536,7 @@ a {
 #view-options .center,
 #export-options .center {
   height: 33px;
-  background: #eeeeee;
+  background: #eee;
 }
 #view-options ul,
 #export-options ul {
@@ -590,8 +613,8 @@ a {
 }
 #folio-browser,
 #text-browser {
-  background: black;
-  color: white;
+  background: #000;
+  color: #fff;
   padding: 24px 20px 17px 20px;
   margin-bottom: 30px;
 }
@@ -619,13 +642,13 @@ a {
 }
 #folio-browser:hover .jspTrack .jspDrag,
 #text-browser:hover .jspTrack .jspDrag {
-  background-color: #777777;
+  background-color: #696969;
 }
 #folio-browser:hover .jspTrack .jspDrag:hover,
 #text-browser:hover .jspTrack .jspDrag:hover,
 #folio-browser:hover .jspTrack .jspDrag.jspActive,
 #text-browser:hover .jspTrack .jspDrag.jspActive {
-  background-color: #aaaaaa;
+  background-color: #8f8f8f;
 }
 #folio-browser {
   width: "calc(100% - 48px)";
@@ -652,18 +675,18 @@ a {
   display: block;
 }
 #folio-browser .folium-thumbnail.active {
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #000;
   padding: 2px 2px 4px 2px;
 }
 #folio-browser .folium-thumbnail .circle {
   width: 26px;
   height: 26px;
   line-height: 26px;
-  border-radius: 13px;
+  border-radius: 26px/2;
   text-align: center;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   position: absolute;
   top: 37px;
   z-index: 5000;
@@ -676,8 +699,8 @@ a {
 }
 #folio-browser .folium-thumbnail.active .circle {
   z-index: 5001;
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #000;
 }
 #folio-browser .horizontal-only {
   height: auto;
@@ -695,16 +718,16 @@ a {
   right: 0;
 }
 #folio-browser .close:hover {
-  background-color: #666666;
+  background-color: #5c5c5c;
 }
 #text-browser {
   display: none;
-  background-image: linear-gradient(bottom, #666666 0%, #000000 76%);
-  background-image: -o-linear-gradient(bottom, #666666 0%, #000000 76%);
-  background-image: -moz-linear-gradient(bottom, #666666 0%, #000000 76%);
-  background-image: -webkit-linear-gradient(bottom, #666666 0%, #000000 76%);
-  background-image: -ms-linear-gradient(bottom, #666666 0%, #000000 76%);
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #666666), color-stop(0.76, #000000));
+  background-image: linear-gradient(bottom, #666 0%, #000 76%);
+  background-image: -o-linear-gradient(bottom, #666 0%, #000 76%);
+  background-image: -moz-linear-gradient(bottom, #666 0%, #000 76%);
+  background-image: -webkit-linear-gradient(bottom, #666 0%, #000 76%);
+  background-image: -ms-linear-gradient(bottom, #666 0%, #000 76%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #666), color-stop(0.76, #000));
 }
 #text-browser ul {
   font-size: 12px;
@@ -725,13 +748,11 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-#text-browser ul li a {
-  color: white;
+  a: color #fff;
 }
 #text-browser ul li .noteright {
   position: static;
-  color: white;
+  color: #fff;
 }
 #text-browser ul li .superscript {
   display: none;
@@ -760,10 +781,7 @@ a {
 #folium {
   width: 385px;
   margin-right: 55px;
-}
-#folium img {
-  width: 385px;
-  height: auto;
+  img: width 385px height auto;
 }
 #sidebar {
   width: 145px;
@@ -771,11 +789,11 @@ a {
 }
 #sidebar .line {
   margin-top: 35px;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #eee;
 }
 #sidebar .belongs-to {
   width: 120px;
-  color: #777777;
+  color: #777;
   margin-bottom: 65px;
 }
 #sidebar .annotations span.noteright {
@@ -787,12 +805,12 @@ a {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
-  background-color: white;
+  background-color: #fff;
   z-index: 1;
-  border-bottom: 1px dotted #00B3B0;
-  opacity: .9;
+  border-bottom: 1px dotted #00b3b0;
+  opacity: 0.9;
 }
 #sidebar .annotations span.noteright span {
   position: static;
@@ -804,7 +822,7 @@ a {
   z-index: 2;
   color: #333;
   opacity: 1;
-  background-color: #b3fffe;
+  background-color: #5afffc;
 }
 #text {
   width: 355px;
@@ -812,16 +830,12 @@ a {
 #text .nav {
   line-height: 35px;
   height: 35px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eee;
   margin-bottom: 20px;
   text-align: center;
 }
-#text .nav .previous {
-  float: left;
-}
-#text .nav .next {
-  float: right;
-}
+#text .nav .previous float left,
+#text .nav .next float right,
 #text .nav .next,
 #text .nav .previous {
   color: #d275c6;
@@ -838,36 +852,14 @@ a {
   font-weight: 500;
   font-size: 18px;
 }
+#main {
+  margin: 0 auto;
+  max-width: 1280px;
+  position: relative;
+  width: 90%;
+}
 #main a {
   color: #d275c6;
-}
-.formatAsAnnotation {
-  display: block;
-  float: left;
-  font-size: 11px;
-  color: #777;
-  font-family: sans-serif;
-  width: 100px;
-  line-height: 16px;
-  font-style: normal;
-  border-top: 2px solid #00B3B0;
-  padding-top: 6px;
-  background-color: white;
-  z-index: 1;
-  border-bottom: 1px dotted #00B3B0;
-  opacity: .9;
-}
-.formatAsAnnotation span {
-  position: static;
-  display: inline;
-  float: none;
-  border: none;
-}
-.formatAsAnnotation:hover {
-  z-index: 2;
-  color: #333;
-  opacity: 1;
-  background-color: #b3fffe;
 }
 #text-view {
   width: 485px;
@@ -898,7 +890,7 @@ a {
   font-size: 11px;
 }
 #text-view .folium .left h5 {
-  color: #777777;
+  color: #777;
   font-weight: normal;
   font-size: 11px;
   padding: 0;
@@ -932,7 +924,7 @@ a {
 #text .text span.rubric,
 .right.text span.rubric {
   display: inline;
-  color: red;
+  color: #f00;
 }
 #container .folium .text .mentioned,
 #text .text .mentioned,
@@ -949,17 +941,17 @@ a {
   width: 45%;
   position: relative;
   left: -2em;
-  color: grey;
+  color: #808080;
 }
 #container .folium .text .grey,
 #text .text .grey,
 .right.text .grey {
-  color: grey;
+  color: #808080;
 }
 #container .folium .text .green,
 #text .text .green,
 .right.text .green {
-  color: green;
+  color: rreen;
 }
 #container .folium .text .italic,
 #text .text .italic,
@@ -981,15 +973,21 @@ a {
 .right.text expan {
   display: none;
 }
+#container .folium .text abbr,
+#text .text abbr,
+.right.text abbr,
+#container .folium .text choice,
+#text .text choice,
+.right.text choice,
 #container .folium .text span.del,
 #text .text span.del,
 .right.text span.del {
   text-decoration: line-through;
-  color: blue;
+  color: #00f;
 }
-#container .folium .text p > span:not([class]),
-#text .text p > span:not([class]),
-.right.text p > span:not([class]) {
+#container .folium .text p > spannot([class]),
+#text .text p > spannot([class]),
+.right.text p > spannot([class]) {
   display: block;
   float: left;
   font-size: 11px;
@@ -998,28 +996,28 @@ a {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
-  background-color: white;
+  background-color: #fff;
   z-index: 1;
-  border-bottom: 1px dotted #00B3B0;
-  opacity: .9;
+  border-bottom: 1px dotted #00b3b0;
+  opacity: 0.9;
 }
-#container .folium .text p > span:not([class]) span,
-#text .text p > span:not([class]) span,
-.right.text p > span:not([class]) span {
+#container .folium .text p > spannot([class]) span,
+#text .text p > spannot([class]) span,
+.right.text p > spannot([class]) span {
   position: static;
   display: inline;
   float: none;
   border: none;
 }
-#container .folium .text p > span:not([class]):hover,
-#text .text p > span:not([class]):hover,
-.right.text p > span:not([class]):hover {
+#container .folium .text p > spannot([class]):hover,
+#text .text p > spannot([class]):hover,
+.right.text p > spannot([class]):hover {
   z-index: 2;
   color: #333;
   opacity: 1;
-  background-color: #b3fffe;
+  background-color: #5afffc;
 }
 #container .folium .text span.del > span.noteright,
 #text .text span.del > span.noteright,
@@ -1035,12 +1033,12 @@ a {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
-  background-color: white;
+  background-color: #fff;
   z-index: 1;
-  border-bottom: 1px dotted #00B3B0;
-  opacity: .9;
+  border-bottom: 1px dotted #00b3b0;
+  opacity: 0.9;
 }
 #container .folium .text span.del > span.noteright span,
 #text .text span.del > span.noteright span,
@@ -1062,7 +1060,7 @@ a {
   z-index: 2;
   color: #333;
   opacity: 1;
-  background-color: #b3fffe;
+  background-color: #5afffc;
 }
 #container .folium .text span.noteright,
 #text .text span.noteright,
@@ -1077,12 +1075,13 @@ a {
   width: 100px;
   line-height: 16px;
   font-style: normal;
-  border-top: 2px solid #00B3B0;
+  border-top: 2px solid #00b3b0;
   padding-top: 6px;
-  background-color: white;
+  background-color: #fff;
   z-index: 1;
-  border-bottom: 1px dotted #00B3B0;
-  opacity: .9;
+  border-bottom: 1px dotted #00b3b0;
+  opacity: 0.9;
+  abbr: display inline font-size 14px;
 }
 #container .folium .text span.noteright span,
 #text .text span.noteright span,
@@ -1098,34 +1097,12 @@ a {
   z-index: 2;
   color: #333;
   opacity: 1;
-  background-color: #b3fffe;
-}
-#container .folium .text span.noteright abbr,
-#text .text span.noteright abbr,
-.right.text span.noteright abbr {
-  display: inline;
-  font-size: 14px;
-}
-#container .folium .text span.ital,
-#text .text span.ital,
-.right.text span.ital {
-  font-style: italic;
-}
-#container .folium .text span.moveleft,
-#text .text span.moveleft,
-.right.text span.moveleft {
-  position: relative;
-  left: 50px;
+  background-color: #5afffc;
 }
 #container .folium .text span.restore,
 #text .text span.restore,
 .right.text span.restore {
-  border: thin solid purple;
-}
-#container .folium .text span.romannumber,
-#text .text span.romannumber,
-.right.text span.romannumber {
-  font-variant: small-caps;
+  borderthin: solid #800080;
 }
 #container .folium .text span.noteleft,
 #text .text span.noteleft,
@@ -1222,20 +1199,18 @@ a {
   visibility: hidden;
   font-family: sans-serif;
   font-size: 10px;
-  color: #777777;
+  color: #777;
   margin-left: -40px;
   float: left;
 }
-#container .folium .text .versenum,
-#text .text .versenum,
-.right.text .versenum {
-  visibility: hidden;
-}
+#container .folium .text .versenum visibility hidden,
+#text .text .versenum visibility hidden,
+.right.text .versenum visibility hidden,
 #container .folium .text .textnum,
 #text .text .textnum,
 .right.text .textnum {
   float: right;
-  color: #777777;
+  color: #777;
 }
 .folium .right.text {
   position: relative;
@@ -1256,22 +1231,23 @@ a {
 .right.text.solve abbr {
   font-style: italic;
 }
-#text .solve.cursive ex,
-.right.text.solve.cursive ex {
-  font-style: italic;
+#text .solve.cursive,
+.right.text.solve.cursive {
+  ex: font-style italic;
 }
 .jspContainer .jspHorizontalBar {
   background: transparent;
-  height: 8px;
+  size: 8px;
+  height: size;
 }
 .jspContainer .jspHorizontalBar .jspTrack {
   background: #444;
-  border-radius: 8px;
+  border-radius: size;
 }
 .jspContainer .jspHorizontalBar .jspTrack .jspDrag {
-  background-color: #777777;
-  border-radius: 8px;
+  background-color: #696969;
+  border-radius: size;
 }
 .jspContainer .jspHorizontalBar .jspTrack .jspDrag:hover {
-  background-color: #aaaaaa;
+  background-color: #8f8f8f;
 }
