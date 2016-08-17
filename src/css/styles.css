@@ -748,7 +748,9 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  a: color #fff;
+}
+#text-browser ul li a {
+  color: #fff;
 }
 #text-browser ul li .noteright {
   position: static;
@@ -973,21 +975,15 @@ a {
 .right.text expan {
   display: none;
 }
-#container .folium .text abbr,
-#text .text abbr,
-.right.text abbr,
-#container .folium .text choice,
-#text .text choice,
-.right.text choice,
 #container .folium .text span.del,
 #text .text span.del,
 .right.text span.del {
   text-decoration: line-through;
   color: #00f;
 }
-#container .folium .text p > spannot([class]),
-#text .text p > spannot([class]),
-.right.text p > spannot([class]) {
+#container .folium .text p > span:not([class]),
+#text .text p > span:not([class]),
+.right.text p > span:not([class]) {
   display: block;
   float: left;
   font-size: 11px;
@@ -1003,17 +999,17 @@ a {
   border-bottom: 1px dotted #00b3b0;
   opacity: 0.9;
 }
-#container .folium .text p > spannot([class]) span,
-#text .text p > spannot([class]) span,
-.right.text p > spannot([class]) span {
+#container .folium .text p > span:not([class]) span,
+#text .text p > span:not([class]) span,
+.right.text p > span:not([class]) span {
   position: static;
   display: inline;
   float: none;
   border: none;
 }
-#container .folium .text p > spannot([class]):hover,
-#text .text p > spannot([class]):hover,
-.right.text p > spannot([class]):hover {
+#container .folium .text p > span:not([class]):hover,
+#text .text p > span:not([class]):hover,
+.right.text p > span:not([class]):hover {
   z-index: 2;
   color: #333;
   opacity: 1;
@@ -1104,16 +1100,21 @@ a {
 .right.text span.restore {
   borderthin: solid #800080;
 }
+#container .folium .text span.romannumber,
+#text .text span.romannumber,
+.right.text span.romannumber {
+  font-variant: small-caps;
+}
 #container .folium .text span.noteleft,
 #text .text span.noteleft,
 .right.text span.noteleft {
-  position: absolute;
-  padding: 2px;
-  line-height: 10px;
   border-radius: 10px;
   font-size: 10px;
   left: -20px;
+  line-height: 10px;
   margin-top: 6px;
+  padding: 2px;
+  position: absolute;
 }
 #container .folium .text span.folionr,
 #text .text span.folionr,

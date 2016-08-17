@@ -374,7 +374,10 @@ a
 			white-space nowrap
 			text-overflow ellipsis
 			no-select()
-			a	color white
+
+			a
+				color white
+
 			.noteright
 				position static
 				color white
@@ -384,8 +387,6 @@ a
 
 			.capitalsize1
 				display inline
-
-
 
 	.inner
 		width 4600px
@@ -398,19 +399,15 @@ a
 		top 0px
 		cursor pointer
 
-
-
 #folium, #sidebar, #text
 	display inline
 	float left
 	position relative
 
-
 #folium
 	width folioWidth
 	margin-right foliumMargin
 	img	width folioWidth height auto
-
 
 #sidebar
 	width sidebarWidth
@@ -420,12 +417,10 @@ a
 		margin-top 35px
 		border-top 1px solid viewMenuActiveColor
 
-
 	.belongs-to
 		width 120px
 		color defaultGray
 		margin-bottom 65px
-
 
 	.annotations
 		span.noteright
@@ -449,7 +444,6 @@ a
 			text-decoration none
 			no-select()
 
-
 		.folium
 			font-weight 500
 			font-size 18px
@@ -466,6 +460,7 @@ a
 	.heading
 		padding-left 172px // left margin
 		text-align center
+
 		span.tekst
 			font-size 20px
 			font-weight 500
@@ -476,15 +471,16 @@ a
 		.next
 			float right
 
-
 	.folium
 		border-top 1px solid viewMenuColor
 		margin-bottom 34px
 		padding-top 20px
 		position relative
+
 		.left
 			float left
 			font-size 11px
+
 			h5
 				color defaultGray
 				font-weight normal
@@ -503,29 +499,23 @@ a
 				color bodyNavColor
 				no-select()
 
-
 		.right
 			margin-left 173px
 			font-size 18px
 			text-align left
 
-
 	.noteright
 		left 500px
-
-
 
 #container .folium .text, #text .text, .right.text
 	span.rubric
 		display inline
 		color red
 
-
 	.mentioned
 		font-style italic
 		font-size 14px
 		line-height 16px
-
 
 	.footnote
 			display block
@@ -553,30 +543,19 @@ a
 	.border
 			// borderthin solid green
 
-
 	expan
 		display none
-
-	abbr
-
-	choice
-
-
-
 
 	span.del
 		text-decoration line-through
 		color blue
 
-
-	p > spannot([class])
+	p > span:not([class])
 		formatAsAnnotation()
-
 
 	span.del, span.add
 		& > span.noteright
 			formatAsAnnotation()
-
 
 	span.noteright
 		position absolute
@@ -595,18 +574,16 @@ a
 			borderthin solid purple
 
 	span.romannumber
-			font-variantsmall-caps
+		font-variant small-caps
 
 	span.noteleft
-		position absolute
-
-		padding 2px
-		line-height 10px
 		border-radius 10px
 		font-size 10px
 		left -20px
+		line-height 10px
 		margin-top 6px
-
+		padding 2px
+		position absolute
 
 	span.folionr
 			position absolute
@@ -660,7 +637,6 @@ a
 	span.hide
 		display none
 
-
 	.versenum, .linenum
 		display block
 		visibility hidden
@@ -675,11 +651,8 @@ a
 		float right
 		color defaultGray
 
-
-
 .folium .right.text
 	position relative
-
 
 #container #text .text.nummering, #container .right.text.nummering
 	&.vers .versenum
@@ -687,8 +660,6 @@ a
 
 	&.regel .linenum
 		visibility visible
-
-
 
 #text .solve, .right.text.solve
 	expan
