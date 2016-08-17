@@ -6,7 +6,7 @@
 @import 'src/css/mvn-reeks'
 
 .text,
-#container *.text *
+#container * .text *
 	font-family "Junicode", "Arial unicode MS", "times new roman", serif
 	font-size 16px
 	line-height 26px
@@ -437,8 +437,12 @@ a
 		margin-bottom 20px
 		text-align center
 
-		.previous	float left
-		.next	float right
+		.previous
+			float left
+
+		.next
+			float right
+
 		.next, .previous
 			color bodyNavColor
 			cursor pointer
@@ -451,16 +455,18 @@ a
 
 #main
 	mainCenter()
+
 	a
 		color bodyNavColor
 
 #text-view
-	width textViewWidth
-	margin auto
+	// width textViewWidth
+	// margin auto
 
 	.heading
-		padding-left 172px // left margin
+		padding-left 200px // left margin
 		text-align center
+		width 400px
 
 		span.tekst
 			font-size 20px
@@ -501,9 +507,10 @@ a
 				no-select()
 
 		.right
-			margin-left 173px
+			margin-left 200px
 			font-size 18px
 			text-align left
+			width 400px
 
 	.noteright
 		left 500px
@@ -541,9 +548,6 @@ a
 	.bold
 		font-weight bold
 
-	.border
-			// borderthin solid green
-
 	span.del
 		text-decoration line-through
 		color blue
@@ -557,9 +561,12 @@ a
 
 	span.noteright
 		position absolute
-		left 390px
+		left 440px
 		formatAsAnnotation()
-		abbr	display inline font-size 14px
+
+		abbr
+			display inline
+			font-size 14px
 
 	span.ital
 			font-styleitalic
@@ -671,7 +678,6 @@ a
 
 		expan
 			display inline
-
 
 .jspContainer
 	.jspHorizontalBar

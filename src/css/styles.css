@@ -339,7 +339,7 @@ linegroup_end + br {
   font-size: 10px;
 }
 .text,
-#container *.text * {
+#container * .text * {
   font-family: "Junicode", "Arial unicode MS", "times new roman", serif;
   font-size: 16px;
   line-height: 26px;
@@ -852,8 +852,12 @@ a {
   margin-bottom: 20px;
   text-align: center;
 }
-#text .nav .previous float left,
-#text .nav .next float right,
+#text .nav .previous {
+  float: left;
+}
+#text .nav .next {
+  float: right;
+}
 #text .nav .next,
 #text .nav .previous {
   color: #d275c6;
@@ -879,13 +883,10 @@ a {
 #main a {
   color: #d275c6;
 }
-#text-view {
-  width: 485px;
-  margin: auto;
-}
 #text-view .heading {
-  padding-left: 172px;
+  padding-left: 200px;
   text-align: center;
+  width: 400px;
 }
 #text-view .heading span.tekst {
   font-size: 20px;
@@ -931,9 +932,10 @@ a {
   user-select: none;
 }
 #text-view .folium .right {
-  margin-left: 173px;
+  margin-left: 200px;
   font-size: 18px;
   text-align: left;
+  width: 400px;
 }
 #text-view .noteright {
   left: 500px;
@@ -1073,7 +1075,7 @@ a {
 #text .text span.noteright,
 .right.text span.noteright {
   position: absolute;
-  left: 390px;
+  left: 440px;
   display: block;
   float: left;
   font-size: 11px;
@@ -1088,7 +1090,6 @@ a {
   z-index: 1;
   border-bottom: 1px dotted #00b3b0;
   opacity: 0.9;
-  abbr: display inline font-size 14px;
 }
 #container .folium .text span.noteright span,
 #text .text span.noteright span,
@@ -1105,6 +1106,12 @@ a {
   color: #333;
   opacity: 1;
   background-color: #5afffc;
+}
+#container .folium .text span.noteright abbr,
+#text .text span.noteright abbr,
+.right.text span.noteright abbr {
+  display: inline;
+  font-size: 14px;
 }
 #container .folium .text span.restore,
 #text .text span.restore,
