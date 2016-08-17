@@ -25,6 +25,9 @@ var proxyOptions = url.parse('http://test.mvn.huygens.knaw.nl/docs/BS');
 proxyOptions.route = '/docs';
 
 browserSync.init({
+	startPath: 'BS',
+	host: 'test.mvn.local',
+	open: 'external',
 	server: {
 		baseDir: baseDir,
 		middleware: [
