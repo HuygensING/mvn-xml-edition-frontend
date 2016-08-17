@@ -322,6 +322,22 @@ linegroup_end + br {
 .textnum + br {
   display: none;
 }
+.MVNReeks {
+  background-color: #444;
+  color: #bababa;
+  font-size: 10px !important;
+  padding: 4px 0px;
+  text-align: right;
+}
+.MVNReeks .right {
+  font-size: 10px;
+  margin: 0 auto;
+  width: 90%;
+}
+.MVNReeks a {
+  color: #00c091;
+  font-size: 10px;
+}
 .text,
 #container *.text * {
   font-family: "Junicode", "Arial unicode MS", "times new roman", serif;
