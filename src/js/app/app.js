@@ -26,7 +26,7 @@ define(
 			$("#signature-tag").html(dataStructure.get('signatuur'));
 			$('#spinner').hide();
 			$("title").html(dataStructure.get('title'));
-			$('.header').css({opacity: "1"});
+			$('header').css({opacity: "1"});
 			return this;
 		}
 	};
