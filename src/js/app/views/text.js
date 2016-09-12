@@ -14,7 +14,7 @@ define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/m
 
 			this.model = dataStructure.get('texts').get(options.id);
 			this.model.on('change', this.render, this);
-			
+			console.log('INIT')
 			displaySettings.on('change:afkortingen-oplossen',
 				this.renderAfkortingen, this
 			);
