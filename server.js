@@ -21,7 +21,7 @@ function onFilesChanged(event, file) {
 
 browserSync.watch(watchFiles, debounce(onFilesChanged, 300));
 
-var proxyOptions = url.parse('http://test.mvn.huygens.knaw.nl/docs/BS');
+var proxyOptions = url.parse('http://test.mvn.huygens.knaw.nl/docs');
 proxyOptions.route = '/docs';
 
 browserSync.init({

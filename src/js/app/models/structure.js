@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'text!/docs/config.json', 'app/models/models'],
+define(['underscore', 'backbone', 'text!/docs/' + PROJECT_ID + '/config.json', 'app/models/models'],
 	function (_, Backbone, structureJSON, Models) {
 	var Model = Backbone.Model.extend({
 		initialize: function () {
