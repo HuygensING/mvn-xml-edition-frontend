@@ -1,6 +1,6 @@
 {
   "name": "mvn-frontend",
-  "version": "1.0.0",
+  "version": "1.0.1",
 	"scripts": {
 		"start": "node server.js",
 		"watch": "stylus -w -o src/css src/css/styles.styl"

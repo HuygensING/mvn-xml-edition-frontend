@@ -23,6 +23,10 @@ define(
 				});
 			});
 			$("#title-tag").html(dataStructure.get('title'));
+			var id = PROJECT_ID.toLowerCase();
+			$("#title-tag").attr('href', 'http://mvn.huygens.knaw.nl/' + id);
+
+			$('.MVNReeks .left').html(dataStructure.get('subtitle'));
 			$("#signature-tag").html(dataStructure.get('signatuur'));
 			$('#spinner').hide();
 			$("title").html(dataStructure.get('title'));

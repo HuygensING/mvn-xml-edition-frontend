@@ -34,6 +34,7 @@ define(['underscore', 'backbone', 'text!/docs/' + PROJECT_ID + '/config.json', '
 			);
 			this.set('texts', texts);
 
+			this.set('subtitle', data.edition.subtitle);
 			this.set('title', data.edition.title);
 			this.set('signatuur', data.edition.signatuur);
 		}

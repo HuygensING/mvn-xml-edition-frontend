@@ -327,12 +327,19 @@ linegroup_end + br {
   color: #bababa;
   font-size: 10px !important;
   padding: 4px 0px;
-  text-align: right;
+}
+.MVNReeks .left,
+.MVNReeks .right {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 10px;
+}
+.MVNReeks .left {
+  margin-left: 5%;
+  width: 50%;
 }
 .MVNReeks .right {
-  font-size: 10px;
-  margin: 0 auto;
-  width: 90%;
+  width: 40%;
 }
 .MVNReeks a {
   color: #00c091;

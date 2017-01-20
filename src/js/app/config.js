@@ -1,6 +1,6 @@
 define(['underscore', 'backbone'], function (_, Backbone) {
-
-	$.ajax("http://mvn.huygens.knaw.nl/external/", {
+	var id = PROJECT_ID.toLowerCase();
+	$.ajax("http://mvn.huygens.knaw.nl/" + id + "/external/", {
 		crossDomain: true,
 		complete: function(response) {
 			if(response.status >= 200 && response.status < 300) {
