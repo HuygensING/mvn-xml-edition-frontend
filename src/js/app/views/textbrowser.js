@@ -9,8 +9,10 @@ define(['backbone', 'app/config', 'app/app', 'app/router', 'app/models/structure
 			this.render();
 		},
 		render: function () {
+		  var texts = dataStructure.get('texts')
+		  var columnHeight = texts.size() /3
 			this.$('.inner').html(
-				this.template({ texts: dataStructure.get('texts') })
+				this.template({ texts: texts, columnHeight: columnHeight})
 			);
 			return this;
 		}
