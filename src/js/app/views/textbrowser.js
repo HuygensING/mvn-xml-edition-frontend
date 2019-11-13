@@ -11,6 +11,8 @@ define(['backbone', 'app/config', 'app/app', 'app/router', 'app/models/structure
 		render: function () {
 		  var texts = dataStructure.get('texts')
 		  var columnHeight = texts.size() /3
+		  console.log("texts.size()=",texts.size())
+		  console.log("columnHeight=",columnHeight)
 			this.$('.inner').html(
 				this.template({ texts: texts, columnHeight: columnHeight})
 			);
