@@ -429,7 +429,7 @@ a
 			formatAsAnnotation()
 
 #text
-	width mainWidth - folioWidth - foliumMargin - sidebarWidth - 20px
+	width mainWidth - folioWidth - foliumMargin - sidebarWidth - 20px + 20%
 	.nav
 		line-height 35px
 		height 35px
@@ -525,7 +525,7 @@ a
 
 	.mentioned
 		font-style italic
-		font-size 14px
+		font-size 13px
 		line-height 16px
 
 	.footnote
@@ -586,7 +586,7 @@ a
 
 	span.noteleft
 		border-radius 10px
-		font-size 10px
+		font-size 16px
 		left -20px
 		line-height 10px
 		margin-top 6px
@@ -657,10 +657,14 @@ a
 	.versenum	visibility hidden
 	.textnum
 		float right
-		color defaultGray
+		color bodyNavColor
+		cursor pointer
 
 .folium .right.text
 	position relative
+
+.folium span
+    font-size 18px
 
 #container #text .text.nummering, #container .right.text.nummering
 	&.vers .versenum
@@ -700,3 +704,20 @@ a
 
 				&:hover
 					background-color lighten(bgColor, 40%)
+
+span.spaced
+    letter-spacing: 3px
+
+span.ulr
+    text-decoration-color: red
+    text-decoration: underline
+
+span.nr
+    font-size: 18px !important
+
+#folium-view span.fw
+  display: block
+  text-align: center
+
+#text-view span.fw
+  display: none

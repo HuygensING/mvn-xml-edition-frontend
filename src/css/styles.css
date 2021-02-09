@@ -90,7 +90,7 @@ header img {
 .superscript {
   position: relative;
   bottom: 0.5em;
-  font-size: 0.8em;
+  font-size: 0.8em !important;
 }
 .linenr {
   font-family: "Courier New", "Lucida Console";
@@ -356,8 +356,8 @@ linegroup_end + br {
 }
 #container .text a {
   text-decoration: none;
-  color: #777;
-  cursor: default;
+  color: #d275c6;
+  cursor: pointer;
 }
 #container * {
   font-size: 12px;
@@ -853,7 +853,7 @@ a {
   background-color: #5afffc;
 }
 #text {
-  width: 355px;
+  width: 425px;
 }
 #text .nav {
   line-height: 35px;
@@ -960,7 +960,7 @@ a {
 #text .text .mentioned,
 .right.text .mentioned {
   font-style: italic;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 16px;
 }
 #container .folium .text .footnote,
@@ -1137,7 +1137,7 @@ a {
 #text .text span.noteleft,
 .right.text span.noteleft {
   border-radius: 10px;
-  font-size: 10px;
+  font-size: 16px;
   left: -20px;
   line-height: 10px;
   margin-top: 6px;
@@ -1239,7 +1239,8 @@ a {
 #text .text .textnum,
 .right.text .textnum {
   float: right;
-  color: #777;
+  color: #d275c6;
+  cursor: pointer;
 }
 .folium .right.text {
   position: relative;
@@ -1279,4 +1280,21 @@ a {
 }
 .jspContainer .jspHorizontalBar .jspTrack .jspDrag:hover {
   background-color: #8f8f8f;
+}
+span.nr {
+  font-size: 18px !important;
+}
+span.spaced {
+  letter-spacing: 3px;
+}
+span.ulr{
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+#folium-view span.fw {
+  display: block;
+  text-align: center;
+}
+#text-view span.fw {
+  display: none;
 }
