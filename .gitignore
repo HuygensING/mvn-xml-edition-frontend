@@ -1,2 +1,4 @@
 node_modules
 .idea
+/mvn-xml-edition-frontend.iml
+/package-lock.json

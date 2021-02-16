@@ -1298,3 +1298,6 @@ span.ulr{
 #text-view span.fw {
   display: none;
 }
+#text .text span.noteleft span.rubric {
+  line-height: 10px;
+}
