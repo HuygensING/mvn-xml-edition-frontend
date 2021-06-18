@@ -3,18 +3,20 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="Cache-Control" content="public">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="/css/themes/style.css" />
-		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
-		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<link rel="stylesheet" type="text/css" href="/css/jquery.jscrollpane.css" />
-		<script data-main="/js/main.js" type="text/javascript" src="/js/require.min.js"></script>
-		<script>
+		<link rel="stylesheet" type="text/css" href="/static/css/huygens-style.css" />
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.2/style/jquery.jscrollpane.min.css" integrity="sha512-qVGZo16kFUROlnuSNN+j0oxMYHIRBjpnsjXl6Iz/pNR9nTU9WISq5eGODr1Qn0Fz8lzZPxu9i4RVaeof8xVZRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jScrollPane/2.2.2/script/jquery.jscrollpane.min.js" integrity="sha512-EqofP+sBEn/OWcyAINAUnewpwC0e9zc0GvyiVeE3qeHYxqtdCcNocVBUiZhGWbPFWGTWxfJ60CcOK6HQ6G7uiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<!-- <script>
 			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
 			if(PROJECT_ID.match(/^[a-z]+$/)) {
 				location.href = location.pathname.replace(/^\/[^\/]+\/?(.*)$/, "/" + PROJECT_ID.toUpperCase() +	"/$1");
 			}
 			var SEARCH_ENV = location.hostname.split(".")[0] === "test" ? "test." : "";
-		</script>
+		</script> -->
 	</head>
 <body>
 	<div class="MVNReeks">
@@ -30,11 +32,11 @@
 			<span id="signature-tag" class="signatuur"></span>
 		</h1>
 		<div class="navigation"></div>
-		<img src="/img/HuygensINGLogo.jpg" alt="Huygens ING">
+		<img src="/static/img/HuygensINGLogo.jpg" alt="Huygens ING">
 	</header>
 	<div id="container">
 		<div id="app">
-			<div id="spinner"><img src="/img/ajax-loader.gif"></div>
+			<div id="spinner"><img src="/static/img/ajax-loader.gif"></div>
 			<div id="views">
 				<div id="tabs" class="center">
 					<ul>
@@ -44,33 +46,33 @@
 						<li class="search">Zoeken</li>
 						<li class="export-options">Export</li>
 					</ul>
-				</div><!-- /.center -->
+				</div>
 
 				<div id="folio-browser">
 					<div class="scroll-pane horizontal-only">
 						<div class="inner">
-						</div><!-- /.inner -->
-					</div><!--/.scroll-pane-->
-				</div><!-- /#folio-browser -->
+						</div>
+					</div>
+				</div>
 
 				<div id="text-browser">
 					<div class="scroll-pane horizontal-only">
 						<div class="inner">
-						</div><!-- /.inner -->
-					</div><!--/.scroll-pane-->
-				</div><!-- /#text-browser -->
+						</div>
+					</div>
+				</div>
 
 				<div id="search-view">
 					<div class="grey">
 						<div class="center">
 							<input type="text">
 							<button>Zoek</button>
-							<a onclick="location.href = 'http://mvn.huygens.knaw.nl/' + PROJECT_ID.toLowerCase() + '/help';" href="#" class="syntax-information"><img src="/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
-						</div><!-- /.center -->
-					</div><!-- /.grey -->
+							<a onclick="location.href = 'http://mvn.huygens.knaw.nl/' + PROJECT_ID.toLowerCase() + '/help';" href="#" class="syntax-information"><img src="/static/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
+						</div>
+					</div>
 					<div class="results center">
 					</div>
-				</div><!-- /#search -->
+				</div>
 
 				<div id="view-options">
 					<div class="center">
@@ -85,8 +87,8 @@
 								</span>
 							</li>
 						</ul>
-					</div><!-- /.center -->
-				</div><!-- /#view-options -->
+					</div>
+				</div>
 				<div id="export-options">
 					<div class="center">
 						<ul>
@@ -94,112 +96,14 @@
 							<li class="xml"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.xml'">Als XML</a></li>
 							<li class="txt"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.txt'">Als tekst</a></li>
 						</ul>
-					</div><!-- /.center -->
-				</div><!-- /#export-options -->
-			</div><!-- /#views -->
+					</div>
+				</div>
+			</div>
 
 			<div id="main">
 				<div class="view"></div>
-			</div><!-- /#main -->
-		</div><!-- /#app -->
-	</div><!-- /#container -->
-
-
-	<!-- Templates -->
-	<script type="template/underscore" id="text-browser-tmpl">
-		<ul>
-			<% texts.sort(function(a,b){return a.tocIndex-b.tocIndex}).each(function (t, idx) {
-				%><li><a title="<%= t.get("first_line") %>" href="/tekst/<%= t.id %>/regel/<%= t.get('firstLineId') %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % 5 == 0) { %></ul><ul><% } %><%
-			}); %>
-		</ul>
-		<div class="close">x</div>
-	</script>
-	<script type="template/underscore" id="folium-thumbnail-tmpl">
-		<a href="/folium/<%= folium %>"><img src="<%= image %>">
-		<div class="folium"><%= folium.replace(/\d+/,'') %></div>
-		<div class="circle <%= folium.replace(/\d+/,'') %>"><%= folium.replace(/[rv]/,'') %></div></a>
-	</script>
-	<script type="template/underscore" id="folium-in-text-tmpl">
-		<div class="folium folium-<%- folium %>">
-			<div class="left">
-				<h5>Folium <%= folium %></h5>
-				<a class="select-folium" href="/folium/<%= folium %>">
-					<img src="<%= image %>" alt="<%= folium %>">
-					Bekijk folium <%= folium %>
-				</a>
 			</div>
-			<div class="right text">
-				<%= ""+ text %>
-			</div>
-			<div style="clear: both;"></div>
-		</div><!--/.folium-->
-	</script>
-
-	<script type="template/underscore" id="folium-view-tmpl">
-		<div id="folium-view">
-			<div id="folium">
-				<iframe style="border: 0; width: 100%; min-height: 600px"></iframe>
-			</div><!--/#folium -->
-			<div id="text">
-				<div class="nav">
-					<a href="" class="previous">&#9668; <span>1r</span></a>
-					<span class="folium">Folium <span class="nr">1v</span></span>
-					<a href="" class="next"><span>2r</span> &#9658;</a>
-				</div>
-				<div class="text">
-				</div>
-			</div>
-		</div><!-- /#text -->
-		<div id="sidebar">
-			<div class="belongs-to"></div>
-			<div class="annotations"></div>
-		</div><!-- #sidebar -->
-		</div><!-- /#folium -->
-	</script>
-
-	<script type="template/underscore" id="text-view-tmpl">
-		<div id="text-view">
-			<div class="heading">
-				<a href="" class="previous">&#9668; <span></span></a>
-				<span class="tekst">Tekst <span class="nr"></span></span>
-				<a href="" class="next"><span></span> &#9658;</a>
-			</div>
-			<div class="folio"></div>
-		</div><!-- /#text-view -->
-	</script>
-
-	<script type="template/underscore" id="belongs-to-tmpl">
-		<% if (f.get('texts').length == 1) { %>
-			Dit folium bevat (een deel van) <a href="/tekst/<%= f.get('texts')[0] %>">tekst <%= f.get('texts')[0] %></a>.
-		<% } else { %>
-			Dit folium bevat (delen van) de teksten:
-			<% _.each(f.get('texts'), function (t) { %>
-				<a href="/tekst/<%= String(t) %>"><%= t %></a>
-			<% }); %>
-		<% } %>
-	</script>
-
-<script type="template/underscore" id="search-view-tmpl">
-</script>
-
-	<script type="template/underscore" id="search-tmpl">
-		<div class="spinner"><img src="/img/ajax-loader.gif"> Aan het zoeken...</div>
-		<div class="results">
-			<div class="number-of-results"><span class="num"></span> resultaten</div>
 		</div>
-		<table class="results"></table>
-		<p class="no-search">Geen zoekopdracht opgegeven.</p>
-		<p class="error">Error</p>
-	</script>
-
-	<script type="template/underscore" id="results-tmpl">
-		<%	_.each(results, function (result) { %>
-			<tr>
-				<td class="t"><a href="/tekst/<%= result.textNum %>">Tekst <%= result.textNum %></a></td>
-				<td class="l"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>">Versregel <%= result.lineNum %></a></td>
-				<td class="f"><a href="/folium/<%= result.folio %>">Folium <%= result.folio %></a></td>
-				<td class="description"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>"><%= result.kwic[0] %></a></td></tr>
-		<% }) %>
-	</script>
+	</div>
 </body>
 </html>
