@@ -11,7 +11,7 @@ const DisplaySettings = Backbone.Model.extend({
 		}
 	},
 	// initialize: function () {
-	// 	var _this = this;
+	// 	const _this = this;
 	// 	this.on('change', function () {
 	// 		console.log("Changed settings: ", _this.changedAttributes());
 	// 	});

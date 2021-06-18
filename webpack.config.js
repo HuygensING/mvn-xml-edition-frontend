@@ -35,7 +35,7 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: [".webpack.js", ".web.js", ".js", ".jsx", ".ts", ".jade"],
+		extensions: [".webpack.js", ".web.js", ".js", ".ts"],
 	},
 
 	devServer: {
@@ -63,7 +63,7 @@ module.exports = {
 		}
 	},
 
-	entry: ['./src/js/index.ts'],
+	entry: ['./src/index.ts'],
 
 	output: {
 		filename: 'js/[fullhash].main.js',

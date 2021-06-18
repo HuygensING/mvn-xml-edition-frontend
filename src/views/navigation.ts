@@ -78,12 +78,12 @@ export const NavigationView = Backbone.View.extend({
 	},
 	toggle_afkortingen: function (e) {
 		$(e.currentTarget).toggleClass('active');
-		var active = $(e.currentTarget).is('.active');
+		const active = $(e.currentTarget).is('.active');
 		displaySettings.set('afkortingen-oplossen', active);
 	},
 	toggle_nummering_switch: function (e) {
 		$(e.currentTarget).toggleClass('active');
-		var active = this.$('.nummering span.nummering').is('.active');
+		const active = this.$('.nummering span.nummering').is('.active');
 		displaySettings.set('nummering', active);
 	},
 	toggle_regel_nummering: function (e) {
@@ -98,12 +98,12 @@ export const NavigationView = Backbone.View.extend({
 	},
 	toggle_afkortingen_cursief: function (e) {
 		$(e.currentTarget).toggleClass('active');
-		var active = $(e.currentTarget).is('.active');
+		const active = $(e.currentTarget).is('.active');
 		displaySettings.set('afkortingen-cursief', active);
 	},
 	toggle_weergave_schrijfproces: function (e) {
 		$(e.currentTarget).toggleClass('active');
-		var active = $(e.currentTarget).is('.active');
+		const active = $(e.currentTarget).is('.active');
 		displaySettings.set('weergave-schrijfproces', active);
 	},
 	showFolioBrowser: function () {
@@ -141,7 +141,7 @@ export const NavigationView = Backbone.View.extend({
 		}
 	},
 	doSearch: function () {
-		var searchText = this.$('#search-view input').val();
+		const searchText = this.$('#search-view input').val();
 		this.showSearch();
 		router.navigate('/zoeken/?q=' +  encodeURIComponent(searchText), {trigger: true});
 		search.search(searchText);
@@ -192,7 +192,7 @@ export const NavigationView = Backbone.View.extend({
 		this.hideViewOptions().hideTextBrowser().showFolioBrowser();
 
 		// console.log("Rendering", this.$('#view-options .weergave-schrijfproces').is('active'))
-		var vo = this.$('#view-options');
+		const vo = this.$('#view-options');
 		if (displaySettings.get('afkortingen-oplossen')) {
 			vo.find('.afkortingen span.oplossen').addClass('active');
 		}
@@ -223,7 +223,7 @@ export const NavigationView = Backbone.View.extend({
 
 		if (window.location.pathname.match('zoeken'))
 			this.showSearch();
-			var q = location.search.replace('?q=', '');
+			const q = location.search.replace('?q=', '');
 			if (q)
 				this.$('#search-view input').val(decodeURIComponent(q));
 

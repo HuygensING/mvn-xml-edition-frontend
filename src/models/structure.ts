@@ -1,10 +1,12 @@
 import Backbone from 'backbone';
-import { PROJECT_ID } from '../config'
-import { Folia } from './folia';
-import { Texts, Text } from './texts';
+import { PROJECT_ID } from '../config';
+import { Folia } from '../collections/folia';
+import { Texts, Text } from '../collections/texts';
 
 const DataStructure = Backbone.Model.extend({
-	url: () => `/docs/${PROJECT_ID}/config.json`,
+	url: function() {
+		return `/docs/${PROJECT_ID}/config.json`
+	},
 
 	parse: function (data) {
 		if (Object.keys(data).length === 0) return {}
@@ -13,7 +15,7 @@ const DataStructure = Backbone.Model.extend({
 		// console.log(data)
 		
 		// TODO add { parse: true } ?
-		var folio = new Folia(
+		const folio = new Folia(
 			Object.keys(data.folio).map(function (k) {
 				return {
 					id: k,
@@ -27,7 +29,7 @@ const DataStructure = Backbone.Model.extend({
 		// this.set('folio', folio);
 
 		//  add reference to text models for relevant folios
-		var texts = new Texts(
+		const texts = new Texts(
 			Object.keys(data.texts).map(function (k) {
 				return new Text({
 					id: k,

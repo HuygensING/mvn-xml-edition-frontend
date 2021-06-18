@@ -1,9 +1,9 @@
 // (function() {
-// 	var __hasProp = {}.hasOwnProperty,
-// 		__extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+// 	const __hasProp = {}.hasOwnProperty,
+// 		__extends = function(child, parent) { for (const key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 // 	define(['underscore', 'backbone', 'app/views/manager'], function(_, Backbone, viewManager) {
-// 		var BaseView, _ref;
+// 		const BaseView, _ref;
 
 // 		return BaseView = (function(_super) {
 // 			__extends(BaseView, _super);

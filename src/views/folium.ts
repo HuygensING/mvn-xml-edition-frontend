@@ -108,9 +108,9 @@ export const FoliumView = Backbone.View.extend({
 		return this;
 	},
 	renderPrevious: function () {
-		var idx = this.model.collection.indexOf(this.model);
-		var prev = this.model.collection.at(idx - 1)
-		var a = this.$('.nav .previous');
+		const idx = this.model.collection.indexOf(this.model);
+		const prev = this.model.collection.at(idx - 1)
+		const a = this.$('.nav .previous');
 		if (prev)
 			a.show().attr('href', '/folium/' + prev.id)
 				.find('span').text(this.model.collection.at(idx - 1).id);
@@ -118,9 +118,9 @@ export const FoliumView = Backbone.View.extend({
 		return this;
 	},
 	renderNext: function () {
-		var idx = this.model.collection.indexOf(this.model);
-		var next = this.model.collection.at(idx + 1);
-		var a = this.$('.nav .next');
+		const idx = this.model.collection.indexOf(this.model);
+		const next = this.model.collection.at(idx + 1);
+		const a = this.$('.nav .next');
 		if (next)
 			a.show().attr('href', '/folium/' + next.id)
 				.find('span').text(this.model.collection.at(idx + 1).id);
@@ -155,24 +155,23 @@ export const FoliumView = Backbone.View.extend({
 		return this;
 	},
 	renderText: function () {
-		var text = this.model.get('text');
+		const text = this.model.get('text');
 		this.$('.text').html(text);
 		return this;
 	},
 	renderAnnotations: function () {
-		var self = this.$el;
-		var lines = this.$('.text l');
-		var annotations = self.find('.annotations').empty();
-		var overlap = false;
-		var prev_bottom = 0;
+		// const self = this.$el;
+		const lines = this.$('.text l')
+		// const annotations = self.find('.annotations').empty();
+		let overlap = false;
+		let prev_bottom = 0;
 		lines.each(function () {
-			var line = $(this);
-			var notes = $(this).find('.noteright');
+			const notes = $(this).find('.noteright');
 
 			notes.each(function () {
-				var note = $(this);
-				var top = note.offset().top;
-				var height = note.outerHeight();
+				const note = $(this);
+				const top = note.offset().top;
+				const height = note.outerHeight();
 
 				if (top < prev_bottom) {
 					if(!overlap) {
@@ -190,18 +189,21 @@ export const FoliumView = Backbone.View.extend({
 		return this;
 	},
 	repositionAnnotations: function() {
-		var self = this.$el;
-		var notes = self.find('.noteright');
+		const self = this.$el;
+		const notes = self.find('.noteright');
 		notes.each(function() {
-			$(this).css({top: $(this).parents("l").offset().top - self.offset().top + 12});
+			const parents = $(this).parents("l")
+			const offset = parents?.offset()
+			if (offset == null) return
+			const top = offset.top - self.offset().top + 12
+			$(this).css({ top })
 		});
 		return this;
 	},
 	lineJump: function(id) {
-		var ln = null
-		ln = document.getElementById(id);
-		if(ln) {
-			$(window).scrollTop($(ln).offset().top);
+		const ln = document.getElementById(id)
+		if (ln != null) {
+			$(window).scrollTop($(ln).offset().top)
 		}
 	},
 	render: function () {

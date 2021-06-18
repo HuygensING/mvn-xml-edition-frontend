@@ -1,11 +1,11 @@
 // import $ from'jquery'
 // import { App } from './app/app';
-import { config } from './app/config'
-import { dataStructure } from './app/models/structure'
-import { AppView } from './app/views/app'
-import { router } from './app/router'
+import { config } from './config'
+import { dataStructure } from './models/structure'
+import { AppView } from './views/app'
+import { router } from './router'
 
-import '../css/index.styl'
+import './stylus/index.styl'
 
 document.addEventListener("DOMContentLoaded", async function() {
 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 // 	'lib/backbone.fetch-cache.min'
 //  ], function(domready, dataStructure, App, config) {
 // 	return domready(function() {
-// 		var positionSpinner = function () {
+// 		const positionSpinner = function () {
 // 			$('#spinner').css({
 // 				position: 'absolute',
 // 				width: $(window).width() + 'px',

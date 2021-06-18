@@ -1,10 +1,14 @@
-export const PROJECT_ID = 'BS'
-export const SEARCH_ENV = 'test.'
+// export const PROJECT_ID = 'MVN-BRUSSEL-KB-II-116'
+export const PROJECT_ID = 'HBSR'
+// export const PROJECT_ID = 'SERRURE'
+// export const PROJECT_ID = 'BS'
+
+const SEARCH_ENV = 'test.'
 
 // TODO should this work? retrieve menu from /:id/external?
 
 // export async function createConfig() {
-// 	// var id = PROJECT_ID.toLowerCase()
+// 	// const id = PROJECT_ID.toLowerCase()
 
 // 	// $.ajax("http://mvn.huygens.knaw.nl/" + id + "/external/", {
 // 	// 	crossDomain: true,
@@ -20,7 +24,7 @@ export const SEARCH_ENV = 'test.'
 export const config = {
 	rootSelector: '#app',
 	viewManagerRoot: '#main .view',
-	urlPrefix: '/' + PROJECT_ID + '/',
+	// urlPrefix: '/' + PROJECT_ID + '/',
 	searchURL: 'http://' + SEARCH_ENV + 'api.mvn.huygens.knaw.nl/editions/' + PROJECT_ID +  '/search',
 	headerURL: 'http://mvn.huygens.knaw.nl/?page_id=65'
 }

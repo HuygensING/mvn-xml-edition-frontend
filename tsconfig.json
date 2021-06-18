@@ -15,7 +15,7 @@
 		"module": "es6",
 		"moduleResolution": "node",
 		"noImplicitAny": false,
-		"noUnusedLocals": false,
+		"noUnusedLocals": true,
 		"noUnusedParameters": false,
 		"outDir": "./build",
 		"removeComments": true,
@@ -29,6 +29,6 @@
 		"./node_modules"
 	],
 	"files": [
-		"./src/js/index.ts"
+		"./src/index.ts"
 	]
 }

@@ -54,7 +54,7 @@ export const AppView = Backbone.View.extend({
 	},
 
 	setFolium: function (id) {
-		var model = this.folio.get(id);
+		const model = this.folio.get(id);
 		this.selected_folium = model;
 		Backbone.Events.trigger('folium:select', model);
 		this.showFolium();
@@ -65,7 +65,7 @@ export const AppView = Backbone.View.extend({
 		this.folium.$el.show();
 	},
 	setText: function (id) {
-		var model = this.texts.get(id);
+		const model = this.texts.get(id);
 		this.selected_text = model;
 		Backbone.Events.trigger('text:select', model);
 		this.showText();

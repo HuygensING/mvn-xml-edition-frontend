@@ -1,6 +1,6 @@
 // (function() {
 // 	define(['backbone', 'app/config', 'app/collections/views'], function(Backbone, config, currentViews) {
-// 		var ViewManager, selfDestruct;
+// 		const ViewManager, selfDestruct;
 
 import Backbone from 'backbone'
 import { config } from '../config'

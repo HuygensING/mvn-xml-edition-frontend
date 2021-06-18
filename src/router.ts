@@ -16,14 +16,13 @@
 // 		SearchView
 
 import Backbone from "backbone";
-import { PROJECT_ID } from './config'
 import { dataStructure } from "./models/structure";
 import { viewManager } from './views/manager'
 import { FoliumView } from './views/folium'
 import { TextView } from './views/text'
 import { SearchView } from './views/search'
 
-var AppRouter = Backbone.Router.extend({
+const AppRouter = Backbone.Router.extend({
 	routes: {
 		'folium/:id': 'show_folium',
 		'folium/:id/regel/:num': 'show_folium',
@@ -52,7 +51,7 @@ var AppRouter = Backbone.Router.extend({
 
 	show: function () {
 		viewManager.clear();
-		var view = new this.view(this.query);
+		const view = new this.view(this.query);
 		viewManager.show(view);
 		this.query = {}; // clear for next view.
 

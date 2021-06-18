@@ -33,8 +33,8 @@ const Search = Backbone.Model.extend({
     this.trigger('searching');
     this.set('isSearching', true);
 
-    var _this = this;
-    var promise = $.post(config.searchURL, $.param({ q: query }), 
+    const _this = this;
+    const promise = $.post(config.searchURL, $.param({ q: query }), 
       function (results) {
         _this.set('results', results)
         _this.set('isSearching', false);

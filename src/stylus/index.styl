@@ -653,7 +653,6 @@ a
 		margin-left lineVerseNumPos
 		float left
 
-	.versenum	visibility hidden
 	.textnum
 		float right
 		color bodyNavColor
@@ -665,14 +664,17 @@ a
 .folium span
     font-size 18px
 
-#container #text .text.nummering, #container .right.text.nummering
-	&.vers .versenum
-		visibility visible
+#container #text .text.nummering,
+#container .right.text.nummering
+	&.vers
+		.versenum
+			visibility visible
 
 	&.regel .linenum
 		visibility visible
 
-#text .solve, #text-view .right.text.solve
+#text .solve,
+#text-view .right.text.solve
 	&.cursive
 		ex
 			font-style italic

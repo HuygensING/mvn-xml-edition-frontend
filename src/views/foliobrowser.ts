@@ -9,10 +9,11 @@ export const FolioBrowser = Backbone.View.extend({
 		this.render();
 	},
 	render: function () {
-		var self = this, w = 0;
+		const self = this
+		let w = 0
 
 		dataStructure.get('folio').each(function (f, idx) {
-			var folium = new FoliumThumbnail({ model: f });
+			const folium = new FoliumThumbnail({ model: f });
 			self.$('.inner').append(folium.el);
 			w += folium.$el.outerWidth(true);
 		});

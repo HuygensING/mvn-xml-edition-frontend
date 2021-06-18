@@ -111,15 +111,21 @@ export const TextView = Backbone.View.extend({
 		return this;
 	},
 	renderPrevious: function () {
-		var prev = this.model.collection.previousText(this.model);
-		if (prev)
-			this.$('a.previous').show().attr('href', '/tekst/' + prev.id)
-				.find('span').text(prev.id);
-		else this.$('a.previous').hide();
+		const prev = this.model.collection.previousText(this.model)
+
+		if (prev) {
+			this.$('a.previous')
+				.show()
+				.attr('href', '/tekst/' + prev.id)
+				.find('span').text(prev.id)
+		} else {
+			this.$('a.previous').hide();
+		}
+
 		return this;
 	},
 	renderNext: function () {
-		var next = this.model.collection.nextText(this.model);
+		const next = this.model.collection.nextText(this.model);
 		if (next)
 			this.$('a.next').show().attr('href', '/tekst/' + next.id)
 				.find('span').text(next.id);
@@ -127,20 +133,20 @@ export const TextView = Backbone.View.extend({
 		return this;
 	},
 	renderAnnotations: function () {
-		var self = this.$el;
-		var lines = this.$('.right.text l');
-		var annotations = self.find('.annotations').empty();
-		var overlap = false;
-		var prev_margin = 0;
-		var prev_bottom = 0;
+		// const self = this.$el;
+		const lines = this.$('.right.text l');
+		// const annotations = self.find('.annotations').empty();
+		// const overlap = false;
+		let prev_margin = 0;
+		let prev_bottom = 0;
 		lines.each(function () {
-			var line = $(this);
-			var notes = $(this).find('.noteright');
+			// const line = $(this);
+			const notes = $(this).find('.noteright');
 
 			notes.each(function () {
-				var note = $(this);
-				var top = note.offset().top;
-				var height = note.outerHeight();
+				const note = $(this);
+				const top = note.offset().top;
+				const height = note.outerHeight();
 				if (top < prev_bottom) {
 					if(prev_margin === 0) {
 						note.css('margin-left', '120px');
@@ -160,7 +166,7 @@ export const TextView = Backbone.View.extend({
 		return this;
 	},
 	lineJump: function(id, mode) {
-		var ln = null
+		let ln = null
 		if(mode === "line") {
 			ln = document.getElementById(id);
 		} else {
@@ -173,13 +179,14 @@ export const TextView = Backbone.View.extend({
 	render: function () {
 		this.$el.html(this.template());
 
-		// var folio = this.model.get('folio'), self = this;
+		// const folio = this.model.get('folio'), self = this;
 		const self = this;
 		this.$('.heading .tekst span').text(this.model.get('id'));
 
 		this.$('.folio').empty();
 
 		_.each(this.model.get('folio'), function (f) {
+			console.log(f)
 			self.$('.folio').append( self.folium_template({
 				folium: f.id,
 				image: f.get('thumbnail'),
@@ -188,11 +195,11 @@ export const TextView = Backbone.View.extend({
 		});
 
 		this.renderPrevious()
-			.renderNext()
-			.renderAfkortingen()
-			.renderAfkortingenCursive()
-			.renderSchrijfProces()
-			.renderNummering();
+		this.renderNext()
+		this.renderAfkortingen()
+		this.renderAfkortingenCursive()
+		this.renderSchrijfProces()
+		this.renderNummering();
 
 		setTimeout(this.renderAnnotations.bind(this), 100);
 		if(dataStructure.get("text-linenum")) {

@@ -34,7 +34,7 @@ export const SearchView = Backbone.View.extend({
 
 		this.render()
 
-		var q = window.location.search.replace('?q=', '');
+		const q = window.location.search.replace('?q=', '');
 		if (q) search.search(decodeURIComponent(q))
 	},
 
@@ -75,7 +75,7 @@ export const SearchView = Backbone.View.extend({
 	},
 
 	renderResults: function () {
-		var results = search.get('results');
+		const results = search.get('results');
 
 		this.hideSpinner();
 		this.$('.no-search, .error').hide();
