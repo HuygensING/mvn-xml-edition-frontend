@@ -36,8 +36,6 @@ const Folium = Backbone.Model.extend({
 
 		Backbone.Events.trigger('folium:loaded:' + this.id, this);
 
-		console.log(html)
-
 		return { text: $(html).find('.right .text').html() };
 	},
 	lineNum: function(textId) {

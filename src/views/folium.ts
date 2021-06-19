@@ -117,43 +117,44 @@ export const FoliumView = Backbone.View.extend({
 	},
 
 	renderBelongsTo: function () {
-		const tpl = _.template(
-			`<% if (f.get('texts').length == 1) { %>
-				Dit folium bevat (een deel van) <a href="/tekst/<%= f.get('texts')[0] %>">tekst <%= f.get('texts')[0] %></a>.
-			<% } else { %>
-				Dit folium bevat (delen van) de teksten:
-				<% _.each(f.get('texts'), function (t) { %>
-					<a href="/tekst/<%= String(t) %>"><%= t %></a>
-				<% }); %>
-			<% } %>`
-		)
+		let tpl = ''
+		const texts = this.model.get('texts')
+		if (texts.length == 1) 
+			tpl = `Dit folium bevat (een deel van) <a href="/tekst/${texts[0]}">tekst ${texts[0]}</a>.`
+		else
+			tpl = `Dit folium bevat (delen van) de teksten: ${texts.map(t => ` <a href="/tekst/${t}">${t}</a> `).join('')}`
 
-		this.$('.belongs-to').html(tpl({ f: this.model }));
-		return this;
+		this.$('.belongs-to').html(tpl)
 	},
 
 	renderNummering: function (nummering) {
-		this.$('#text .text').toggleClass(
-			'nummering', displaySettings.get('nummering')
-		);
+		const text = this.$('#text .text')
+
+		text.toggleClass('nummering', displaySettings.get('nummering'))
+
 		if (displaySettings.get('nummering')) {
-			// console.log("Nummering type", displaySettings.get('nummering-type'));
-			this.$('#text .text')
+			text
 				.removeClass('regel vers')
 				.addClass(displaySettings.get('nummering-type'))
 		}
-		return this;
 	},
+
 	renderPrevious: function () {
-		const idx = this.model.collection.indexOf(this.model);
+		const idx = this.model.collection.indexOf(this.model)
 		const prev = this.model.collection.at(idx - 1)
-		const a = this.$('.nav .previous');
-		if (prev)
-			a.show().attr('href', '/folium/' + prev.id)
-				.find('span').text(this.model.collection.at(idx - 1).id);
-		else a.hide();
-		return this;
+		const a = this.$('.nav .previous')
+
+		if (prev) {
+			a
+				.show()
+				.attr('href', '/folium/' + prev.id)
+				.find('span')
+				.text(this.model.collection.at(idx - 1).id);
+		} else {
+			a.hide()
+		}
 	},
+
 	renderNext: function () {
 		const idx = this.model.collection.indexOf(this.model);
 		const next = this.model.collection.at(idx + 1);
@@ -162,20 +163,20 @@ export const FoliumView = Backbone.View.extend({
 			a.show().attr('href', '/folium/' + next.id)
 				.find('span').text(this.model.collection.at(idx + 1).id);
 		else a.hide();
-		return this;
 	},
+
 	renderAfkortingen: function () {
-		// console.log("Setting akop ", displaySettings.get('afkortingen-oplossen'))
-		this.$('.text').toggleClass(
-			'solve', displaySettings.get('afkortingen-oplossen')
-		);
-		return this;
+		this.$('.text')
+			.toggleClass(
+				'solve', displaySettings.get('afkortingen-oplossen')
+			)
 	},
+
 	renderAfkortingenCursive: function () {
-		this.$('.text').toggleClass(
-			'cursive', displaySettings.get('afkortingen-cursief')
-		);
-		return this;
+		this.$('.text')
+			.toggleClass(
+				'cursive', displaySettings.get('afkortingen-cursief')
+			)
 	},
 
 	renderSchrijfProces: function () {

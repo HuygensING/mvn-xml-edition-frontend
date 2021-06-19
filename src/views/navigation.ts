@@ -10,6 +10,7 @@
 // 	function (Backbone, config, App, router, search, displaySettings, TextBrowser, FolioBrowser) {
 
 import Backbone from "backbone"
+import { debounce } from "underscore";
 // import $ from'jquery'
 import { displaySettings } from "../models/displaysettings";
 import { search } from "../models/search";
@@ -46,6 +47,22 @@ export const NavigationView = Backbone.View.extend({
 		Backbone.Events.on('folium:select', this.show_view_options)
 
 		this.render()
+
+		const debouncedRender = debounce(() => {
+			['#folio-browser', '#text-browser'].forEach(selector => {
+				const browser = this.$(selector)
+				if (browser.is(':visible')) {
+					browser
+						.find('.scroll-pane')
+						.jScrollPane()
+				}
+			})
+			// console.log(this.$('#text-browser').is(':visible'))
+
+			// this.$('.inner').css('width', w);
+			// console.log('setting')
+		}, 500)
+		window.addEventListener('resize', debouncedRender)
 	},
 	show_folio_browser: function (e) {
 		this.$('#tabs li').removeClass('active')

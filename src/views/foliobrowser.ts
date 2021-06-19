@@ -1,13 +1,14 @@
 import Backbone from "backbone"
-// import $ from'jquery'
 import _ from "underscore";
 import { dataStructure } from "../models/structure"
 
 export const FolioBrowser = Backbone.View.extend({
 	el: '#folio-browser',
+
 	initialize: function () {
 		this.render();
 	},
+
 	render: function () {
 		const self = this
 		let w = 0
@@ -32,8 +33,13 @@ export const FolioBrowser = Backbone.View.extend({
 		$('<div>').text('x').addClass('close').appendTo(this.$el);
 
 		return this;
-	}
-});
+	},
+
+	// remove: function() {
+
+	// 	Backbone.View.prototype.remove.apply(this, arguments);
+	// }
+})
 
 const FoliumThumbnail = Backbone.View.extend({
 	className: 'folium-thumbnail',
