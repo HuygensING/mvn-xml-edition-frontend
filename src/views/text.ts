@@ -186,7 +186,6 @@ export const TextView = Backbone.View.extend({
 		this.$('.folio').empty();
 
 		_.each(this.model.get('folio'), function (f) {
-			console.log(f)
 			self.$('.folio').append( self.folium_template({
 				folium: f.id,
 				image: f.get('thumbnail'),

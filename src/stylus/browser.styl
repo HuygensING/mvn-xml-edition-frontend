@@ -1,0 +1,172 @@
+/**
+Styling for the folio and text browsers
+See ./src/views/foliobrowser and ./src/views/textbrowser
+*/
+
+#folio-browser,
+#text-browser
+	background black
+	color white
+	padding 24px 20px 17px 20px
+	margin-bottom 30px
+
+	.horizontal-only
+		height auto
+		// min-height 200px
+
+	.scroll-pane
+		overflow-x auto
+		overflow-y hidden
+		outline none
+
+	.jspTrack
+		background transparent
+
+		.jspDrag
+			background-color transparent
+
+	&:hover
+		.jspTrack
+			trackColor = #444
+			background trackColor
+
+			.jspDrag
+				background-color lighten(trackColor, 20%)
+				&:hover, &.jspActive
+					background-color lighten(trackColor, 40%)
+
+	.jspContainer
+		.jspHorizontalBar
+			bgColor = #444
+			size = 8px
+
+			background transparent
+			height size
+
+			.jspTrack
+				background bgColor
+				border-radius size
+
+				.jspDrag
+					background-color lighten(bgColor, 20%)
+					border-radius size
+
+					&:hover
+						background-color lighten(bgColor, 40%)
+
+#folio-browser
+	width "calc(100% - 48px)"
+	position relative
+	.folium-thumbnail
+		position relative
+		cursor pointer
+		display inline-block
+		white-space nowrap
+		padding 2px 0px 4px 0px
+		margin-right 1px
+		text-align center
+		no-select()
+		img
+			width 70px
+			height 100px
+			display block
+
+		&.active
+			background-color white
+			color black
+			padding 2px 2px 4px 2px
+
+		.circle
+			size = 26px
+			width size
+			height size
+			line-height size
+			border-radius size / 2
+			text-align center
+			background-color black
+			color white
+			position absolute
+			top 50px - (size / 2) // thumbnails are 70x100
+			z-index 5000
+
+			&.r
+				right -(size/2)
+
+			&.v
+				left -14px
+
+		&.active .circle
+			z-index 5001
+			background-color white
+			color black
+
+	.horizontal-only
+		height auto
+		min-height 130px
+
+	.close
+		font-size 1em
+		cursor pointer
+		background-color #333
+		width 20px
+		height 20px
+		border-radius 20px
+		text-align center
+		line-height 20px
+		right 0
+
+		&:hover
+			background-color lighten(#333, 20%)
+
+#text-browser
+	display none // only on page load
+	background-image linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -o-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -moz-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -webkit-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -ms-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(102,102,102)),
+		color-stop(0.76, rgb(0,0,0))
+	)
+
+	ul
+		font-size 12px
+		line-height 22px
+		white-space nowrap
+		float left
+		width 320px
+		li
+			cursor pointer
+			width 90%
+			overflow hidden
+			white-space nowrap
+			text-overflow ellipsis
+			no-select()
+
+			a
+				color white
+
+			.noteright
+				position static
+				color white
+
+			.superscript
+				display none
+
+			.capitalsize1
+				display inline
+
+	.inner
+		width 4600px
+		max-height 160px
+
+	.close
+		position absolute
+		right 0px
+		font-size 1em
+		top 0px
+		cursor pointer

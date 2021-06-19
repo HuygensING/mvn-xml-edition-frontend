@@ -30,8 +30,7 @@ export const FoliumView = Backbone.View.extend({
 					<span class="folium">Folium <span class="nr">1v</span></span>
 					<a href="" class="next"><span>2r</span> &#9658;</a>
 				</div>
-				<div class="text">
-				</div>
+				<div class="text"></div>
 			</div>
 		</div>
 		<div id="sidebar">
@@ -75,11 +74,48 @@ export const FoliumView = Backbone.View.extend({
 		displaySettings.on('change:nummering', this.renderNummering, this)
 		displaySettings.on('change:nummering-type', this.renderNummering, this)
 	},
+
+	render: function () {
+		this.$el.html( this.template() )
+
+		this.$('#folium iframe').attr('src', this.model.get('facsimile'))
+		this.$('.folium span').text(this.model.get('id'))
+
+		this.renderBelongsTo()
+		this.renderNummering()
+		this.renderPrevious()
+		this.renderNext()
+		this.renderText()
+		this.renderAfkortingen()
+		this.renderAfkortingenCursive()
+		this.renderSchrijfProces()
+		this.renderAnnotations()
+
+		this.$el.toggleClass()
+
+		setTimeout(
+			() => this.repositionAnnotations(),
+			10
+		)
+		if(dataStructure.get("text-linenum")) {
+			setTimeout(
+				this.lineJump.bind(this, dataStructure.get("text-linenum")),
+				100
+			)
+			dataStructure.set("text-linenum", null)
+		}
+
+		hideSpinner()
+
+		return this
+	},
+
 	changeFolium: function (model) {
 		this.model = model;
 		this.render();
 		return this;
 	},
+
 	renderBelongsTo: function () {
 		const tpl = _.template(
 			`<% if (f.get('texts').length == 1) { %>
@@ -95,6 +131,7 @@ export const FoliumView = Backbone.View.extend({
 		this.$('.belongs-to').html(tpl({ f: this.model }));
 		return this;
 	},
+
 	renderNummering: function (nummering) {
 		this.$('#text .text').toggleClass(
 			'nummering', displaySettings.get('nummering')
@@ -140,6 +177,7 @@ export const FoliumView = Backbone.View.extend({
 		);
 		return this;
 	},
+
 	renderSchrijfProces: function () {
 		if (displaySettings.get('weergave-schrijfproces')) {
 			this.$('.subst').addClass('border');
@@ -154,11 +192,13 @@ export const FoliumView = Backbone.View.extend({
 		}
 		return this;
 	},
+
 	renderText: function () {
 		const text = this.model.get('text');
 		this.$('.text').html(text);
 		return this;
 	},
+
 	renderAnnotations: function () {
 		// const self = this.$el;
 		const lines = this.$('.text l')
@@ -189,8 +229,8 @@ export const FoliumView = Backbone.View.extend({
 		return this;
 	},
 	repositionAnnotations: function() {
-		const self = this.$el;
-		const notes = self.find('.noteright');
+		const self = this.$el
+		const notes = self.find('.noteright')
 		notes.each(function() {
 			const parents = $(this).parents("l")
 			const offset = parents?.offset()
@@ -198,7 +238,7 @@ export const FoliumView = Backbone.View.extend({
 			const top = offset.top - self.offset().top + 12
 			$(this).css({ top })
 		});
-		return this;
+		return this
 	},
 	lineJump: function(id) {
 		const ln = document.getElementById(id)
@@ -206,34 +246,4 @@ export const FoliumView = Backbone.View.extend({
 			$(window).scrollTop($(ln).offset().top)
 		}
 	},
-	render: function () {
-		this.$el.html( this.template() )
-
-		this.$('#folium iframe').attr('src', this.model.get('facsimile'))
-		this.$('.folium span').text(this.model.get('id'))
-
-		this.renderBelongsTo()
-		this.renderNummering()
-		this.renderPrevious()
-		this.renderNext()
-		this.renderText()
-		this.renderAfkortingen()
-		this.renderAfkortingenCursive()
-		this.renderSchrijfProces()
-		this.renderAnnotations()
-		this.$el.toggleClass()
-
-		setTimeout(function() { this.repositionAnnotations(); }.bind(this), 10)
-		if(dataStructure.get("text-linenum")) {
-			setTimeout(
-				this.lineJump.bind(this, dataStructure.get("text-linenum")),
-				100
-			)
-			dataStructure.set("text-linenum", null)
-		}
-
-		hideSpinner()
-
-		return this
-	}
-});
+})

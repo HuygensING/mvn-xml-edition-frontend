@@ -3,6 +3,17 @@
 @import './header'
 @import './text'
 @import './mvn-reeks'
+@import './browser'
+@import './search'
+
+#container #text .text.nummering,
+#container .right.text.nummering
+	&.vers
+		.versenum
+			visibility visible
+
+	&.regel .linenum
+		visibility visible
 
 .text,
 #container * .text *
@@ -108,91 +119,8 @@ a
 			background-color black
 			color white
 
-#search-view
-	display none // only on load
-
-	.grey
-		background viewMenuActiveColor
-
-	.center
-		padding 25px 0
-
-	input	// text box
-		border 1px solid #DADADA
-		height 33px
-		line-height 33px
-		padding 0 10px
-		width 340px
-
-	button	// zoek knop
-		cursor pointer
-		line-height 33px
-		padding 0 20px
-		border 0
-		border-radius 3px
-		background #FBFBFB
-
-		&:hover
-			background #f5f5f5
-
-	.syntax-information
-		line-height 33px
-		vertical-align middle
-		margin-left 6px
-
-#search-results
-	.spinner
-		display none
-		line-height 32px
-		img
-			vertical-align middle
-			margin-right 1em
-
-	.number-of-results
-		line-height 36px
-		font-size 14px
-		font-weight 600
-
-	table
-		display none
-		padding 0
-		border-top 1px solid #c1c1c1
-		margin-top 10px
-		tr
-			padding-left 2px
-			line-height 36px
-			font-size 12px
-			border-bottom 1px solid #F0F0F0
-
-			&:hover
-				background-color #f0f0f0
-
-			em
-				color #008B88
-				font-weight bold
-
-			a
-				display block
-				color textColor
-				position relative
-				height 36px
-				.f	// folium
-					position absolute
-					display inline-block
-					left 9em
-
-				.l	// line
-					position absolute
-					display inline-block
-					left 17em
-
-				.description
-					position absolute
-					display inline-block
-					left 22em
-
-
-#view-options, #export-options
+#view-options,
+#export-options
 	display none
 	background viewMenuActiveColor
 	color defaultGray
@@ -249,155 +177,6 @@ a
 #export-options
 	ul
 		float left
-
-#folio-browser,
-#text-browser
-	background black
-	color white
-	padding 24px 20px 17px 20px
-	margin-bottom 30px
-
-	.horizontal-only
-		height auto
-		// min-height 200px
-
-	.scroll-pane
-		overflow-x auto
-		overflow-y hidden
-		outline none
-
-	.jspTrack
-		background transparent
-
-		.jspDrag
-			background-color transparent
-
-	&:hover
-		.jspTrack
-			trackColor = #444
-			background trackColor
-
-			.jspDrag
-				background-color lighten(trackColor, 20%)
-				&:hover, &.jspActive
-					background-color lighten(trackColor, 40%)
-
-#folio-browser
-	width "calc(100% - 48px)"
-	position relative
-	.folium-thumbnail
-		position relative
-		cursor pointer
-		display inline-block
-		white-space nowrap
-		padding 2px 0px 4px 0px
-		margin-right 1px
-		text-align center
-		no-select()
-		img
-			width 70px
-			height 100px
-			display block
-
-		&.active
-			background-color white
-			color black
-			padding 2px 2px 4px 2px
-
-		.circle
-			size = 26px
-			width size
-			height size
-			line-height size
-			border-radius size / 2
-			text-align center
-			background-color black
-			color white
-			position absolute
-			top 50px - (size / 2) // thumbnails are 70x100
-			z-index 5000
-
-			&.r
-				right -(size/2)
-
-			&.v
-				left -14px
-
-		&.active .circle
-			z-index 5001
-			background-color white
-			color black
-
-	.horizontal-only
-		height auto
-		min-height 130px
-
-	.close
-		font-size 1em
-		cursor pointer
-		background-color #333
-		width 20px
-		height 20px
-		border-radius 20px
-		text-align center
-		line-height 20px
-		right 0
-
-		&:hover
-			background-color lighten(#333, 20%)
-
-#text-browser
-	display none // only on page load
-	background-image linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
-	background-image -o-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
-	background-image -moz-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
-	background-image -webkit-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
-	background-image -ms-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
-	background-image -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, rgb(102,102,102)),
-		color-stop(0.76, rgb(0,0,0))
-	)
-
-	ul
-		font-size 12px
-		line-height 22px
-		white-space nowrap
-		float left
-		width 320px
-		li
-			cursor pointer
-			width 90%
-			overflow hidden
-			white-space nowrap
-			text-overflow ellipsis
-			no-select()
-
-			a
-				color white
-
-			.noteright
-				position static
-				color white
-
-			.superscript
-				display none
-
-			.capitalsize1
-				display inline
-
-	.inner
-		width 4600px
-		max-height 160px
-
-	.close
-		position absolute
-		right 0px
-		font-size 1em
-		top 0px
-		cursor pointer
 
 #folium, #sidebar, #text
 	display inline
@@ -514,7 +293,9 @@ a
 	.noteright
 		left 500px
 
-#container .folium .text, #text .text, .right.text
+#container .folium .text,
+#text .text,
+.right.text
 	span.rubric
 		display inline
 		color red
@@ -644,7 +425,8 @@ a
 	span.hide
 		display none
 
-	.versenum, .linenum
+	.versenum,
+	.linenum
 		display block
 		visibility hidden
 		font-family sans-serif
@@ -664,15 +446,6 @@ a
 .folium span
     font-size 18px
 
-#container #text .text.nummering,
-#container .right.text.nummering
-	&.vers
-		.versenum
-			visibility visible
-
-	&.regel .linenum
-		visibility visible
-
 #text .solve,
 #text-view .right.text.solve
 	&.cursive
@@ -686,25 +459,6 @@ a
 
 		expan
 			display inline
-
-.jspContainer
-	.jspHorizontalBar
-		bgColor = #444
-		size = 8px
-
-		background transparent
-		height size
-
-		.jspTrack
-			background bgColor
-			border-radius size
-
-			.jspDrag
-				background-color lighten(bgColor, 20%)
-				border-radius size
-
-				&:hover
-					background-color lighten(bgColor, 40%)
 
 span.spaced
 	letter-spacing: 3px
