@@ -89,14 +89,15 @@ export const FoliumView = Backbone.View.extend({
 		this.renderAfkortingen()
 		this.renderAfkortingenCursive()
 		this.renderSchrijfProces()
-		this.renderAnnotations()
+
+		setTimeout(() => this.renderAnnotations(), 0)
 
 		this.$el.toggleClass()
 
-		setTimeout(
-			() => this.repositionAnnotations(),
-			10
-		)
+		// TODO when/why is this needed?
+		// setTimeout(() => this.repositionAnnotations(), 1000)
+
+
 		if(dataStructure.get("text-linenum")) {
 			setTimeout(
 				this.lineJump.bind(this, dataStructure.get("text-linenum")),
@@ -201,46 +202,41 @@ export const FoliumView = Backbone.View.extend({
 	},
 
 	renderAnnotations: function () {
-		// const self = this.$el;
-		const lines = this.$('.text l')
-		// const annotations = self.find('.annotations').empty();
 		let overlap = false;
 		let prev_bottom = 0;
-		lines.each(function () {
-			const notes = $(this).find('.noteright');
 
-			notes.each(function () {
-				const note = $(this);
-				const top = note.offset().top;
-				const height = note.outerHeight();
+		this.$('.noteright').each(function (i, note) {
+			note = $(note);
+			const top = note.offset().top;
+			const height = note.outerHeight();
 
-				if (top < prev_bottom) {
-					if(!overlap) {
-						overlap = true;
-						note.css('margin-left', '120px');
-					} else {
-						overlap = false;
-						note.css('margin-left', '0px');
-					}
+			if (top < prev_bottom) {
+				if(!overlap) {
+					overlap = true;
+					note.css('margin-left', '160px');
+				} else {
+					overlap = false;
+					note.css('margin-left', '0px');
 				}
+			}
 
-				prev_bottom = top + height;
-			});
-		})
-		return this;
-	},
-	repositionAnnotations: function() {
-		const self = this.$el
-		const notes = self.find('.noteright')
-		notes.each(function() {
-			const parents = $(this).parents("l")
-			const offset = parents?.offset()
-			if (offset == null) return
-			const top = offset.top - self.offset().top + 12
-			$(this).css({ top })
+			prev_bottom = top + height;
 		});
-		return this
 	},
+
+	// repositionAnnotations: function() {
+	// 	const self = this.$el
+	// 	const notes = self.find('.noteright')
+	// 	notes.each(function() {
+	// 		const parents = $(this).parents("l")
+	// 		const offset = parents?.offset()
+	// 		if (offset == null) return
+	// 		const top = offset.top - self.offset().top + 12
+	// 		$(this).css({ top })
+	// 	});
+	// 	return this
+	// },
+
 	lineJump: function(id) {
 		const ln = document.getElementById(id)
 		if (ln != null) {

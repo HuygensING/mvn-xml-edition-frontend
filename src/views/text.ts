@@ -19,7 +19,6 @@ export const TextView = Backbone.View.extend({
 			<div class="folio"></div>
 		</div><!-- /#text-view -->`
 	),
-	folium_tmpl: '#folium-in-text-tmpl',
 
 	initialize: function (options) {
 		viewManager.register(this);
@@ -43,8 +42,22 @@ export const TextView = Backbone.View.extend({
 		)
 
 		this.model = dataStructure.get('texts').get(options.id);
-		this.model.on('change', this.render, this);
-		console.log('INIT');
+		const promises = Promise.all(
+			this.model.get('folio')
+				.map(folio =>
+					folio.get('text') ?
+						folio.get('text') :
+						folio
+							.fetch({
+								dataType: 'html',
+								error: function (_model, response, _options) {
+									console.log("Error fetching folium", response)
+								}
+							})
+				)
+		)
+		promises.then(() => this.render())
+
 		displaySettings.on('change:afkortingen-oplossen',
 			this.renderAfkortingen, this
 		);
@@ -201,6 +214,7 @@ export const TextView = Backbone.View.extend({
 		this.renderNummering();
 
 		setTimeout(this.renderAnnotations.bind(this), 100);
+
 		if(dataStructure.get("text-linenum")) {
 			setTimeout(this.lineJump.bind(this, dataStructure.get("text-linenum"), "line"), 100);
 			dataStructure.set("text-linenum", null);
@@ -209,6 +223,7 @@ export const TextView = Backbone.View.extend({
 			setTimeout(this.lineJump.bind(this, dataStructure.get("text-folium"), "folium"), 100);
 			dataStructure.set("text-folium", null);
 		}
+
 		return this;
 	}
 });

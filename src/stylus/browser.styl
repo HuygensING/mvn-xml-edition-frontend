@@ -7,8 +7,9 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 #text-browser
 	background black
 	color white
-	padding 24px 20px 17px 20px
 	margin-bottom 30px
+	padding 24px 20px 17px 20px
+	position relative
 
 	.horizontal-only
 		height auto
@@ -54,9 +55,27 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 					&:hover
 						background-color lighten(bgColor, 40%)
 
+	.close
+		background #888
+		border-radius 50%
+		cursor pointer
+		position absolute
+		right 6px
+		top 6px
+		width 14px
+
+		&:hover
+			background #DDD
+
+		.close-x
+			stroke black
+			fill transparent
+			stroke-linecap round
+			stroke-width 5
+
 #folio-browser
 	width "calc(100% - 48px)"
-	position relative
+
 	.folium-thumbnail
 		position relative
 		cursor pointer
@@ -104,20 +123,6 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 		height auto
 		min-height 130px
 
-	.close
-		font-size 1em
-		cursor pointer
-		background-color #333
-		width 20px
-		height 20px
-		border-radius 20px
-		text-align center
-		line-height 20px
-		right 0
-
-		&:hover
-			background-color lighten(#333, 20%)
-
 #text-browser
 	display none // only on page load
 	background-image linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
@@ -164,9 +169,9 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 		width 4600px
 		max-height 160px
 
-	.close
-		position absolute
-		right 0px
-		font-size 1em
-		top 0px
-		cursor pointer
+	// .close
+	// 	position absolute
+	// 	right 0px
+	// 	font-size 1em
+	// 	top 0px
+	// 	cursor pointer
