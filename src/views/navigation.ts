@@ -15,8 +15,8 @@ import { debounce } from "underscore";
 import { displaySettings } from "../models/displaysettings";
 import { search } from "../models/search";
 import { router } from "../router";
-import { FolioBrowser } from './foliobrowser'
-import { TextBrowser } from './textbrowser'
+import { FolioBrowser } from './browsers/foliobrowser'
+import { TextBrowser } from './browsers/textbrowser'
 
 export const NavigationView = Backbone.View.extend({
 	el: '#views',

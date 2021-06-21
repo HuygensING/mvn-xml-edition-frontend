@@ -1,12 +1,10 @@
+import Backbone from "backbone"
+import _ from "underscore"
 
-
-// define(['jquery', 'backbone', 'app/config', 'app/models/displaysettings', 'app/models/structure', 'app/app', 'app/views/base'], function ($, Backbone, config, displaySettings, dataStructure, App, BaseView) {
-
-import Backbone from "backbone";
-import { dataStructure } from "../models/structure";
-import { viewManager } from "./manager";
-import { displaySettings } from '../models/displaysettings'
-import _ from "underscore";
+import { dataStructure } from "../../models/structure";
+import { viewManager } from "../manager";
+import { displaySettings } from '../../models/displaysettings'
+import { BaseText } from './base'
 
 export const TextView = Backbone.View.extend({
 	template: _.template(
@@ -21,6 +19,8 @@ export const TextView = Backbone.View.extend({
 	),
 
 	initialize: function (options) {
+		_.extend(this, BaseText)
+
 		viewManager.register(this);
 
 		this.options = options;
@@ -145,39 +145,44 @@ export const TextView = Backbone.View.extend({
 		else this.$('a.next').hide();
 		return this;
 	},
-	renderAnnotations: function () {
-		// const self = this.$el;
-		const lines = this.$('.right.text l');
-		// const annotations = self.find('.annotations').empty();
-		// const overlap = false;
-		let prev_margin = 0;
-		let prev_bottom = 0;
-		lines.each(function () {
-			// const line = $(this);
-			const notes = $(this).find('.noteright');
 
-			notes.each(function () {
-				const note = $(this);
-				const top = note.offset().top;
-				const height = note.outerHeight();
-				if (top < prev_bottom) {
-					if(prev_margin === 0) {
-						note.css('margin-left', '120px');
-						prev_margin = 120;
-					} else {
-						note.css('margin-left', '0px');
-						prev_margin = 0;
-					}
-				} else {
-					note.css('margin-left', '0px');
-					prev_margin = 0;
-				}
+	/**
+	 * Copy of ./folium.ts:renderAnnotations
+	 */
 
-				prev_bottom = top + height;
-			});
-		})
-		return this;
-	},
+	// renderAnnotations: function () {
+	// 	// const self = this.$el;
+	// 	const lines = this.$('.right.text l');
+	// 	// const annotations = self.find('.annotations').empty();
+	// 	// const overlap = false;
+	// 	let prev_margin = 0;
+	// 	let prev_bottom = 0;
+	// 	lines.each(function () {
+	// 		// const line = $(this);
+	// 		const notes = $(this).find('.noteright');
+
+	// 		notes.each(function () {
+	// 			const note = $(this);
+	// 			const top = note.offset().top;
+	// 			const height = note.outerHeight();
+	// 			if (top < prev_bottom) {
+	// 				if(prev_margin === 0) {
+	// 					note.css('margin-left', '120px');
+	// 					prev_margin = 120;
+	// 				} else {
+	// 					note.css('margin-left', '0px');
+	// 					prev_margin = 0;
+	// 				}
+	// 			} else {
+	// 				note.css('margin-left', '0px');
+	// 				prev_margin = 0;
+	// 			}
+
+	// 			prev_bottom = top + height;
+	// 		});
+	// 	})
+	// 	return this;
+	// },
 	lineJump: function(id, mode) {
 		let ln = null
 		if(mode === "line") {

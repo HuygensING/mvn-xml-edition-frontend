@@ -37,6 +37,8 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 					background-color lighten(trackColor, 40%)
 
 	.jspContainer
+		padding-bottom 10px
+
 		.jspHorizontalBar
 			bgColor = #444
 			size = 8px
@@ -141,9 +143,8 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 	ul
 		font-size 12px
 		line-height 22px
-		white-space nowrap
-		float left
-		width 320px
+		columns 200px auto
+
 		li
 			cursor pointer
 			width 90%
@@ -167,11 +168,3 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 
 	.inner
 		width 4600px
-		max-height 160px
-
-	// .close
-	// 	position absolute
-	// 	right 0px
-	// 	font-size 1em
-	// 	top 0px
-	// 	cursor pointer

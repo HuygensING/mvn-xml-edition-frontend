@@ -18,8 +18,8 @@
 import Backbone from "backbone";
 import { dataStructure } from "./models/structure";
 import { viewManager } from './views/manager'
-import { FoliumView } from './views/folium'
-import { TextView } from './views/text'
+import { FoliumView } from './views/text/folium'
+import { TextView } from './views/text/text'
 import { SearchView } from './views/search'
 
 const AppRouter = Backbone.Router.extend({

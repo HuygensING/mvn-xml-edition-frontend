@@ -1,12 +1,14 @@
 import Backbone from "backbone"
 import _ from "underscore";
-import { dataStructure } from "../models/structure"
+import { dataStructure } from "../../models/structure"
+import { BaseBrowser } from "./base";
 
 export const FolioBrowser = Backbone.View.extend({
 	el: '#folio-browser',
 
 	initialize: function () {
-		this.render();
+		_.extend(this, BaseBrowser)
+		this.render()
 	},
 
 	render: function () {
@@ -14,9 +16,9 @@ export const FolioBrowser = Backbone.View.extend({
 		let w = 0
 
 		dataStructure.get('folio').each(function (f, idx) {
-			const folium = new FoliumThumbnail({ model: f });
-			self.$('.inner').append(folium.el);
-			w += folium.$el.outerWidth(true);
+			const folium = new FoliumThumbnail({ model: f })
+			self.$('.inner').append(folium.el)
+			w += folium.$el.outerWidth(true)
 		});
 
 		// By default activate first one (store last user position?)
@@ -24,21 +26,13 @@ export const FolioBrowser = Backbone.View.extend({
 
 		// The selected folium has larger padding and margins,
 		// so account for this
-		w += this.$('.folium-thumbnail').first().outerWidth(true);
-		w -= this.$('.folium-thumbnail').not('.active').first().outerWidth(true);
+		w += this.$('.folium-thumbnail').first().outerWidth(true)
+		w -= this.$('.folium-thumbnail').not('.active').first().outerWidth(true)
 
 		// Set total width for jscrollpane
 		this.$('.inner').css('width', w);
 
-		// $('<div>').text('✕').addClass('close').appendTo(this.$el);
-		$('<div>')
-			.addClass('close')
-			.html(
-				`<svg viewbox="0 0 40 40">
-					<path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" />
-				</svg>`
-			)
-			.appendTo(this.$el)
+		this.renderCloseButton()
 
 		return this;
 	},
@@ -57,15 +51,12 @@ const FoliumThumbnail = Backbone.View.extend({
 			<div class="folium"><%= folium.replace(/\d+/,'') %></div>
 			<div class="circle <%= folium.replace(/\d+/,'') %>"><%= folium.replace(/[rv]/,'') %></div></a>`
 		)
-		dataStructure.on('change:active-folium', this.renderActive, this);
+
+		dataStructure.on('change:active-folium', this.setActive, this)
+
 		this.render();
 	},
-	renderActive: function (obj, id) {
-		if (id === this.model.id)
-			this.$el.addClass('active');
-		else
-			this.$el.removeClass('active');
-	},
+
 	render: function () {
 		this.$el.html(this.template({
 			image: this.model.get('thumbnail'),
@@ -73,6 +64,11 @@ const FoliumThumbnail = Backbone.View.extend({
 			index: this.model.collection.indexOf(this.model)+1
 		}));
 		return this;
-	}
+	},
+
+	setActive: function (_obj, id) {
+		if (id === this.model.id)	this.$el.addClass('active')
+		else 						this.$el.removeClass('active')
+	},
 });
 

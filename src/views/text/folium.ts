@@ -1,8 +1,9 @@
 import Backbone from "backbone"
 import _ from "underscore"
-import { displaySettings } from "../models/displaysettings";
-import { dataStructure } from "../models/structure";
-import { viewManager } from "./manager";
+import { displaySettings } from "../../models/displaysettings";
+import { dataStructure } from "../../models/structure";
+import { viewManager } from "../manager";
+import { BaseText } from "./base";
 
 function showSpinner() {
 	$('#spinner').css({
@@ -41,6 +42,8 @@ export const FoliumView = Backbone.View.extend({
 	),
 
 	initialize: function (options) {
+		_.extend(this, BaseText)
+
 		viewManager.register(this)
 
 		if (options.parent) this.parent = options.parent
@@ -201,28 +204,14 @@ export const FoliumView = Backbone.View.extend({
 		return this;
 	},
 
-	renderAnnotations: function () {
-		let overlap = false;
-		let prev_bottom = 0;
-
-		this.$('.noteright').each(function (i, note) {
-			note = $(note);
-			const top = note.offset().top;
-			const height = note.outerHeight();
-
-			if (top < prev_bottom) {
-				if(!overlap) {
-					overlap = true;
-					note.css('margin-left', '160px');
-				} else {
-					overlap = false;
-					note.css('margin-left', '0px');
-				}
-			}
-
-			prev_bottom = top + height;
-		});
+	lineJump: function(id) {
+		const ln = document.getElementById(id)
+		if (ln != null) {
+			$(window).scrollTop($(ln).offset().top)
+		}
 	},
+})
+
 
 	// repositionAnnotations: function() {
 	// 	const self = this.$el
@@ -236,11 +225,3 @@ export const FoliumView = Backbone.View.extend({
 	// 	});
 	// 	return this
 	// },
-
-	lineJump: function(id) {
-		const ln = document.getElementById(id)
-		if (ln != null) {
-			$(window).scrollTop($(ln).offset().top)
-		}
-	},
-})
