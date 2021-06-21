@@ -23,8 +23,8 @@
 
 #container .text a
 	text-decoration none
-	color #777
-	cursor default
+	color bodyNavColor
+	cursor pointer
 
 // =========== Interface
 
@@ -185,7 +185,7 @@ a
 
 #folium
 	width folioWidth
-	margin-right foliumMargin
+	// margin-right foliumMargin
 	img	width folioWidth height auto
 
 #sidebar
@@ -207,7 +207,9 @@ a
 			formatAsAnnotation()
 
 #text
-	width mainWidth - folioWidth - foliumMargin - sidebarWidth - 20px + 20%
+	margin-left textGutterLeft
+	width textWidth
+
 	.nav
 		line-height 35px
 		height 35px
@@ -284,14 +286,14 @@ a
 				color bodyNavColor
 				no-select()
 
-		.right
+		.text
 			margin-left 200px
 			font-size 18px
 			text-align left
-			width 400px
+			width textWidth
 
-	.noteright
-		left 500px
+	// .noteright
+	// 	left 500px
 
 #container .folium .text,
 #text .text,
@@ -344,7 +346,7 @@ a
 
 	span.noteright
 		position absolute
-		left 440px
+		left textWidth + 20px
 		formatAsAnnotation()
 
 		abbr

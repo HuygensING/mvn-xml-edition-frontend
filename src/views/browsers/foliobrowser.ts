@@ -40,6 +40,7 @@ export const FolioBrowser = Backbone.View.extend({
 
 const FoliumThumbnail = Backbone.View.extend({
 	className: 'folium-thumbnail',
+
 	initialize: function () {
 		dataStructure.on('change:active-folium', this.setActive, this)
 		this.render()
@@ -71,9 +72,6 @@ const FoliumThumbnail = Backbone.View.extend({
 		)
 
 		return this
-	},
-
-	createHtml: function() {
 	},
 
 	setActive: function (_obj, id) {
