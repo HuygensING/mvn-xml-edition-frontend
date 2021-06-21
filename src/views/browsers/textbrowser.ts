@@ -11,6 +11,14 @@ export const TextBrowser = Backbone.View.extend({
 		this.render()
 	},
 
+	render: function () {
+		this.$('.inner').html(this.createHtml())
+
+		this.renderCloseButton()
+
+		return this
+	},
+
 	createHtml: function() {
 		const texts = dataStructure.get('texts').sort((a,b) => a.tocIndex-b.tocIndex)
 
@@ -27,12 +35,4 @@ export const TextBrowser = Backbone.View.extend({
 
 		return `<ul>${lis}</ul>`
 	},
-
-	render: function () {
-		this.$('.inner').html(this.createHtml())
-
-		this.renderCloseButton()
-
-		return this
-	}
 })

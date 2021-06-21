@@ -1,7 +1,7 @@
 import Backbone from "backbone"
-import _ from "underscore";
+import _ from "underscore"
 import { dataStructure } from "../../models/structure"
-import { BaseBrowser } from "./base";
+import { BaseBrowser } from "./base"
 
 export const FolioBrowser = Backbone.View.extend({
 	el: '#folio-browser',
@@ -30,45 +30,55 @@ export const FolioBrowser = Backbone.View.extend({
 		w -= this.$('.folium-thumbnail').not('.active').first().outerWidth(true)
 
 		// Set total width for jscrollpane
-		this.$('.inner').css('width', w);
+		this.$('.inner').css('width', w)
 
 		this.renderCloseButton()
 
-		return this;
+		return this
 	},
-
-	// remove: function() {
-
-	// 	Backbone.View.prototype.remove.apply(this, arguments);
-	// }
 })
 
 const FoliumThumbnail = Backbone.View.extend({
 	className: 'folium-thumbnail',
 	initialize: function () {
-		this.template = _.template( 
-			`<a href="/folium/<%= folium %>"><img src="<%= image %>">
-			<div class="folium"><%= folium.replace(/\d+/,'') %></div>
-			<div class="circle <%= folium.replace(/\d+/,'') %>"><%= folium.replace(/[rv]/,'') %></div></a>`
-		)
-
 		dataStructure.on('change:active-folium', this.setActive, this)
-
-		this.render();
+		this.render()
 	},
 
 	render: function () {
-		this.$el.html(this.template({
-			image: this.model.get('thumbnail'),
-			folium: this.model.id,
-			index: this.model.collection.indexOf(this.model)+1
-		}));
-		return this;
+		const { id } = this.model
+
+		// Split the folium ID in the number and an 'r' or 'v' for recto/verso
+		// 2v => ['2', 'v'], 6ar => ['6a', 'r']
+		const [num, rv] = id.split(/(r|v)$/)
+
+		// Don't continue if an r or v isn't found
+		if (rv == null) {
+			console.error('[FoliumThumbnail] folium ID doesn\'t end with recto or verso')
+			return ''
+		}
+
+		this.$el.html(
+			`<a href="/folium/${id}">
+				<img src="${this.model.get('thumbnail')}">
+				<div class="folium">
+					${rv}
+				</div>
+				<div class="circle ${rv}">
+					${num}
+				</div>
+			</a>`
+		)
+
+		return this
+	},
+
+	createHtml: function() {
 	},
 
 	setActive: function (_obj, id) {
 		if (id === this.model.id)	this.$el.addClass('active')
 		else 						this.$el.removeClass('active')
 	},
-});
+})
 
