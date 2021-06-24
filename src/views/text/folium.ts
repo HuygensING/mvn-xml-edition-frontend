@@ -31,13 +31,12 @@ export const FoliumView = Backbone.View.extend({
 					<span class="folium">Folium <span class="nr">1v</span></span>
 					<a href="" class="next"><span>2r</span> &#9658;</a>
 				</div>
+				<div id="sidebar">
+					<div class="belongs-to"></div>
+					<div class="annotations"></div>
+				</div>
 				<div class="text"></div>
 			</div>
-		</div>
-		<div id="sidebar">
-			<div class="belongs-to"></div>
-			<div class="annotations"></div>
-		</div>
 		</div>`
 	),
 

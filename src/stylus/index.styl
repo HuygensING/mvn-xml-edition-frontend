@@ -6,6 +6,12 @@
 @import './browser'
 @import './search'
 
+body
+	font-family bodyFont
+	font-size 12px
+	padding 0
+	margin 0
+
 #container #text .text.nummering,
 #container .right.text.nummering
 	&.vers
@@ -15,27 +21,20 @@
 	&.regel .linenum
 		visibility visible
 
-.text,
-#container * .text *
-	font-family "Junicode", "Arial unicode MS", "times new roman", serif
-	font-size 16px
-	line-height 26px
-
-#container .text a
-	text-decoration none
-	color bodyNavColor
-	cursor pointer
-
-// =========== Interface
-
-#container *	// overriding Wordpress theme
+#container
+	margin-top 20px
 	font-size 12px
 
-body
-	font-family bodyFont
-	font-size 12px
-	padding 0
-	margin 0
+	.text
+		font-size 16px
+		font-family "Junicode", "Arial unicode MS", "times new roman", serif
+		font-size 16px
+		line-height 26px
+
+		a
+			text-decoration none
+			color bodyNavColor
+			cursor pointer
 
 a
 	text-decoration none
@@ -47,9 +46,6 @@ a
 
 .no-select
 	no-select()
-
-#container
-	margin-top 20px
 
 #spinner
 	align-items center
@@ -178,26 +174,26 @@ a
 	ul
 		float left
 
-#folium, #sidebar, #text
-	display inline
-	float left
+#folium, #text
 	position relative
 
-#folium
-	width folioWidth
-	// margin-right foliumMargin
-	img	width folioWidth height auto
+// #folium
+// 	width folioWidth
+// 	// margin-right foliumMargin
+// 	img	width folioWidth height auto
 
 #sidebar
-	width sidebarWidth
-	margin-left 20px
+	left textWidth + annotationMargin
+	position absolute
+	top 0
+	width annotationWidth
 
 	.line
 		margin-top 35px
 		border-top 1px solid viewMenuActiveColor
 
 	.belongs-to
-		width 120px
+		// width 120px
 		color defaultGray
 		margin-bottom 65px
 
@@ -240,13 +236,17 @@ a
 		color bodyNavColor
 
 #text-view
-	// width textViewWidth
-	// margin auto
+	// margin-left 32px
+	display grid
+	grid-template-columns auto (200px - textGutterLeft) + totalTextWidth auto
+	grid-template-rows 35px auto
 
 	.heading
 		padding-left 200px // left margin
 		text-align center
-		width 400px
+		width textWidth
+		grid-column 2
+		// height 35px
 
 		span.tekst
 			font-size 20px
@@ -258,39 +258,42 @@ a
 		.next
 			float right
 
-	.folium
-		border-top 1px solid viewMenuColor
-		margin-bottom 34px
-		padding-top 20px
-		position relative
+	.folio
+		grid-row 2
+		grid-column 2
 
-		.left
-			float left
-			font-size 11px
+		.folium
+			border-top 1px solid viewMenuColor
+			margin-bottom 34px
+			padding-top 20px
+			position relative
 
-			h5
-				color defaultGray
-				font-weight normal
+			.left
+				float left
 				font-size 11px
-				padding 0
-				margin 0 0 20px
 
-			img
-				width 70px
-				height auto
-				margin-bottom 7px
-				display block
+				h5
+					color defaultGray
+					font-weight normal
+					font-size 11px
+					padding 0
+					margin 0 0 20px
 
-			.select-folium
-				display inline-block
-				color bodyNavColor
-				no-select()
+				img
+					width 70px
+					height auto
+					margin-bottom 7px
+					display block
 
-		.text
-			margin-left 200px
-			font-size 18px
-			text-align left
-			width textWidth
+				.select-folium
+					display inline-block
+					color bodyNavColor
+					no-select()
+
+			.text
+				margin-left 200px
+				text-align left
+				width textWidth
 
 	// .noteright
 	// 	left 500px
@@ -346,7 +349,7 @@ a
 
 	span.noteright
 		position absolute
-		left textWidth + 20px
+		left textWidth + annotationMargin
 		formatAsAnnotation()
 
 		abbr
@@ -472,9 +475,13 @@ span.ulr
 span.nr
 	font-size: 18px !important
 
-#folium-view span.fw
-	display: block
-	text-align: center
+#folium-view
+	display grid
+	grid-template-columns auto totalTextWidth
+
+	span.fw
+		display: block
+		text-align: center
 
 #text-view span.fw
 	display: none
