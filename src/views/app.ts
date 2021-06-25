@@ -1,21 +1,4 @@
-// define([
-// 	'backbone',
-// 	'app/models/structure',
-// 	'app/config',
-// 	'app/app',
-// 	'app/router',
-// 	'app/views/navigation',
-// 	'app/views/folium',
-// 	'app/views/text',
-// 	'app/views/search'
-// 	], function (Backbone,
-// 		dataStructure,
-// 		config,
-// 		App,
-// 		router,
-// 		NavigationView, FoliumView, TextView, SearchView) {
 import Backbone from 'backbone'
-// import $ from'jquery'
 
 import { router } from '../router'
 import { dataStructure } from '../models/structure'
