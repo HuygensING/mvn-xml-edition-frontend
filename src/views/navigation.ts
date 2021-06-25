@@ -1,13 +1,14 @@
 import Backbone from "backbone"
-// import { debounce } from "underscore";
-import { displaySettings } from "../models/displaysettings";
-import { search } from "../models/search";
-import { router } from "../router";
+import { displaySettings } from "../models/displaysettings"
+import { search } from "../models/search"
+import { router } from "../router"
 import { FolioBrowser } from './browsers/foliobrowser'
 import { TextBrowser } from './browsers/textbrowser'
+import { SearchView } from '../views/search'
 
 export const NavigationView = Backbone.View.extend({
 	el: '#views',
+
 	events: {
 		"click .folio-browser": "show_folio_browser",
 		"click .text-browser": "show_text_browser",
@@ -180,7 +181,7 @@ export const NavigationView = Backbone.View.extend({
 			.hideViewOptions();
 		return this;
 	},
-	render: function () {
+	_render: function () {
 		this.hideViewOptions().hideTextBrowser().showFolioBrowser();
 
 		// console.log("Rendering", this.$('#view-options .weergave-schrijfproces').is('active'))
@@ -213,15 +214,24 @@ export const NavigationView = Backbone.View.extend({
 			collection: this.texts
 		});
 
+		const search = new SearchView();
+		this.$('#search-view .results').append(search.$el)
+		// console.log(search.$el)
+
 		if (window.location.pathname.match('zoeken'))
 			this.showSearch();
-			const q = location.search.replace('?q=', '');
-			if (q)
-				this.$('#search-view input').val(decodeURIComponent(q));
+		const q = location.search.replace('?q=', '');
+		if (q)
+			this.$('#search-view input').val(decodeURIComponent(q));
 
 		// this.$('#folio-browser .scroll-pane').jScrollPane();
 		// console.log("Rendered", this.$('#view-options .weergave-schrijfproces').is('active'))
-
 		return this;
-	}
+	},
+	get render() {
+		return this._render;
+	},
+	set render(value) {
+		this._render = value;
+	},
 });

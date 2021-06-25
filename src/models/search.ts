@@ -36,8 +36,10 @@ const Search = Backbone.Model.extend({
     const _this = this;
     const promise = $.post(config.searchURL, $.param({ q: query }), 
       function (results) {
-        _this.set('results', results)
-        _this.set('isSearching', false);
+        _this.set({
+          'results': results,
+          'isSearching': false
+        })
       }, 'json'
     ).fail(function () {
       console.log("Something went wrong while searching; check the logs");

@@ -31,6 +31,8 @@
 		margin-left 6px
 
 #search-results
+	margin 0 64px
+
 	.spinner
 		display none
 		line-height 32px
@@ -42,6 +44,9 @@
 		line-height 36px
 		font-size 14px
 		font-weight 600
+
+		.num
+			font-weight 300
 
 	table
 		display none
@@ -66,6 +71,10 @@
 				color textColor
 				position relative
 				height 36px
+
+				&:hover
+					text-decoration underline
+
 				.f	// folium
 					position absolute
 					display inline-block

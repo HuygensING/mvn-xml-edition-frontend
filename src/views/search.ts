@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import { viewManager } from "./manager";
+// import { viewManager } from "./manager";
 import { search } from '../models/search'
 import _ from "underscore";
 
@@ -12,25 +12,15 @@ const results_template = _.template(
 			<td class="description"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>"><%= result.kwic[0] %></a></td></tr>
 	<% }) %>`
 )
-		
 
 export const SearchView = Backbone.View.extend({
-	template: _.template(
-		`<div class="spinner"><img src="/static/img/ajax-loader.gif"> Aan het zoeken...</div>
-		<div class="results">
-			<div class="number-of-results"><span class="num"></span> resultaten</div>
-		</div>
-		<table class="results"></table>
-		<p class="no-search">Geen zoekopdracht opgegeven.</p>
-		<p class="error">Error</p>`
-	),
 	id: 'search-results',
 
-	initialize: function (options) {
-		viewManager.register(this)
+	initialize: function () {
+		// viewManager.register(this)
 
 		search.on('searching', this.showSpinner, this);
-		search.on('change', this.render, this);
+		search.on('change:results', () => { console.log('onchange'); this.renderResults() }, this);
 
 		this.render()
 
@@ -39,7 +29,16 @@ export const SearchView = Backbone.View.extend({
 	},
 
 	render: function () {
-		this.$el.html( this.template() )
+		console.log('render')
+		this.$el.html(
+			`<div class="spinner"><img src="/static/img/ajax-loader.gif"> Aan het zoeken...</div>
+			<div class="results">
+				<div class="number-of-results"><span class="num"></span> resultaten</div>
+			</div>
+			<table class="results"></table>
+			<p class="no-search">Geen zoekopdracht opgegeven.</p>
+			<p class="error">Error</p>`
+		)
 
 		// by default only show "Not searched yet" message
 		this.$('.error, .results, .spinner').hide()
@@ -49,9 +48,10 @@ export const SearchView = Backbone.View.extend({
 		} else if (search.get('results') === undefined) {
 			this.$('.number-of-results').hide()
 			this.$('.no-search').show()
-		} else {
-			this.renderResults()
 		}
+		// } else {
+		// 	this.renderResults()
+		// }
 		return this
 	},
 
@@ -60,11 +60,13 @@ export const SearchView = Backbone.View.extend({
 	},
 
 	showSpinner: function () {
+		console.log('show spinner')
 		this.$('.no-search, .results, .error').hide();
 		this.$('.spinner').show();
 	},
 
 	hideSpinner: function () {
+		console.log('hide spinner')
 		this.$('.spinner').hide();
 	},
 
@@ -75,16 +77,23 @@ export const SearchView = Backbone.View.extend({
 	},
 
 	renderResults: function () {
-		const results = search.get('results');
+		const results = search.get('results')
+		console.log('render results', results?.length)
+		if (results == null) return this
 
-		this.hideSpinner();
-		this.$('.no-search, .error').hide();
+		this.hideSpinner()
+
+		this.$('.no-search, .error').hide()
+
 		this.$('div.results').show()
 			.find('.number-of-results').show()
-			.find('.num').text(results.length);
-		this.$('table')
+			.find('.num')
+			.text(results.length)
+
+		this.$('table.results')
 			.html( results_template({ results: results }) )
 			.show()
+
 		return this
 	},
 })

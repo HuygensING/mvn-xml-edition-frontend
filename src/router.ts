@@ -1,26 +1,9 @@
-// define([
-// 	'backbone',
-// 	'app/config',
-// 	'app/views/manager',
-// 	'app/models/structure',
-// 	'app/views/folium',
-// 	'app/views/text',
-// 	'app/views/search'
-// 	], function (
-// 		Backbone,
-// 		config,
-// 		viewManager,
-// 		dataStructure,
-// 		FoliumView,
-// 		TextView,
-// 		SearchView
-
 import Backbone from "backbone";
 import { dataStructure } from "./models/structure";
 import { viewManager } from './views/manager'
 import { FoliumView } from './views/text/folium'
 import { TextView } from './views/text/text'
-import { SearchView } from './views/search'
+// import { SearchView } from './views/search'
 
 const AppRouter = Backbone.Router.extend({
 	routes: {
@@ -49,25 +32,28 @@ const AppRouter = Backbone.Router.extend({
 		return this
 	},
 
-	show: function () {
-		viewManager.clear();
-		const view = new this.view(this.query);
-		viewManager.show(view);
+	show: function (route) {
+		if (route === 'show_search') return this
+
+		viewManager.clear()
+		const view = new this.view(this.query)
+		viewManager.show(view)
+		console.log('showing')
 		this.query = {}; // clear for next view.
 
-		return this;
+		return this
 	},
 	show_home: function () {
-		this.show_folium('1r');
+		this.show_folium('1r')
 	},
 	show_folium: function (id, num) {
-		this.view = FoliumView;
+		this.view = FoliumView
 		this.query = {
 			id: id
-		};
+		}
 		// console.log("show_folium", id, num);
-		dataStructure.set('active-folium', id);
-		dataStructure.set('text-linenum', num);
+		dataStructure.set('active-folium', id)
+		dataStructure.set('text-linenum', num)
 	},
 	show_text_folium: function (id, folium) {
 		this.view = TextView;
@@ -77,20 +63,20 @@ const AppRouter = Backbone.Router.extend({
 		}
 		// console.log("show_text_folium", id, folium);
 
-		dataStructure.set('active-text', id);
-		dataStructure.set('text-folium', folium);
+		dataStructure.set('active-text', id)
+		dataStructure.set('text-folium', folium)
 	},
 	show_text: function (id, num) {
-		this.view = TextView;
+		this.view = TextView
 		this.query = { id }
-		dataStructure.set('active-text', id);
-		dataStructure.set('text-linenum', num);
+		dataStructure.set('active-text', id)
+		dataStructure.set('text-linenum', num)
 	},
 	show_search: function (query) {
-		this.view = SearchView;
-		this.query = {};
-		if (query)
-			this.query = query;
+		viewManager.hide()
+	// 	this.view = SearchView;
+	// 	this.query = {};
+	// 	if (query) this.query = query
 	}
 });
 

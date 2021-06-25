@@ -8,13 +8,13 @@ export const TextBrowser = Backbone.View.extend({
 
 	initialize: function () {
 		_.extend(this, BaseBrowser)
+
 		this.texts = dataStructure.get('texts')
 			.map(text => {
 				text._value = `${text.id} ${text.get("first_line")}`
 				text._filterValue = text._value.toLowerCase()
 				return text
 			})
-			.sort((a,b) => a.tocIndex-b.tocIndex)
 
 		this.render()
 	},
@@ -33,42 +33,26 @@ export const TextBrowser = Backbone.View.extend({
 			.html('<input type="text" placeholder="Filter text titels" />')
 			.appendTo(this.$el)
 
-		this.$('.inner').html(this.createHtml())
+		this.$('.inner').html('<ul></ul>')
+
+		this.renderList()
 
 		this.renderCloseButton()
 
 		return this
 	},
 
-	createHtml: function() {
-		const texts = dataStructure.get('texts').sort((a,b) => a.tocIndex-b.tocIndex)
-
-		const lis = texts.reduce((prev, curr) => {
-			return `${prev}<li>
-				<a
-					title="${curr.get("first_line")}"
-					href="/tekst/${curr.id}/regel/${curr.get('firstLineId')}"
-				>
-					${curr.id} ${curr.get("first_line")}
-				</a>
-			</li>`
-		}, '')
-
-		return `<ul>${lis}</ul>`
-	},
-
 	renderList(value) {
 		value = value == null ? value : value.toLowerCase()
 
-		console.log(this.texts.length)
 		const lis = this.texts
-			.reduce((prev, curr) => {
+			.map(curr => {
 				if (
 					value == null ||
 					value.length === 0 ||
 					curr._filterValue.indexOf(value) > -1
 				) {
-					return `${prev}<li>
+					return `<li>
 						<a
 							title="${curr.get("first_line")}"
 							href="/tekst/${curr.id}/regel/${curr.get('firstLineId')}"
@@ -77,18 +61,10 @@ export const TextBrowser = Backbone.View.extend({
 						</a>
 					</li>`
 				}
-				return prev
-			}, '')
+				return ''
+			})
+			.join('')
 
 		this.$el.find('ul').html(lis)
-
-		// Backbone.Events.trigger('reinitjsp', lis)
-
-		// this.// this.$('#-browser').show()
-		// this.// 	.find('.scroll-pane').jScrollPane();
-		// console.log(this.$('.scroll-pane'))
-		// console.log(this.$('ul > li').length)
-		// setTimeout(() => { this.$('.scroll-pane').reinitialise()
-		// }, 0);
 	}
 })

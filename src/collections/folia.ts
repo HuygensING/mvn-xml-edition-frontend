@@ -34,17 +34,25 @@ const Folium = Backbone.Model.extend({
 		// to make it (more) predictable
 		html = html.replace(/<linegroup_(start|end)\/>/g, "<linegroup_$1></linegroup_$1>")
 
+		// TODO remove?
 		Backbone.Events.trigger('folium:loaded:' + this.id, this);
 
 		return { text: $(html).find('.right .text').html() };
 	},
+
 	lineNum: function(textId) {
 		const parsedHtml = $(this.get('text'));
-		const firstLine = parsedHtml.find(".textnum > a").filter(function(i, el) {
-			return textId === $(el).text();
-		}).map(function(i, el) {
-			return $(el).parent().nextAll("l")[0];
-		}).toArray()[0];
+
+		const firstLine = parsedHtml
+			.find(".textnum > a")
+			.filter(function(i, el) {
+				return textId === $(el).text();
+			})
+			.map(function(i, el) {
+				return $(el).parent().nextAll("l")[0];
+			})
+			.toArray()[0];
+
 		return $(firstLine).attr("id");
 	}
 });

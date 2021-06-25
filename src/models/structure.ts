@@ -31,13 +31,16 @@ const DataStructure = Backbone.Model.extend({
 		//  add reference to text models for relevant folios
 		const texts = new Texts(
 			Object.keys(data.texts).map(function (k) {
+				// console.log(k, data.texts[k])
 				return new Text({
 					id: k,
 					first_line: data.texts[k].head,
 					firstLineId: data.texts[k].firstLineId,
 					folio: data.texts[k].folia.map(function (fid) {
 						return folio.get(fid);
-					})
+					}),
+					tocIndex: data.texts[k].tocIndex,
+					htmlSource: data.texts[k].htmlSource,
 				});
 			})
 		);

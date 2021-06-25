@@ -6,6 +6,18 @@ import { viewManager } from "../manager";
 import { displaySettings } from '../../models/displaysettings'
 import { BaseText } from './base'
 
+function hasOverlap(el1, el2) {
+	const rect1 = el1.getBoundingClientRect()
+	const rect2 = el2.getBoundingClientRect()
+
+	return !(
+		rect1.right < rect2.left || 
+		rect1.left > rect2.right || 
+		rect1.bottom < rect2.top || 
+		rect1.top > rect2.bottom
+	)
+}
+
 export const TextView = Backbone.View.extend({
 	template: _.template(
 		`<div id="text-view">
@@ -41,22 +53,26 @@ export const TextView = Backbone.View.extend({
 			</div>`
 		)
 
-		this.model = dataStructure.get('texts').get(options.id);
-		const promises = Promise.all(
-			this.model.get('folio')
-				.map(folio =>
-					folio.get('text') ?
-						folio.get('text') :
-						folio
-							.fetch({
-								dataType: 'html',
-								error: function (_model, response, _options) {
-									console.log("Error fetching folium", response)
-								}
-							})
-				)
-		)
-		promises.then(() => this.render())
+		this.model = dataStructure.get('texts').get(options.id)
+		this.model
+			.fetch({
+				dataType: 'html',
+				error: function (_model, response, _options) {
+					console.log("Error fetching text", response)
+				}
+			})
+			.then(() => this.render())
+		// // console.log(this.model.get('htmlSource'))
+		// fetch()
+		// const promises = Promise.all(
+		// 	this.model.get('folio')
+		// 		.map(folio =>
+		// 			folio.get('text') ?
+		// 				folio.get('text') :
+		// 				folio
+		// 		)
+		// )
+		// promises.then(() => this.render())
 
 		displaySettings.on('change:afkortingen-oplossen',
 			this.renderAfkortingen, this
@@ -79,7 +95,7 @@ export const TextView = Backbone.View.extend({
 			this.render();
 		}, this);
 
-		this.render();
+		// this.render();
 	},
 	// get initialize() {
 	// 	return this._initialize;
@@ -116,7 +132,7 @@ export const TextView = Backbone.View.extend({
 			'nummering', displaySettings.get('nummering')
 		);
 		if (displaySettings.get('nummering')) {
-			console.log("Nummering type", displaySettings.get('nummering-type'));
+			// console.log("Nummering type", displaySettings.get('nummering-type'));
 			this.$('.right.text')
 				.removeClass('regel vers')
 				.addClass(displaySettings.get('nummering-type'))
@@ -198,18 +214,43 @@ export const TextView = Backbone.View.extend({
 		this.$el.html(this.template());
 
 		// const folio = this.model.get('folio'), self = this;
-		const self = this;
+		// const self = this;
 		this.$('.heading .tekst span').text(this.model.get('id'));
 
 		this.$('.folio').empty();
 
-		_.each(this.model.get('folio'), function (f) {
-			self.$('.folio').append( self.folium_template({
-				folium: f.id,
-				image: f.get('thumbnail'),
-				text: f.get('text') || ''
-			}) );
-		});
+		this.$('.folio').html(
+			`<div class="folium folium-<%- folium %>">
+				<div class="left">
+				</div>
+				<div class="right text">
+					${this.model.get('text')}
+				</div>
+				<div style="clear: both;"></div>
+			</div>`
+		)
+
+		this.$('.folionr a').each((index, el) => {
+			const href = el.getAttribute('href')
+			const foliumId = href.replace(/^folium\//, '')
+			const folium = dataStructure.get('folio').get(foliumId)
+
+			$(el).replaceWith(`
+				<a class="select-folium" href="${href}">
+					<img src="${folium.get('thumbnail')}" alt="${foliumId}">
+					Bekijk folium ${foliumId}
+				</a>
+			`)
+		})
+
+		let prevElement
+		this.$('.folionr').toArray().forEach((el, i) => {
+			if (i !== 0 && hasOverlap(prevElement, el)) {
+				const diff = prevElement.getBoundingClientRect().bottom - el.getBoundingClientRect().top
+				el.style.marginTop = `${diff}px`
+			}
+			prevElement = el
+		})
 
 		this.renderPrevious()
 		this.renderNext()

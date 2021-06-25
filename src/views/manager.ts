@@ -1,10 +1,5 @@
-// (function() {
-// 	define(['backbone', 'app/config', 'app/collections/views'], function(Backbone, config, currentViews) {
-// 		const ViewManager, selfDestruct;
-
 import Backbone from 'backbone'
 import { config } from '../config'
-// import $ from'jquery'
 
 class ViewManager {
 	main = $(config.viewManagerRoot);
@@ -36,10 +31,16 @@ class ViewManager {
 		if (!view) {
 			this.main.html('');
 		} else {
+			console.log('viewman', 'show')
 			// TODO fix
 			// @ts-ignore
 			this.main.html(view.$el);
+			this.main.show()
 		}
+	}
+
+	hide() {
+		this.main.hide()
 	}
 }
 
