@@ -1,17 +1,5 @@
-// define([
-// 	'backbone',
-// 	'app/config',
-// 	'app/app',
-// 	'app/router',
-// 	'app/models/search',
-// 	'app/models/displaysettings',
-// 	'app/views/textbrowser',
-// 	'app/views/foliobrowser'],
-// 	function (Backbone, config, App, router, search, displaySettings, TextBrowser, FolioBrowser) {
-
 import Backbone from "backbone"
-import { debounce } from "underscore";
-// import $ from'jquery'
+// import { debounce } from "underscore";
 import { displaySettings } from "../models/displaysettings";
 import { search } from "../models/search";
 import { router } from "../router";
@@ -47,22 +35,6 @@ export const NavigationView = Backbone.View.extend({
 		Backbone.Events.on('folium:select', this.show_view_options)
 
 		this.render()
-
-		const debouncedRender = debounce(() => {
-			['#folio-browser', '#text-browser'].forEach(selector => {
-				const browser = this.$(selector)
-				if (browser.is(':visible')) {
-					browser
-						.find('.scroll-pane')
-						.jScrollPane()
-				}
-			})
-			// console.log(this.$('#text-browser').is(':visible'))
-
-			// this.$('.inner').css('width', w);
-			// console.log('setting')
-		}, 500)
-		window.addEventListener('resize', debouncedRender)
 	},
 	show_folio_browser: function (e) {
 		this.$('#tabs li').removeClass('active')
@@ -128,7 +100,7 @@ export const NavigationView = Backbone.View.extend({
 		this.$('li.folio-browser').addClass('active');
 		this.$('#search-view').hide();
 		this.$('#folio-browser').show()
-			.find('.scroll-pane').jScrollPane();
+			// .find('.scroll-pane').jScrollPane();
 		// jscrollpane requires a reinit because it can't deal
 		// with two scroll panes on the same page, somehow
 
@@ -144,7 +116,10 @@ export const NavigationView = Backbone.View.extend({
 		this.$('li.text-browser').addClass('active');
 		this.$('#search-view').hide();
 		this.$('#text-browser').show()
-			.find('.scroll-pane').jScrollPane();		
+		// 	.find('.scroll-pane').jScrollPane()		
+
+		// this.textBrowserJspApi = element.data('jsp')
+
 		return this;
 	},
 	hideTextBrowser: function () {
@@ -244,7 +219,7 @@ export const NavigationView = Backbone.View.extend({
 			if (q)
 				this.$('#search-view input').val(decodeURIComponent(q));
 
-		this.$('#folio-browser .scroll-pane').jScrollPane();
+		// this.$('#folio-browser .scroll-pane').jScrollPane();
 		// console.log("Rendered", this.$('#view-options .weergave-schrijfproces').is('active'))
 
 		return this;

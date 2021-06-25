@@ -11,8 +11,8 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 	padding 24px 20px 17px 20px
 	position relative
 
-	.horizontal-only
-		height auto
+	// .horizontal-only
+	// 	height auto
 		// min-height 200px
 
 	.scroll-pane
@@ -76,7 +76,7 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 			stroke-width 5
 
 #folio-browser
-	width "calc(100% - 48px)"
+	// width "calc(100% - 48px)"
 
 	.folium-thumbnail
 		position relative
@@ -140,10 +140,24 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 		color-stop(0.76, rgb(0,0,0))
 	)
 
+	#text-browser-filter
+		position absolute
+		top 9px
+		text-align center
+		width 100%
+
+		input
+			background #EEE
+			border-radius 1px
+			border none
+			padding 2px 4px
+			width 240px
+
 	ul
-		font-size 12px
-		line-height 22px
 		columns 200px auto
+		font-size 12px
+		height 200px
+		line-height 22px
 
 		li
 			cursor pointer
@@ -166,5 +180,5 @@ See ./src/views/foliobrowser and ./src/views/textbrowser
 			.capitalsize1
 				display inline
 
-	.inner
-		width 4600px
+	// .inner
+	// 	width 4600px

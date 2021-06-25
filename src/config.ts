@@ -1,6 +1,6 @@
 // export const PROJECT_ID = 'MVN-BRUSSEL-KB-II-116'
-export const PROJECT_ID = 'HBSR'
-// export const PROJECT_ID = 'SERRURE'
+// export const PROJECT_ID = 'HBSR'
+export const PROJECT_ID = 'SERRURE'
 // export const PROJECT_ID = 'BS'
 
 const SEARCH_ENV = 'test.'
