@@ -2,7 +2,6 @@ import Backbone from "backbone"
 import _ from "underscore"
 
 import { dataStructure } from "../../models/structure";
-import { viewManager } from "../manager";
 import { displaySettings } from '../../models/displaysettings'
 import { BaseText } from './base'
 
@@ -32,8 +31,6 @@ export const TextView = Backbone.View.extend({
 
 	initialize: function (options) {
 		_.extend(this, BaseText)
-
-		viewManager.register(this);
 
 		this.options = options;
 

@@ -2,7 +2,6 @@ import Backbone from "backbone"
 import _ from "underscore"
 import { displaySettings } from "../../models/displaysettings";
 import { dataStructure } from "../../models/structure";
-import { viewManager } from "../manager";
 import { BaseText } from "./base";
 
 function showSpinner() {
@@ -42,8 +41,6 @@ export const FoliumView = Backbone.View.extend({
 
 	initialize: function (options) {
 		_.extend(this, BaseText)
-
-		viewManager.register(this)
 
 		if (options.parent) this.parent = options.parent
 
