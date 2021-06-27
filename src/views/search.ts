@@ -1,5 +1,4 @@
 import Backbone from "backbone";
-// import { viewManager } from "./manager";
 import { search } from '../models/search'
 import _ from "underscore";
 
@@ -17,8 +16,6 @@ export const SearchView = Backbone.View.extend({
 	id: 'search-results',
 
 	initialize: function () {
-		// viewManager.register(this)
-
 		search.on('searching', this.showSpinner, this);
 		search.on('change:results', () => { console.log('onchange'); this.renderResults() }, this);
 
@@ -29,7 +26,6 @@ export const SearchView = Backbone.View.extend({
 	},
 
 	render: function () {
-		console.log('render')
 		this.$el.html(
 			`<div class="spinner"><img src="/static/img/ajax-loader.gif"> Aan het zoeken...</div>
 			<div class="results">
@@ -49,9 +45,7 @@ export const SearchView = Backbone.View.extend({
 			this.$('.number-of-results').hide()
 			this.$('.no-search').show()
 		}
-		// } else {
-		// 	this.renderResults()
-		// }
+
 		return this
 	},
 
@@ -78,7 +72,6 @@ export const SearchView = Backbone.View.extend({
 
 	renderResults: function () {
 		const results = search.get('results')
-		console.log('render results', results?.length)
 		if (results == null) return this
 
 		this.hideSpinner()

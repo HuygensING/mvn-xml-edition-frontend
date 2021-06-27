@@ -14,7 +14,7 @@ annotationFormat()
 	float left
 	font-size 11px
 	color #777
-	font-family sans-serif
+	font-family bodyFont
 	width 140px
 	line-height 16px
 	font-style normal
@@ -37,13 +37,11 @@ annotationFormat()
 	font-size 1.4em
 	font-weight 300
 
-
 .capitalsize1
 	display inline-block
 	font-size .9em
 	font-weight 300
-	font-family Arial, Helvetica, sans-serif
-	height 50px
+	font-family bodyFont
 
 .superscript
 	position relative
@@ -230,7 +228,7 @@ span.hide
 
 
 .linenum
-	font-family sans-serif
+	font-family bodyFont
 	font-size 10px
 	color grey
 	margin-left -30px
@@ -240,21 +238,21 @@ span.hide
 .textnum
 	display block
 	text-align right
-	font-family sans-serif
+	font-family bodyFont
 	font-size 11px
 
 
-linegroup_start, linegroup_end
-	display block
-	padding .5em
+// linegroup_start, linegroup_end
+// 	display block
+// 	padding .5em
 
 
-linegroup_start + linegroup_end
-	padding 0
+// linegroup_start + linegroup_end
+// 	padding 0
  // don't double up on padding
 
-linegroup_start + br, linegroup_end + br
-	display none
+// linegroup_start + br, linegroup_end + br
+// 	display none
 
 
 .textnum + linegroup_start

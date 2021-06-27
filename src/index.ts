@@ -1,11 +1,9 @@
-// import $ from'jquery'
-// import { App } from './app/app';
 import { config } from './config'
 import { dataStructure } from './models/structure'
-import { AppView } from './views/app'
 import { router } from './router'
 
 import './stylus/index.styl'
+import { NavigationView } from './views/navigation'
 
 document.addEventListener("DOMContentLoaded", async function() {
 	$('#navigation').load(config.headerURL)
@@ -17,11 +15,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 		return
 	}
 
-	// Pass the rootSelector as an option to AppView,
-	// it will select the root element automagically
-	new AppView({ el: config.rootSelector })
-
-	this.router = router.start()
+	new NavigationView()
+	router.start()
 
 	$(config.rootSelector).on('click', 'a:not([target])', function(e) {
 		e.preventDefault()

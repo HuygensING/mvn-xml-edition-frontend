@@ -16,11 +16,11 @@ function hideSpinner() {
 }
 
 export const BaseText = Backbone.View.extend({
-	initialize: function (options) {
-		if (options.parent) this.parent = options.parent
+	id: 'text-container',
 
-		if (options.id) {
-			this.model = dataStructure.get(this.collectionName).get(options.id);
+	initialize: function (options) {
+		if (options.modelId) {
+			this.model = dataStructure.get(this.collectionName).get(options.modelId);
 
 			// Model has been fetched, so render instantly
 			if (this.model.get('text')) {
@@ -30,7 +30,6 @@ export const BaseText = Backbone.View.extend({
 			} else {
 				showSpinner()
 
-				// this.model.once('change', () => this.render())
 				this.model
 					.fetch({
 						dataType: 'html',
@@ -50,6 +49,17 @@ export const BaseText = Backbone.View.extend({
 	},
 
 	render: function() {
+		this.$el.html(
+			`<div class="heading">
+				<a href="" class="previous">&#9668; <span></span></a>
+				<span class="tekst">${this.modelName} <span class="nr">${this.model.get('id')}</span></span>
+				<a href="" class="next"><span></span> &#9658;</a>
+			</div>
+			<div class="text">
+				${this.model.get('text')}
+			</div>`
+		)
+
 		this.renderPrevious()
 		this.renderNext()
 		this.renderNummering()

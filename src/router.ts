@@ -18,7 +18,7 @@ const AppRouter = Backbone.Router.extend({
 		'': 'show_home'
 	},
 
-	initialize: function (options) {
+	initialize: function(options) {
 		if (options && options.app) {
 			this.app = options.app;
 		}
@@ -26,7 +26,7 @@ const AppRouter = Backbone.Router.extend({
 		this.searchView = new SearchView();
 	},
 
-	start: function () {
+	start: function() {
 		Backbone.history.start({
 			pushState: true,
 			// root: "/" + PROJECT_ID + "/"
@@ -46,32 +46,32 @@ const AppRouter = Backbone.Router.extend({
 	// 	return this
 	// },
 
-	show_home: function () {
+	show_home: function() {
 		this.show_folium('1r')
 	},
 
-	show_folium: function (id, num) {
-		dataStructure.set('active-folium', id)
+	show_folium: function(modelId, num) {
+		dataStructure.set('active-folium', modelId)
 		dataStructure.set('text-linenum', num)
 
-		this.show(new FoliumView({ id }))
+		this.show(new FoliumView({ modelId }))
 	},
 
-	show_text_folium: function (id, folium) {
-		dataStructure.set('active-text', id)
+	show_text_folium: function(modelId, folium) {
+		dataStructure.set('active-text', modelId)
 		dataStructure.set('text-folium', folium)
 
-		this.show(new TextView({ id, folium }))
+		this.show(new TextView({ modelId, folium }))
 	},
 
-	show_text: function (id, num) {
-		dataStructure.set('active-text', id)
+	show_text: function(modelId, num) {
+		dataStructure.set('active-text', modelId)
 		dataStructure.set('text-linenum', num)
 
-		this.show(new TextView({ id }))
+		this.show(new TextView({ modelId }))
 	},
 
-	show_search: function (query) {
+	show_search: function() {
 		this.show(this.searchView)
 	},
 

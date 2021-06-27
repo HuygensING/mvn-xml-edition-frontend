@@ -24,17 +24,6 @@ body
 	margin-top 20px
 	font-size 12px
 
-	.text
-		font-size 16px
-		font-family "Junicode", "Arial unicode MS", "times new roman", serif
-		font-size 16px
-		line-height 26px
-
-		a
-			text-decoration none
-			color bodyNavColor
-			cursor pointer
-
 a
 	text-decoration none
 	color defaultGray
@@ -150,60 +139,59 @@ a
 	ul
 		float left
 
-#folium, #text
-	position relative
+// #folium, #text
+// 	position relative
 
 // #folium
 // 	width folioWidth
 // 	// margin-right foliumMargin
 // 	img	width folioWidth height auto
 
-#sidebar
+.belongs-to
+	// width 120px
+	color defaultGray
+	margin-bottom 65px
 	left textWidth + annotationMargin
 	position absolute
 	top 0
 	width annotationWidth
 
-	.line
-		margin-top 35px
-		border-top 1px solid viewMenuActiveColor
+	// .line
+	// 	margin-top 35px
+	// 	border-top 1px solid viewMenuActiveColor
 
-	.belongs-to
-		// width 120px
-		color defaultGray
-		margin-bottom 65px
 
-	.annotations
-		span.noteright
-			// position absolute
-			formatAsAnnotation()
+	// .annotations
+	// 	span.noteright
+	// 		// position absolute
+	// 		formatAsAnnotation()
 
-#text
-	margin-left textGutterLeft
-	width textWidth
+// #text
+// 	margin-left textGutterLeft
+// 	width textWidth
 
-	.nav
-		line-height 35px
-		height 35px
-		border-bottom 1px solid viewMenuActiveColor
-		margin-bottom 20px
-		text-align center
+// 	.nav
+// 		line-height 35px
+// 		height 35px
+// 		border-bottom 1px solid viewMenuActiveColor
+// 		margin-bottom 20px
+// 		text-align center
 
-		.previous
-			float left
+// 		.previous
+// 			float left
 
-		.next
-			float right
+// 		.next
+// 			float right
 
-		.next, .previous
-			color bodyNavColor
-			cursor pointer
-			text-decoration none
-			no-select()
+// 		.next, .previous
+// 			color bodyNavColor
+// 			cursor pointer
+// 			text-decoration none
+// 			no-select()
 
-		.folium
-			font-weight 500
-			font-size 18px
+// 		.folium
+// 			font-weight 500
+// 			font-size 18px
 
 #main
 	mainCenter()
@@ -211,18 +199,39 @@ a
 	a
 		color bodyNavColor
 
-#text-view
-	// margin-left 32px
+#text-container
 	display grid
-	grid-template-columns auto (200px - textGutterLeft) + totalTextWidth auto
 	grid-template-rows 35px auto
 
+	&.folium
+		grid-template-columns auto totalTextWidth 32px 
+
+		& > .text, & > .heading
+			margin-left 64px
+
+		& > #folium
+			position sticky
+			top 30px
+
+		& > .text
+			span.fw
+				display: block
+				text-align: center
+
+	&.tekst
+		grid-template-columns auto (200px - textGutterLeft) + totalTextWidth auto
+
+		& > .text, & > .heading
+			margin-left 200px
+
+		& > .text
+			span.fw
+				display: none
+
 	.heading
-		padding-left 200px // left margin
 		text-align center
 		width textWidth
 		grid-column 2
-		// height 35px
 
 		span.tekst
 			font-size 20px
@@ -234,189 +243,188 @@ a
 		.next
 			float right
 
-	.folio
-		grid-row 2
+	.text
+		border-top 1px solid viewMenuColor
+		font-family "Junicode", "Arial unicode MS", "times new roman", serif
+		font-size 16px
 		grid-column 2
+		grid-row 2
+		line-height 26px
+		margin-bottom 160px
+		padding-top 20px
+		position relative
+		text-align left
+		width textWidth
 
-		.folium
-			border-top 1px solid viewMenuColor
-			margin-bottom 34px
-			padding-top 20px
-			position relative
+		a
+			text-decoration none
+			color bodyNavColor
+			cursor pointer
 
-			.folionr
+		.folionr
+			font-size 11px
+			position absolute
+			left -200px
+
+			h5
+				color defaultGray
+				font-weight normal
 				font-size 11px
-				position absolute
-				left -200px
+				padding 0
+				margin 0 0 20px
 
-				h5
-					color defaultGray
-					font-weight normal
-					font-size 11px
-					padding 0
-					margin 0 0 20px
+			img
+				width 70px
+				height auto
+				display block
 
-				img
-					width 70px
-					height auto
-					display block
+			.select-folium
+				display inline-block
+				color bodyNavColor
+				no-select()
 
-				.select-folium
-					display inline-block
-					color bodyNavColor
-					no-select()
+		span.rubric
+			display inline
+			color red
+		
+		span.rubricated
+			font-weight bold
 
-			.text
-				margin-left 200px
-				text-align left
-				width textWidth
+		.mentioned
+			font-style italic
+			font-size 13px
+			line-height 16px
 
-	// .noteright
-	// 	left 500px
+		.footnote
+				display block
+				float right
+				width 45%
+				position relative
+				left -2em
+				color grey
 
-.text
-	span.rubric
-		display inline
-		color red
-	
-	span.rubricated
-		font-weight bold
+		.grey
+				color grey
 
-	.mentioned
-		font-style italic
-		font-size 13px
-		line-height 16px
+		.green
+				color rreen
 
-	.footnote
-			display block
-			float right
-			width 45%
-			position relative
-			left -2em
-			color grey
+		.italic
+			font-style italic
 
-	.grey
-			color grey
+		.underline
+			text-decoration underline
 
-	.green
-			color rreen
+		.bold
+			font-weight bold
 
-	.italic
-		font-style italic
+		span.del
+			text-decoration line-through
+			color blue
 
-	.underline
-		text-decoration underline
-
-	.bold
-		font-weight bold
-
-	span.del
-		text-decoration line-through
-		color blue
-
-	p > span:not([class])
-		formatAsAnnotation()
-
-	span.del, span.add
-		& > span.noteright
+		p > span:not([class])
 			formatAsAnnotation()
 
-	span.noteright
-		position absolute
-		left textWidth + annotationMargin
-		formatAsAnnotation()
+		span.del, span.add
+			& > span.noteright
+				formatAsAnnotation()
 
-		abbr
-			display inline
-			font-size 14px
+		span.noteright
+			position absolute
+			left textWidth + annotationMargin
+			formatAsAnnotation()
 
-	span.ital
-			font-styleitalic
+			abbr
+				display inline
+				font-size 14px
 
-	span.moveleft
-		 position relative
-			left50px
+		span.ital
+				font-styleitalic
 
-	span.restore
-			borderthin solid purple
+		span.moveleft
+			position relative
+				left50px
 
-	span.romannumber
-		font-variant small-caps
+		span.restore
+				borderthin solid purple
 
-	span.noteleft
-		border-radius 10px
-		font-size 16px
-		left -20px
-		line-height 10px
-		margin-top 6px
-		padding 2px
-		position absolute
+		span.romannumber
+			font-variant small-caps
 
-	// span.folionr
-	// 	position absolute
-	// 	left 300px
+		span.noteleft
+			border-radius 10px
+			font-size 16px
+			left -20px
+			line-height 10px
+			margin-top 6px
+			padding 2px
+			position absolute
 
-	span.margin
-		width 100px
-		position absolute
-		left -120px
+		// span.folionr
+		// 	position absolute
+		// 	left 300px
 
-	span.transl
-		display none
-		position absolute
-		left 450px
+		span.margin
+			width 100px
+			position absolute
+			left -120px
 
-	span.wvk
-		display none
-		position absolute
-		left 450px
+		span.transl
+			display none
+			position absolute
+			left 450px
 
-	span.comment
-		display none
-		position absolute
-		left 450px
+		span.wvk
+			display none
+			position absolute
+			left 450px
 
-	span.intro
-		display none
-		position absolute
-		left 450px
+		span.comment
+			display none
+			position absolute
+			left 450px
 
-	span.annotwg
-		display none
-		position absolute
-		left 450px
+		span.intro
+			display none
+			position absolute
+			left 450px
 
-	span.annotvm
-		display none
-		position absolute
-		left 450px
+		span.annotwg
+			display none
+			position absolute
+			left 450px
 
-	span.annotvdg
-		display none
-		position absolute
-		left 450px
+		span.annotvm
+			display none
+			position absolute
+			left 450px
 
-	span.annotbd
-		display none
-		position absolute
-		left 450px
+		span.annotvdg
+			display none
+			position absolute
+			left 450px
 
-	span.hide
-		display none
+		span.annotbd
+			display none
+			position absolute
+			left 450px
 
-	.versenum,
-	.linenum
-		display block
-		visibility hidden
-		font-family sans-serif
-		font-size 10px
-		color defaultGray
-		margin-left lineVerseNumPos
-		float left
+		span.hide
+			display none
 
-	.textnum, .folionr
-		color bodyNavColor
-		cursor pointer
+		.versenum,
+		.linenum
+			display block
+			visibility hidden
+			font-family bodyFont
+			font-size 10px
+			color defaultGray
+			margin-left lineVerseNumPos
+			float left
+
+		.textnum, .folionr
+			color bodyNavColor
+			cursor pointer
 
 .folium .text
 	position relative
@@ -446,17 +454,6 @@ span.ulr
 
 span.nr
 	font-size: 18px !important
-
-#folium-view
-	display grid
-	grid-template-columns auto totalTextWidth
-
-	span.fw
-		display: block
-		text-align: center
-
-#text-view span.fw
-	display: none
 
 #text .text span.noteleft span.rubric
 	line-height: 10px

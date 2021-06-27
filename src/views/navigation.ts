@@ -28,11 +28,7 @@ export const NavigationView = Backbone.View.extend({
 		'click #text-browser .close': 'show_view_options'
 	},
 
-	initialize: function (options) {
-		if (options.parent) this.parent = options.parent
-		if (options.folio) this.folio = options.folio
-		if (options.texts) this.texts = options.texts
-
+	initialize: function (_options) {
 		Backbone.Events.on('folium:select', this.show_view_options)
 
 		this.render()
@@ -66,12 +62,8 @@ export const NavigationView = Backbone.View.extend({
 			vo.find('li.nummering .opties .vers').addClass('active');
 		}
 
-		this.foliobrowser = new FolioBrowser({
-			collection: this.folio
-		});
-		this.textbrowser = new TextBrowser({
-			collection: this.texts
-		});
+		new FolioBrowser()
+		new TextBrowser()
 
 		// const search = new SearchView();
 		// this.$('#search-view .results').append(search.$el)

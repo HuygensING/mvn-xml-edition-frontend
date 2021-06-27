@@ -5,37 +5,22 @@ import { BaseText } from "./base"
 export const TextView = BaseText.extend({
 	collectionName: 'texts',
 	modelName: 'Tekst',
+	className: 'tekst',
 
 	render: function () {
-		this.$el.html(
-			`<div id="text-view">
-				<div class="heading">
-					<a href="" class="previous">&#9668; <span></span></a>
-					<span class="tekst">${this.modelName} <span class="nr">${this.model.get('id')}</span></span>
-					<a href="" class="next"><span></span> &#9658;</a>
-				</div>
-				<div class="folio">
-					<div class="folium folium-${this.model.get('id')}">
-						<div class="text">
-							${this.model.get('text')}
-						</div>
-					</div>
-				</div>
-			</div>`
-		)
+		BaseText.prototype.render.apply(this)
+
+		this.renderFacsimileThumbs()
 
 		if(dataStructure.get("text-linenum")) {
 			setTimeout(this.lineJump.bind(this, dataStructure.get("text-linenum"), "line"), 100);
 			dataStructure.set("text-linenum", null);
 		}
+
 		if(dataStructure.get("text-folium")) {
 			setTimeout(this.lineJump.bind(this, dataStructure.get("text-folium"), "folium"), 100);
 			dataStructure.set("text-folium", null);
 		}
-
-		this.renderFacsimileThumbs()
-
-		BaseText.prototype.render.apply(this)
 
 		return this
 	},
