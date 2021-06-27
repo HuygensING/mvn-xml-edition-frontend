@@ -8,7 +8,6 @@ import { router } from './router'
 import './stylus/index.styl'
 
 document.addEventListener("DOMContentLoaded", async function() {
-
 	$('#navigation').load(config.headerURL)
 
 	try {

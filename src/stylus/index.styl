@@ -12,8 +12,7 @@ body
 	padding 0
 	margin 0
 
-#container #text .text.nummering,
-#container .right.text.nummering
+#container .text.nummering
 	&.vers
 		.versenum
 			visibility visible
@@ -54,41 +53,13 @@ a
 	left 0
 	position absolute
 
-#navigation ul, #views ul,	#view-options ul
+#views ul,	#view-options ul
 	list-style none
 	padding 0
 	// overflow auto
 
-#navigation ul,	#view-options ul
+#view-options ul
 	overflow auto
-
-#navigation
-	margin-top 15px
-	position relative
-
-	ul
-		display inline-block
-		margin-left 45px
-		margin-top 8px
-		margin 8px 0 10px 45px
-		line-height 45px
-		li
-			float left
-			margin-right 15px
-			&:last-child
-				margin-right 0
-
-	a
-		text-decoration none
-		color textColor
-
-		&.active
-			font-weight bold
-
-	#logo
-		position absolute
-		right 0
-		top 0
 
 #tabs ul
 	margin 0
@@ -115,7 +86,8 @@ a
 			padding-top 8px
 			color viewOptionsActiveColor
 
-		&.folio-browser.active, &.text-browser.active
+		&.folio-browser.active,
+		&.text-browser.active
 			background-color black
 			color white
 
@@ -302,9 +274,7 @@ a
 	// .noteright
 	// 	left 500px
 
-#container .folium .text,
-#text .text,
-.right.text
+.text
 	span.rubric
 		display inline
 		color red
@@ -448,14 +418,13 @@ a
 		color bodyNavColor
 		cursor pointer
 
-.folium .right.text
+.folium .text
 	position relative
 
 .folium span
     font-size 18px
 
-#text .solve,
-#text-view .right.text.solve
+.text.solve
 	&.cursive
 		ex
 			font-style italic

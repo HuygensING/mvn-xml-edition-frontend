@@ -47,12 +47,12 @@ export const AppView = Backbone.View.extend({
 		this.search.$el.hide();
 		this.folium.$el.show();
 	},
-	setText: function (id) {
-		const model = this.texts.get(id);
-		this.selected_text = model;
-		Backbone.Events.trigger('text:select', model);
-		this.showText();
-	},
+	// setText: function (id) {
+	// 	const model = this.texts.get(id);
+	// 	this.selected_text = model;
+	// 	Backbone.Events.trigger('text:select', model);
+	// 	this.showText();
+	// },
 	showText: function () {
 		this.folium.$el.hide();
 		this.search.$el.hide();
