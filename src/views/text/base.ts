@@ -141,14 +141,11 @@ export const BaseText = Backbone.View.extend({
 	},
 
 	toggleAfkortingenCursief: function () {
-
-		console.log(this.$('.text'))
 		this.$('.text')
 			.toggleClass('cursive', displaySettings.get('afkortingen-cursief'))
 	},
 
 	toggleNummering: function (nummering) {
-		console.log('toggle num')
 		const text = this.$('.text')
 
 		text.toggleClass('nummering', displaySettings.get('nummering'))
