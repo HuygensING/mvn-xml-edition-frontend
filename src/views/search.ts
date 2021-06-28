@@ -17,7 +17,8 @@ export const SearchView = Backbone.View.extend({
 
 	initialize: function () {
 		search.on('searching', this.showSpinner, this);
-		search.on('change:results', () => { console.log('onchange'); this.renderResults() }, this);
+		search.on('change:results', () => { this.renderResults() }, this);
+		search.on('search:error', () => { this.renderFailure('Er is een fout opgetreden bij het zoeken') }, this);
 
 		this.render()
 
@@ -33,7 +34,7 @@ export const SearchView = Backbone.View.extend({
 			</div>
 			<table class="results"></table>
 			<p class="no-search">Geen zoekopdracht opgegeven.</p>
-			<p class="error">Error</p>`
+			<p class="error"></p>`
 		)
 
 		// by default only show "Not searched yet" message
