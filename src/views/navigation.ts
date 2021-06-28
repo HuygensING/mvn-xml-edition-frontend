@@ -39,7 +39,6 @@ export const NavigationView = Backbone.View.extend({
 		this.hideTextBrowser()
 		this.show_folio_browser()
 
-		// console.log("Rendering", this.$('#view-options .weergave-schrijfproces').is('active'))
 		const vo = this.$('#view-options');
 		if (displaySettings.get('afkortingen-oplossen')) {
 			vo.find('.afkortingen span.oplossen').addClass('active');
@@ -49,7 +48,6 @@ export const NavigationView = Backbone.View.extend({
 		}
 		if (displaySettings.get('weergave-schrijfproces')) {
 			vo.find('.weergave-schrijfproces').addClass('active');
-			// console.log("Set", this.$('#view-options .weergave-schrijfproces').is('active'))
 		}
 		if (displaySettings.get('nummering')) {
 			vo.find('li span.nummering').addClass('active');
