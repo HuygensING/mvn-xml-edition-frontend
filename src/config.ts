@@ -23,7 +23,6 @@ const SEARCH_ENV = 'test.'
 
 export const config = {
 	rootSelector: '#app',
-	viewManagerRoot: '#main .view',
 	// urlPrefix: '/' + PROJECT_ID + '/',
 	searchURL: 'http://' + SEARCH_ENV + 'api.mvn.huygens.knaw.nl/editions/' + PROJECT_ID +  '/search',
 	headerURL: 'http://mvn.huygens.knaw.nl/?page_id=65'

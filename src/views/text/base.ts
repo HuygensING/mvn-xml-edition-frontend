@@ -41,11 +41,19 @@ export const BaseText = Backbone.View.extend({
 			}
 		}
 
-		displaySettings.on('change:afkortingen-oplossen', this.renderAfkortingen, this)
-		displaySettings.on('change:afkortingen-cursief', this.renderAfkortingenCursive, this)
-		displaySettings.on('change:weergave-schrijfproces', this.renderSchrijfProces, this)
-		displaySettings.on('change:nummering', this.renderNummering, this)
-		displaySettings.on('change:nummering-type', this.renderNummering, this)
+		displaySettings.on('change:afkortingen-oplossen', this.toggleAfkortingen, this)
+		displaySettings.on('change:afkortingen-cursief', this.toggleAfkortingenCursief, this)
+		displaySettings.on('change:weergave-schrijfproces', this.toggleSchrijfProces, this)
+		displaySettings.on('change:nummering change:nummering-type', this.toggleNummering, this)
+	},
+
+	remove() {
+		displaySettings.off('change:afkortingen-oplossen', this.toggleAfkortingen, this)
+		displaySettings.off('change:afkortingen-cursief', this.toggleAfkortingenCursief, this)
+		displaySettings.off('change:weergave-schrijfproces', this.toggleSchrijfProces, this)
+		displaySettings.off('change:nummering change:nummering-type', this.toggleNummering, this)
+
+		Backbone.View.prototype.remove.apply(this)
 	},
 
 	render: function() {
@@ -62,10 +70,11 @@ export const BaseText = Backbone.View.extend({
 
 		this.renderPrevious()
 		this.renderNext()
-		this.renderNummering()
-		this.renderAfkortingen()
-		this.renderAfkortingenCursive()
-		this.renderSchrijfProces()
+
+		this.toggleNummering()
+		this.toggleSchrijfProces()
+		this.toggleAfkortingen()
+		this.toggleAfkortingenCursief()
 
 		setTimeout(() => this.renderAnnotations(), 0)
 
@@ -126,7 +135,20 @@ export const BaseText = Backbone.View.extend({
 		});
 	},
 
-	renderNummering: function (nummering) {
+	toggleAfkortingen: function () {
+		this.$('.text')
+			.toggleClass('solve', displaySettings.get('afkortingen-oplossen'))
+	},
+
+	toggleAfkortingenCursief: function () {
+
+		console.log(this.$('.text'))
+		this.$('.text')
+			.toggleClass('cursive', displaySettings.get('afkortingen-cursief'))
+	},
+
+	toggleNummering: function (nummering) {
+		console.log('toggle num')
 		const text = this.$('.text')
 
 		text.toggleClass('nummering', displaySettings.get('nummering'))
@@ -138,7 +160,7 @@ export const BaseText = Backbone.View.extend({
 		}
 	},
 
-	renderSchrijfProces: function () {
+	toggleSchrijfProces: function () {
 		if (displaySettings.get('weergave-schrijfproces')) {
 			this.$('.subst').addClass('border');
 			this.$('.del').show();
@@ -150,20 +172,5 @@ export const BaseText = Backbone.View.extend({
 			this.$('.add').removeClass('green');
 			this.$('.rubric').removeClass('black');
 		}
-		return this;
-	},
-
-	renderAfkortingen: function () {
-		this.$('.text')
-			.toggleClass(
-				'solve', displaySettings.get('afkortingen-oplossen')
-			)
-	},
-
-	renderAfkortingenCursive: function () {
-		this.$('.text')
-			.toggleClass(
-				'cursive', displaySettings.get('afkortingen-cursief')
-			)
 	},
 })

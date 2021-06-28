@@ -1,11 +1,12 @@
 import Backbone from "backbone";
-import { config } from "./config";
 import { dataStructure } from "./models/structure";
 import { FoliumView } from './views/text/folium'
 import { TextView } from './views/text/text'
 import { SearchView } from './views/search'
 
 const AppRouter = Backbone.Router.extend({
+	currentView: null,
+
 	routes: {
 		'folium/:id': 'show_folium',
 		'folium/:id/regel/:num': 'show_folium',
@@ -76,8 +77,10 @@ const AppRouter = Backbone.Router.extend({
 	},
 
 	show: function(view) {
-		$(config.viewManagerRoot).html(view.$el)
-		$(config.viewManagerRoot).show()
+		if (this.currentView != null) this.currentView.remove()
+		$('#main .view').html(view.$el)
+		$('#main .view').show()
+		this.currentView = view
 	}
 });
 

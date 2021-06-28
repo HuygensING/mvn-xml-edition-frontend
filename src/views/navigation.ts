@@ -155,39 +155,39 @@ export const NavigationView = Backbone.View.extend({
 
 	// VIEW OPTIONS SUB
 	toggle_afkortingen: function (e) {
-		$(e.currentTarget).toggleClass('active');
-		const active = $(e.currentTarget).is('.active');
-		displaySettings.set('afkortingen-oplossen', active);
-	},
-
-	toggle_nummering_switch: function (e) {
-		$(e.currentTarget).toggleClass('active');
-		const active = this.$('.nummering span.nummering').is('.active');
-		displaySettings.set('nummering', active);
-	},
-
-	toggle_regel_nummering: function (e) {
-		$(e.currentTarget).siblings().removeClass('active');
-		$(e.currentTarget).addClass('active');
-		displaySettings.set('nummering-type', 'regel');
-	},
-
-	toggle_vers_nummering: function (e) {
-		$(e.currentTarget).siblings().removeClass('active');
-		$(e.currentTarget).addClass('active');
-		displaySettings.set('nummering-type', 'vers');
+		$(e.currentTarget).toggleClass('active')
+		const active = $(e.currentTarget).is('.active')
+		displaySettings.set('afkortingen-oplossen', active)
 	},
 
 	toggle_afkortingen_cursief: function (e) {
-		$(e.currentTarget).toggleClass('active');
-		const active = $(e.currentTarget).is('.active');
-		displaySettings.set('afkortingen-cursief', active);
+		$(e.currentTarget).toggleClass('active')
+		const active = $(e.currentTarget).is('.active')
+		displaySettings.set('afkortingen-cursief', active)
 	},
 
 	toggle_weergave_schrijfproces: function (e) {
-		$(e.currentTarget).toggleClass('active');
-		const active = $(e.currentTarget).is('.active');
-		displaySettings.set('weergave-schrijfproces', active);
+		$(e.currentTarget).toggleClass('active')
+		const active = $(e.currentTarget).is('.active')
+		displaySettings.set('weergave-schrijfproces', active)
+	},
+
+	toggle_nummering_switch: function (e) {
+		$(e.currentTarget).toggleClass('active')
+		const active = this.$('.nummering span.nummering').is('.active')
+		displaySettings.set('nummering', active)
+	},
+
+	toggle_regel_nummering: function (e) {
+		$(e.currentTarget).siblings().removeClass('active')
+		$(e.currentTarget).addClass('active')
+		displaySettings.set('nummering-type', 'regel')
+	},
+
+	toggle_vers_nummering: function (e) {
+		$(e.currentTarget).siblings().removeClass('active')
+		$(e.currentTarget).addClass('active')
+		displaySettings.set('nummering-type', 'vers')
 	},
 	// /VIEW OPTIONS SUB
 
