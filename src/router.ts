@@ -3,6 +3,7 @@ import { dataStructure } from "./models/structure";
 import { FoliumView } from './views/text/folium'
 import { TextView } from './views/text/text'
 import { SearchView } from './views/search'
+import { PROJECT_ID } from "./config";
 
 const AppRouter = Backbone.Router.extend({
 	currentView: null,
@@ -30,22 +31,11 @@ const AppRouter = Backbone.Router.extend({
 	start: function() {
 		Backbone.history.start({
 			pushState: true,
-			// root: "/" + PROJECT_ID + "/"
-			root: '/'
+			root: `/${PROJECT_ID}/`,
 		})
 
 		return this
 	},
-
-	// show: function (route) {
-	// 	if (route === 'show_search') return this
-
-	// 	new this.view(this.query)
-	// 	console.log('showing')
-	// 	this.query = {}; // clear for next view.
-
-	// 	return this
-	// },
 
 	show_home: function() {
 		this.show_folium('1r')

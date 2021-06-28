@@ -1,5 +1,5 @@
 import Backbone from "backbone"
-import { displaySettings } from "../../models/displaysettings"
+import { displaySettings, NummeringType } from "../../models/displaysettings"
 import { dataStructure } from "../../models/structure"
 
 function showSpinner() {
@@ -44,14 +44,14 @@ export const BaseText = Backbone.View.extend({
 		displaySettings.on('change:afkortingen-oplossen', this.toggleAfkortingen, this)
 		displaySettings.on('change:afkortingen-cursief', this.toggleAfkortingenCursief, this)
 		displaySettings.on('change:weergave-schrijfproces', this.toggleSchrijfProces, this)
-		displaySettings.on('change:nummering change:nummering-type', this.toggleNummering, this)
+		displaySettings.on('change:nummering-type', this.toggleNummering, this)
 	},
 
 	remove() {
 		displaySettings.off('change:afkortingen-oplossen', this.toggleAfkortingen, this)
 		displaySettings.off('change:afkortingen-cursief', this.toggleAfkortingenCursief, this)
 		displaySettings.off('change:weergave-schrijfproces', this.toggleSchrijfProces, this)
-		displaySettings.off('change:nummering change:nummering-type', this.toggleNummering, this)
+		displaySettings.off('change:nummering-type', this.toggleNummering, this)
 
 		Backbone.View.prototype.remove.apply(this)
 	},
@@ -145,16 +145,22 @@ export const BaseText = Backbone.View.extend({
 			.toggleClass('cursive', displaySettings.get('afkortingen-cursief'))
 	},
 
-	toggleNummering: function (nummering) {
+	toggleNummering: function () {
 		const text = this.$('.text')
+		text.removeClass('regel-nummering vers-nummering')
 
-		text.toggleClass('nummering', displaySettings.get('nummering'))
 
-		if (displaySettings.get('nummering')) {
-			text
-				.removeClass('regel vers')
-				.addClass(displaySettings.get('nummering-type'))
-		}
+		const nummering = displaySettings.get('nummering-type')
+		if (nummering === NummeringType.Line) text.addClass('regel-nummering')
+		if (nummering === NummeringType.Verse) text.addClass('vers-nummering')
+
+		// text.toggleClass('nummering', displaySettings.get('nummering'))
+
+		// if (displaySettings.get('nummering')) {
+		// 	text
+		// 		.removeClass('regel vers')
+		// 		.addClass(displaySettings.get('nummering-type'))
+		// }
 	},
 
 	toggleSchrijfProces: function () {

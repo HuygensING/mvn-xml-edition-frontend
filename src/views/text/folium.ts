@@ -32,9 +32,7 @@ export const FoliumView = BaseText.extend({
 		BaseText.prototype.render.apply(this)
 
 		this.renderFolium()
-
-		// TODO fix and move into grid
-		// this.renderBelongsTo()
+		this.renderBelongsTo()
 
 		// this.$el.toggleClass()
 
@@ -63,13 +61,14 @@ export const FoliumView = BaseText.extend({
 
 	renderBelongsTo: function () {
 		let tpl = ''
+
 		const texts = this.model.get('texts')
 		if (texts.length == 1) 
 			tpl = `Dit folium bevat (een deel van) <a href="/tekst/${texts[0]}">tekst ${texts[0]}</a>.`
 		else
-			tpl = `Dit folium bevat (delen van) de teksten: ${texts.map(t => ` <a href="/tekst/${t}">${t}</a> `).join('')}`
+			tpl = `Dit folium bevat (delen van) de teksten:<br/>${texts.map(t => ` <a href="/tekst/${t}">${t}</a> `).join('')}`
 
-		this.$('#text-container').append(`<div class="belongs-to">${tpl}</div>`)
+		this.$el.append(`<div class="belongs-to">${tpl}</div>`)
 	},
 
 	lineJump: function(id) {

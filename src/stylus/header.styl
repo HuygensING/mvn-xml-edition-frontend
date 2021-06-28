@@ -2,7 +2,7 @@ header
 	mainCenter()
 	display grid
 	grid-template-columns 32px fit-content(100%) auto 101px 32px	
-	grid-template-rows 1em auto 1em
+	grid-template-rows 1em auto
 
 	h1
 		font-size 2.5em
@@ -16,13 +16,13 @@ header
 			font-size inherit
 			font-weight 400
 
-	span#signature-tag
-		justify-self end
-		grid-row 3
-		grid-column 2
-		color #999
-		display block
-		font-size 11px
+		span#signature-tag
+			color #999
+			display block
+			font-family bodyFont
+			font-size 11px
+			font-weight normal
+			text-align right
 
 	.navigation
 		grid-column 2

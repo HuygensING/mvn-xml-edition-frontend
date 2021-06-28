@@ -1,5 +1,5 @@
 import Backbone from "backbone"
-import { displaySettings } from "../models/displaysettings"
+import { displaySettings, NummeringType } from "../models/displaysettings"
 import { search } from "../models/search"
 import { router } from "../router"
 import { FolioBrowser } from './browsers/foliobrowser'
@@ -17,9 +17,9 @@ export const NavigationView = Backbone.View.extend({
 		"click #view-options .afkortingen .oplossen": "toggle_afkortingen",
 		"click #view-options .afkortingen .cursief": "toggle_afkortingen_cursief",
 		"click #view-options .weergave-schrijfproces": "toggle_weergave_schrijfproces",
-		"click #view-options li.nummering span.nummering": "toggle_nummering_switch",
-		"click #view-options li.nummering .opties .regel": "toggle_regel_nummering",
-		"click #view-options li.nummering .opties .vers": "toggle_vers_nummering",
+		"click #view-options li.nummering": "toggle_nummering_switch",
+		// "click #view-options li.nummering .opties .regel": "toggle_regel_nummering",
+		// "click #view-options li.nummering .opties .vers": "toggle_vers_nummering",
 
 		'keyup #search-view': 'ifEnterDoSearch',
 		'click #search-view button': 'doSearch',
@@ -46,19 +46,23 @@ export const NavigationView = Backbone.View.extend({
 		if (displaySettings.get('afkortingen-cursief')) {
 			vo.find('.afkortingen span.cursief').addClass('active');
 		}
-		if (displaySettings.get('weergave-schrijfproces')) {
-			vo.find('.weergave-schrijfproces').addClass('active');
-		}
-		if (displaySettings.get('nummering')) {
-			vo.find('li span.nummering').addClass('active');
-		}
-		if (displaySettings.get('nummering-type') == 'regel') {
-			vo.find('li.nummering .opties .vers').removeClass('active');
-			vo.find('li.nummering .opties .regel').addClass('active');
-		} else if (displaySettings.get('nummering-type') == 'vers') {
-			vo.find('li.nummering .opties .regel').removeClass('active');
-			vo.find('li.nummering .opties .vers').addClass('active');
-		}
+		// if (displaySettings.get('weergave-schrijfproces')) {
+		// 	vo.find('.weergave-schrijfproces > span').addClass('active');
+		// }
+
+		this.toggle_weergave_schrijfproces()
+
+		this.renderNummeringButtonValue()
+		// if (displaySettings.get('nummering')) {
+		// 	vo.find('li span.nummering').addClass('active');
+		// }
+		// if (displaySettings.get('nummering-type') == 'regel') {
+		// 	vo.find('li.nummering .opties .vers').removeClass('active');
+		// 	vo.find('li.nummering .opties .regel').addClass('active');
+		// } else if (displaySettings.get('nummering-type') == 'vers') {
+		// 	vo.find('li.nummering .opties .regel').removeClass('active');
+		// 	vo.find('li.nummering .opties .vers').addClass('active');
+		// }
 
 		new FolioBrowser()
 		new TextBrowser()
@@ -167,27 +171,35 @@ export const NavigationView = Backbone.View.extend({
 	},
 
 	toggle_weergave_schrijfproces: function (e) {
-		$(e.currentTarget).toggleClass('active')
-		const active = $(e.currentTarget).is('.active')
+		const button = $('li.weergave-schrijfproces > span')
+		button.toggleClass('active')
+		const active = button.is('.active')
 		displaySettings.set('weergave-schrijfproces', active)
 	},
 
-	toggle_nummering_switch: function (e) {
-		$(e.currentTarget).toggleClass('active')
-		const active = this.$('.nummering span.nummering').is('.active')
-		displaySettings.set('nummering', active)
+	toggle_nummering_switch: function () {
+		console.log('toggling')
+		displaySettings.toggleNummeringType()
+		this.renderNummeringButtonValue()
 	},
 
-	toggle_regel_nummering: function (e) {
-		$(e.currentTarget).siblings().removeClass('active')
-		$(e.currentTarget).addClass('active')
-		displaySettings.set('nummering-type', 'regel')
-	},
+	renderNummeringButtonValue: function() {
+		const button = $('li.nummering > span.nummering')
 
-	toggle_vers_nummering: function (e) {
-		$(e.currentTarget).siblings().removeClass('active')
-		$(e.currentTarget).addClass('active')
-		displaySettings.set('nummering-type', 'vers')
+		if (displaySettings.get('nummering-type') === NummeringType.Off) {
+			button.removeClass('active')
+			button.html('Nummering')
+		} else {
+			button.addClass('active')
+
+			if (displaySettings.get('nummering-type') === NummeringType.Line) {
+				button.html('Regelnummering')
+			}
+
+			if (displaySettings.get('nummering-type') === NummeringType.Verse) {
+				button.html('Versnummering')
+			}
+		}
 	},
 	// /VIEW OPTIONS SUB
 

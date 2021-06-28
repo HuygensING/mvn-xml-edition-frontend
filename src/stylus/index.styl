@@ -1,7 +1,14 @@
+@font-face
+	font-family Junicode
+	src url('/static/fonts/Junicode.ttf') format('truetype')
+
+@font-face
+	font-family Samba
+	src url('/static/fonts/Samba-webfont.ttf') format('truetype')
+
 @import './variables'
 @import './functions'
 @import './header'
-@import './text'
 @import './mvn-reeks'
 @import './browser'
 @import './search'
@@ -12,13 +19,14 @@ body
 	padding 0
 	margin 0
 
-#container .text.nummering
-	&.vers
+#container .text
+	&.vers-nummering
 		.versenum
 			visibility visible
 
-	&.regel .linenum
-		visibility visible
+	&.regel-nummering
+		.linenum
+			visibility visible
 
 #container
 	margin-top 20px
@@ -27,6 +35,18 @@ body
 a
 	text-decoration none
 	color defaultGray
+
+
+table
+	border-collapse collapse
+	width 100%
+
+table.half
+	width 50%
+
+table, th, td
+	border 0px solid black
+	text-align left
 
 .center
 	width mainWidth
@@ -100,13 +120,17 @@ a
 		li
 			float left
 			margin-right 30px
-			padding 0 6px
+			// padding 0 6px
 			font-size 11px
 			line-height 23px
 			cursor pointer
 			no-select()
+
 			&:last-child
 				margin-right 0
+
+			&.nummering
+				width 120px
 
 			.oplossen + .cursief
 				display none
@@ -114,26 +138,23 @@ a
 			.oplossen.active + .cursief
 				display inline
 
-			span.nummering + .opties
-				display none
-
-			span.nummering.active + .opties
-				display inline
-
-			&.active, span.active
-				display inline-block
-				background-color viewOptionsActiveBackground
+			span
+				background-color transparent
 				border-radius viewOptionsActiveRadius
 				color viewOptionsActiveColor
-				padding 0 6px
+				display inline-block
 				font-weight 700
+				padding 0 6px
 
-				&.cursief, &.vers, &.regel
-					font-style italic
-					font-weight normal
-					text-decoration underline
-					padding 0
-					background-color transparent
+				&.active
+					background-color viewOptionsActiveBackground
+
+					&.cursief
+						font-style italic
+						font-weight normal
+						text-decoration underline
+						padding 0
+						background-color transparent
 
 #export-options
 	ul
@@ -147,14 +168,6 @@ a
 // 	// margin-right foliumMargin
 // 	img	width folioWidth height auto
 
-.belongs-to
-	// width 120px
-	color defaultGray
-	margin-bottom 65px
-	left textWidth + annotationMargin
-	position absolute
-	top 0
-	width annotationWidth
 
 	// .line
 	// 	margin-top 35px
@@ -228,10 +241,11 @@ a
 			span.fw
 				display: none
 
-	.heading
+	& > .heading
 		text-align center
 		width textWidth
 		grid-column 2
+		grid-row 1
 
 		span.tekst
 			font-size 20px
@@ -243,7 +257,14 @@ a
 		.next
 			float right
 
-	.text
+	& > .belongs-to
+		color defaultGray
+		grid-column 2
+		grid-row 1
+		justify-self end
+		max-width annotationColumnWidth - 20px
+
+	& > .text
 		border-top 1px solid viewMenuColor
 		font-family "Junicode", "Arial unicode MS", "times new roman", serif
 		font-size 16px
@@ -275,6 +296,164 @@ a
 				expan
 					display inline
 
+		expan
+			display none
+
+
+		unclear:before
+			content '('
+
+		unclear:after
+			content ')'
+
+		.capitalsize4
+			display inline-block
+			font-size 2.8em
+			font-weight 200
+
+		.capitalsize3
+			display inline-block
+			font-size 2em
+			font-weight 100
+
+		.capitalsize2
+			display inline-block
+			font-size 1.4em
+			font-weight 300
+
+		.capitalsize1
+			display inline-block
+			font-size .9em
+			font-weight 300
+			font-family bodyFont
+
+		span.rubric
+			display inline
+			color red
+		
+		span.rubricated
+			font-weight bold
+
+		.mentioned
+			font-style italic
+			font-size 13px
+			line-height 16px
+
+		.footnote
+			display block
+			float right
+			width 45%
+			position relative
+			left -2em
+			color grey
+
+		.grey
+			color grey
+
+		.green
+			color green
+
+		.italic
+			font-style italic
+
+		.underline
+			text-decoration underline
+
+		.bold
+			font-weight bold
+
+		.superscript
+			position relative
+			bottom 0.5em
+			font-size 0.8em
+
+		span.del
+			text-decoration line-through
+			color blue
+
+		p > span:not([class])
+			formatAsAnnotation()
+
+		span.del,
+		span.add
+			& > span.noteright
+				formatAsAnnotation()
+
+		span.ital
+			font-style italic
+
+		span.moveleft
+			position relative
+			left 50px
+
+		span.restore
+			border thin solid purple
+
+		span.romannumber
+			font-variant small-caps
+
+		span.noteleft
+			border-radius 10px
+			font-size 16px
+			left -20px
+			line-height 10px
+			margin-top 6px
+			padding 2px
+			position absolute
+
+		span.noteright
+			position absolute
+			left textWidth + annotationMargin
+			formatAsAnnotation()
+
+			abbr
+				display inline
+				font-size 14px
+
+		span.margin
+			width 100px
+			position absolute
+			left -120px
+
+		span.transl,
+		span.wvk,
+		span.comment,
+		span.intro,
+		span.annotwg,
+		span.annotvm,
+		span.annotvdg,
+		span.annotbd
+			display none
+			position absolute
+			left 450px
+
+		span.hide
+			display none
+
+		.versenum,
+		.linenum
+			display block
+			visibility hidden
+			font-family bodyFont
+			font-size 10px
+			color defaultGray
+			margin-left lineVerseNumPos
+			float left
+
+		.textnum,
+		.folionr
+			color bodyNavColor
+			cursor pointer
+
+		.textnum
+			display block
+			text-align right
+			font-family bodyFont
+			font-size 11px
+
+			& + br
+				display none
+
 		.folionr
 			font-size 11px
 			position absolute
@@ -297,148 +476,6 @@ a
 				color bodyNavColor
 				no-select()
 
-		span.rubric
-			display inline
-			color red
-		
-		span.rubricated
-			font-weight bold
-
-		.mentioned
-			font-style italic
-			font-size 13px
-			line-height 16px
-
-		.footnote
-				display block
-				float right
-				width 45%
-				position relative
-				left -2em
-				color grey
-
-		.grey
-				color grey
-
-		.green
-				color rreen
-
-		.italic
-			font-style italic
-
-		.underline
-			text-decoration underline
-
-		.bold
-			font-weight bold
-
-		span.del
-			text-decoration line-through
-			color blue
-
-		p > span:not([class])
-			formatAsAnnotation()
-
-		span.del, span.add
-			& > span.noteright
-				formatAsAnnotation()
-
-		span.noteright
-			position absolute
-			left textWidth + annotationMargin
-			formatAsAnnotation()
-
-			abbr
-				display inline
-				font-size 14px
-
-		span.ital
-				font-styleitalic
-
-		span.moveleft
-			position relative
-				left50px
-
-		span.restore
-				borderthin solid purple
-
-		span.romannumber
-			font-variant small-caps
-
-		span.noteleft
-			border-radius 10px
-			font-size 16px
-			left -20px
-			line-height 10px
-			margin-top 6px
-			padding 2px
-			position absolute
-
-		// span.folionr
-		// 	position absolute
-		// 	left 300px
-
-		span.margin
-			width 100px
-			position absolute
-			left -120px
-
-		span.transl
-			display none
-			position absolute
-			left 450px
-
-		span.wvk
-			display none
-			position absolute
-			left 450px
-
-		span.comment
-			display none
-			position absolute
-			left 450px
-
-		span.intro
-			display none
-			position absolute
-			left 450px
-
-		span.annotwg
-			display none
-			position absolute
-			left 450px
-
-		span.annotvm
-			display none
-			position absolute
-			left 450px
-
-		span.annotvdg
-			display none
-			position absolute
-			left 450px
-
-		span.annotbd
-			display none
-			position absolute
-			left 450px
-
-		span.hide
-			display none
-
-		.versenum,
-		.linenum
-			display block
-			visibility hidden
-			font-family bodyFont
-			font-size 10px
-			color defaultGray
-			margin-left lineVerseNumPos
-			float left
-
-		.textnum, .folionr
-			color bodyNavColor
-			cursor pointer
 
 .folium .text
 	position relative
