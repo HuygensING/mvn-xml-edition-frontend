@@ -167,13 +167,17 @@ export const BaseText = Backbone.View.extend({
 		if (displaySettings.get('weergave-schrijfproces')) {
 			this.$('.subst').addClass('border');
 			this.$('.del').show();
-			this.$('.add').addClass('green');
 			this.$('.rubric').addClass('black');
+
+			this.$('.add').addClass('green');
+			this.$('seg').addClass('schrijfproces')
 		} else {
 			this.$('.subst').removeClass('border');
 			this.$('.del').hide();
-			this.$('.add').removeClass('green');
 			this.$('.rubric').removeClass('black');
+
+			this.$('.add').removeClass('green');
+			this.$('seg').removeClass('schrijfproces')
 		}
 	},
 })
