@@ -262,7 +262,7 @@ table, th, td
 		grid-column 2
 		grid-row 1
 		justify-self end
-		max-width annotationColumnWidth - 20px
+		max-width annotationColumnWidth
 
 	& > .text
 		border-top 1px solid viewMenuColor
@@ -276,6 +276,19 @@ table, th, td
 		position relative
 		text-align left
 		width textWidth
+
+		linegroup_start, linegroup_end
+			display block
+			padding .5em
+
+		linegroup_start + linegroup_end
+			padding 0
+
+		linegroup_start + br, linegroup_end + br
+			display none
+
+		.textnum + linegroup_start
+			padding 0
 
 		a
 			text-decoration none
@@ -451,8 +464,7 @@ table, th, td
 			cursor pointer
 
 		.textnum
-			display block
-			text-align right
+			float right
 			font-family bodyFont
 			font-size 11px
 

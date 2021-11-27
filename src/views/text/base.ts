@@ -122,7 +122,7 @@ export const BaseText = Backbone.View.extend({
 			if (top < prev_bottom) {
 				if (!overlap) {
 					overlap = true;
-					note.css('margin-left', '160px');
+					note.css('margin-left', '172px');
 				} else {
 					overlap = false;
 					note.css('margin-left', '0px');
