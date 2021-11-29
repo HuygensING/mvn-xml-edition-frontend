@@ -2,12 +2,9 @@
 
 ## Development
 
-- `npm i`
-- `npm start`
+- `npm i` install deps
+- `npm dev` run webpack dev server
 
 ## Production
 
-- `npm i`
-- `npm run dist`
-- `docker-compose -p mvn up --build -d`
-- find editions at localhost/SERRURE, localhost/BS
+- `npm run dist` create public/ dir, copy static/ dir and bundle assets
