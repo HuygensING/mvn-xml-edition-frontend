@@ -19,7 +19,10 @@ module.exports = {
 						loader: 'style-loader'
 					},
 					{
-						loader: 'css-loader?url=false'
+						loader: 'css-loader',
+						options: {
+							url: false
+						}
 					},
 					{
 						loader: 'stylus-loader',
@@ -39,12 +42,10 @@ module.exports = {
 	},
 
 	devServer: {
-		contentBase: path.resolve(process.cwd(), './static'),
-		contentBasePublicPath: '/static',
-		disableHostCheck: true,
 		headers: {
 			"Access-Control-Allow-Origin": "*"
 		},
+		allowedHosts: "all",
 		historyApiFallback: {
 			disableDotRule: true
 		},
@@ -58,9 +59,13 @@ module.exports = {
 				changeOrigin: true,
 			}
 		},
-		watchOptions: {
-			ignored: /node_modules/
-		}
+		static: {
+			directory: path.resolve(process.cwd(), './static'),
+			publicPath: '/static',
+			watch: {
+				ignored: /node_modules/
+			}
+		},
 	},
 
 	entry: ['./src/index.ts'],
