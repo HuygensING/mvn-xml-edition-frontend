@@ -1,0 +1,262 @@
+@font-face
+	font-family Junicode
+	src url('../fonts/Junicode.ttf') format('truetype')
+
+@font-face
+	font-family Samba
+	src url('../fonts/Samba-webfont.ttf') format('truetype')
+
+.text
+	font-family "Junicode","Arial unicode MS","times new roman",serif
+
+annotationFormat()
+	display block
+	float left
+	font-size 11px
+	color #777
+	font-family sans-serif
+	width 100px
+	line-height 16px
+	font-style normal
+	border-top 2px solid #00B3B0
+	padding-top 6px
+
+
+.capitalsize4
+	display inline-block
+	font-size 2.8em
+	font-weight 200
+
+.capitalsize3
+	display inline-block
+	font-size 2em
+	font-weight 100
+
+.capitalsize2
+	display inline-block
+	font-size 1.4em
+	font-weight 300
+
+
+.capitalsize1
+	display inline-block
+	font-size .9em
+	font-weight 300
+	font-family Arial, Helvetica, sans-serif
+
+.superscript
+	position relative
+	bottom 0.5em
+	font-size 0.8em
+
+.linenr
+	font-family "Courier New", "Lucida Console"
+	margin-right 1em
+
+/* nog onbekend wat dit moet worden */
+span.rubric
+	display inline
+	color red
+
+.mentioned
+	font-style italic
+
+
+.footnote
+		display block
+		float right
+		width 45%
+		position relative
+		left -2em
+		color grey
+
+.grey
+		color grey
+
+.green
+		color green
+		padding-top 0
+		background-color transparent
+
+.italic
+	font-style italic
+
+.underline
+	text-decoration underline
+
+.bold
+	font-weight bold
+
+.border
+		borderthin solid green
+
+/* is the expansion of an abbreviation should be toggle?
+ */
+expan
+	display none
+
+
+unclear:before
+	content '('
+
+unclear:after
+	content ')'
+
+table
+	border-collapse collapse
+	width 100%
+
+table.half
+	width 50%
+
+
+table,th, td
+		border 0px solid black
+		text-align left
+
+
+/* Copied some code from Peter Boot (Freckenhorst project) */
+
+.nextprev
+	float right
+
+
+span.versenum
+	left -35px
+	color purple
+
+span.del
+	text-decoration line-through
+	color red
+
+span.ital
+	font-style italic
+
+span.moveleft
+	position relative
+	left 50px
+
+span.restore
+	border thin solid purple
+
+span.romannumber
+	font-variant small-caps
+
+span.noteleft
+	position absolute
+	left -20px
+
+span.noteright
+	position absolute
+	left 300px
+	color black
+
+span.folionr
+	position absolute
+	left 300px
+
+span.margin
+	display none
+	width 100px
+	position absolute
+	left 385px
+
+span.transl
+	display none
+	position absolute
+	left 450px
+
+span.wvk
+	display none
+	position absolute
+	left 450px
+
+span.comment
+	display none
+	position absolute
+	left 450px
+
+span.intro
+	display none
+	position absolute
+	left 450px
+
+span.annotwg
+	display none
+	position absolute
+	left 450px
+
+span.annotvm
+	display none
+	position absolute
+	left 450px
+
+span.annotvdg
+	display none
+	position absolute
+	left 450px
+
+span.annotbd
+	display none
+	position absolute
+	left 450px
+
+span.hide
+	display none
+
+
+.woordverklaring .wvk
+	display inline
+	annotationFormat()
+
+
+.marginalia .margin
+	display block
+	annotationFormat()
+
+
+.commentaar .comment
+	display inline
+	annotationFormat()
+
+
+.inleiding .intro
+	display inline
+	annotationFormat()
+
+
+
+.linenum
+	font-family sans-serif
+	font-size 10px
+	color grey
+	margin-left -30px
+	float left
+
+
+.textnum
+	display block
+	text-align right
+	font-family sans-serif
+	font-size 11px
+
+
+linegroup_start, linegroup_end
+	display block
+	padding .5em
+
+
+linegroup_start + linegroup_end
+	padding 0
+ // don't double up on padding
+
+linegroup_start + br, linegroup_end + br
+	display none
+
+
+.textnum + linegroup_start
+	padding 0
+
+
+.textnum + br
+	display none

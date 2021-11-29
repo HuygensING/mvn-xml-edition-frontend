@@ -122,7 +122,7 @@ export const BaseText = Backbone.View.extend({
 			if (top < prev_bottom) {
 				if (!overlap) {
 					overlap = true;
-					note.css('margin-left', '160px');
+					note.css('margin-left', '172px');
 				} else {
 					overlap = false;
 					note.css('margin-left', '0px');
@@ -167,13 +167,17 @@ export const BaseText = Backbone.View.extend({
 		if (displaySettings.get('weergave-schrijfproces')) {
 			this.$('.subst').addClass('border');
 			this.$('.del').show();
-			this.$('.add').addClass('green');
 			this.$('.rubric').addClass('black');
+
+			this.$('.add').addClass('green');
+			this.$('seg').addClass('schrijfproces')
 		} else {
 			this.$('.subst').removeClass('border');
 			this.$('.del').hide();
-			this.$('.add').removeClass('green');
 			this.$('.rubric').removeClass('black');
+
+			this.$('.add').removeClass('green');
+			this.$('seg').removeClass('schrijfproces')
 		}
 	},
 })

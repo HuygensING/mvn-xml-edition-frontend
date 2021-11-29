@@ -1,29 +1,28 @@
 {
   "name": "@elaborate4-frontend/mvn",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack serve",
-    "dist": "./dist.sh"
+    "dev": "webpack serve",
+    "dist": "./dist.sh",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/backbone": "^1.4.10",
-    "@types/jquery": "^3.5.5",
-    "css-loader": "^5.2.6",
-    "express": "^4.17.1",
-    "html-webpack-plugin": "^5.3.1",
-    "http-proxy-middleware": "^0.19.1",
+    "@types/backbone": "^1.4.14",
+    "@types/jquery": "^3.5.9",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
     "nib": "^1.1.2",
-    "style-loader": "^2.0.0",
-    "stylus": "^0.54.8",
-    "stylus-loader": "^6.1.0",
-    "ts-loader": "^9.2.3",
-    "typescript": "^4.3.4",
-    "webpack": "^5.39.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "style-loader": "^3.3.1",
+    "stylus": "^0.55.0",
+    "stylus-loader": "^6.2.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
     "backbone": "^1.4.0",

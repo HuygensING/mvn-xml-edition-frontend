@@ -4,93 +4,96 @@
 		<meta http-equiv="Cache-Control" content="public">
 		<title></title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+			const PROJECT_ID = location.pathname.split('/')[1]
+		</script>
 	</head>
-<body>
-	<div class="MVNReeks">
-		<div class="left">
+	<body>
+		<div class="MVNReeks">
+			<div class="left">
+			</div>
+			<div class="right">
+				<a href="http://www.huygens.knaw.nl/mvn/">Middeleeuwse Verzamelhandschriften in de Nederlanden</a>
+			</div>
 		</div>
-		<div class="right">
-			<a href="http://www.huygens.knaw.nl/mvn/">Middeleeuwse Verzamelhandschriften in de Nederlanden</a>
-		</div>
-	</div>
-	<header>
-		<h1>
-			<a id="title-tag" href=""></a>
-			<span id="signature-tag" class="signatuur"></span>
-		</h1>
-		<div class="navigation"></div>
-		<img src="/static/img/HuygensINGLogo.jpg" alt="Huygens ING">
-	</header>
-	<div id="container">
-		<div id="app">
-			<div id="spinner"><img src="/static/img/ajax-loader.gif"></div>
-			<div id="views">
-				<div id="tabs" class="center">
-					<ul>
-						<li class="folio-browser active"><div class="slant"></div>Foliobrowser</li>
-						<li class="text-browser">Tekstbrowser</li>
-						<li class="view-options">Weergaveopties</li>
-						<li class="search">Zoeken</li>
-						<li class="export-options">Export</li>
-					</ul>
-				</div>
+		<header>
+			<h1>
+				<a id="title-tag" href=""></a>
+				<span id="signature-tag" class="signatuur"></span>
+			</h1>
+			<div class="navigation"></div>
+			<img src="/static/img/HuygensINGLogo.jpg" alt="Huygens ING">
+		</header>
+		<div id="container">
+			<div id="app">
+				<div id="spinner"><img src="/static/img/ajax-loader.gif"></div>
+				<div id="views">
+					<div id="tabs" class="center">
+						<ul>
+							<li class="folio-browser active"><div class="slant"></div>Foliobrowser</li>
+							<li class="text-browser">Tekstbrowser</li>
+							<li class="view-options">Weergaveopties</li>
+							<li class="search">Zoeken</li>
+							<li class="export-options">Export</li>
+						</ul>
+					</div>
 
-				<div id="folio-browser">
-					<div class="scroll-pane horizontal-only">
-						<div class="inner">
+					<div id="folio-browser">
+						<div class="scroll-pane horizontal-only">
+							<div class="inner">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div id="text-browser">
-					<div class="scroll-pane horizontal-only">
-						<div class="inner">
+					<div id="text-browser">
+						<div class="scroll-pane horizontal-only">
+							<div class="inner">
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div id="search-view">
-					<div class="grey">
+					<div id="search-view">
+						<div class="grey">
+							<div class="center">
+								<input type="text">
+								<button>Zoek</button>
+								<a onclick="location.href = 'http://mvn.huygens.knaw.nl/' + PROJECT_ID.toLowerCase() + '/help';" href="#" class="syntax-information"><img src="/static/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
+							</div>
+						</div>
+						<div class="results center">
+						</div>
+					</div>
+
+					<div id="view-options">
 						<div class="center">
-							<input type="text">
-							<button>Zoek</button>
-							<a onclick="location.href = 'http://mvn.huygens.knaw.nl/' + PROJECT_ID.toLowerCase() + '/help';" href="#" class="syntax-information"><img src="/static/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
+							<ul>
+								<li class="afkortingen"><span class="oplossen">Afkortingen oplossen</span>&nbsp;<span class="cursief">cursief</span></li>
+								<li class="weergave-schrijfproces"><span>Weergave schrijfproces</span></li>
+								<li class="nummering" title="Schakelen tussen: regelnummering, versnummering en geen nummering">
+									<span class="nummering"></span>
+									<!-- <span class="opties">
+										<span class="regel">Regel</span>&nbsp;
+										<span class="vers">Vers</span>&nbsp;
+									</span> -->
+								</li>
+							</ul>
 						</div>
 					</div>
-					<div class="results center">
+					<div id="export-options">
+						<div class="center">
+							<ul>
+								<!-- TODO: edition id uit config.json voor export links -->
+								<li class="xml"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.xml'">Als XML</a></li>
+								<li class="txt"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.txt'">Als tekst</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 
-				<div id="view-options">
-					<div class="center">
-						<ul>
-							<li class="afkortingen"><span class="oplossen">Afkortingen oplossen</span>&nbsp;<span class="cursief">cursief</span></li>
-							<li class="weergave-schrijfproces"><span>Weergave schrijfproces</span></li>
-							<li class="nummering" title="Schakelen tussen: regelnummering, versnummering en geen nummering">
-								<span class="nummering"></span>
-								<!-- <span class="opties">
-									<span class="regel">Regel</span>&nbsp;
-									<span class="vers">Vers</span>&nbsp;
-								</span> -->
-							</li>
-						</ul>
-					</div>
+				<div id="main">
+					<div class="view"></div>
 				</div>
-				<div id="export-options">
-					<div class="center">
-						<ul>
-							<!-- TODO: edition id uit config.json voor export links -->
-							<li class="xml"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.xml'">Als XML</a></li>
-							<li class="txt"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.txt'">Als tekst</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div id="main">
-				<div class="view"></div>
 			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>

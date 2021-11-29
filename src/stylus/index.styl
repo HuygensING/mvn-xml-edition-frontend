@@ -262,7 +262,7 @@ table, th, td
 		grid-column 2
 		grid-row 1
 		justify-self end
-		max-width annotationColumnWidth - 20px
+		max-width annotationColumnWidth
 
 	& > .text
 		border-top 1px solid viewMenuColor
@@ -277,11 +277,23 @@ table, th, td
 		text-align left
 		width textWidth
 
+		linegroup_start, linegroup_end
+			display block
+			padding .5em
+
+		linegroup_start + linegroup_end
+			padding 0
+
+		linegroup_start + br, linegroup_end + br
+			display none
+
+		.textnum + linegroup_start
+			padding 0
+
 		a
 			text-decoration none
 			color bodyNavColor
 			cursor pointer
-
 
 		&.solve
 			&.cursive
@@ -325,7 +337,6 @@ table, th, td
 			display inline-block
 			font-size .9em
 			font-weight 300
-			font-family bodyFont
 
 		span.rubric
 			display inline
@@ -336,8 +347,6 @@ table, th, td
 
 		.mentioned
 			font-style italic
-			font-size 13px
-			line-height 16px
 
 		.footnote
 			display block
@@ -349,6 +358,15 @@ table, th, td
 
 		.grey
 			color grey
+
+		seg
+			display none
+
+			&.schrijfproces
+				display inline
+
+		.spaced
+			letter-spacing .25rem
 
 		.green
 			color green
@@ -406,9 +424,9 @@ table, th, td
 			left textWidth + annotationMargin
 			formatAsAnnotation()
 
-			abbr
-				display inline
-				font-size 14px
+			// abbr
+			// 	display inline
+			// 	font-size 14px
 
 		span.margin
 			width 100px
@@ -446,8 +464,7 @@ table, th, td
 			cursor pointer
 
 		.textnum
-			display block
-			text-align right
+			float right
 			font-family bodyFont
 			font-size 11px
 
@@ -488,7 +505,7 @@ span.spaced
 
 span.ulr
 	text-decoration-color: red
-	text-decoration: underline
+	text-decoration-line: underline
 
 span.nr
 	font-size: 18px !important
