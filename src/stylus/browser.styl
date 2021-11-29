@@ -1,0 +1,181 @@
+/**
+Styling for the folio and text browsers
+See ./src/views/foliobrowser and ./src/views/textbrowser
+*/
+
+#folio-browser,
+#text-browser
+	background black
+	color white
+	margin-bottom 30px
+	padding 24px 20px 17px 20px
+	position relative
+
+	// .horizontal-only
+	// 	height auto
+		// min-height 200px
+
+	.scroll-pane
+		overflow-x auto
+		overflow-y hidden
+		outline none
+
+	.jspTrack
+		background transparent
+
+		.jspDrag
+			background-color transparent
+
+	&:hover
+		.jspTrack
+			trackColor = #444
+			background trackColor
+
+			.jspDrag
+				background-color lighten(trackColor, 20%)
+				&:hover, &.jspActive
+					background-color lighten(trackColor, 40%)
+
+	.jspContainer
+		padding-bottom 10px
+
+		.jspHorizontalBar
+			bgColor = #444
+			size = 8px
+
+			background transparent
+			height size
+
+			.jspTrack
+				background bgColor
+				border-radius size
+
+				.jspDrag
+					background-color lighten(bgColor, 20%)
+					border-radius size
+
+					&:hover
+						background-color lighten(bgColor, 40%)
+
+	.close
+		background #888
+		border-radius 50%
+		cursor pointer
+		position absolute
+		right 6px
+		top 6px
+		width 14px
+
+		&:hover
+			background #DDD
+
+		.close-x
+			stroke black
+			fill transparent
+			stroke-linecap round
+			stroke-width 5
+
+#folio-browser
+	// width "calc(100% - 48px)"
+
+	.folium-thumbnail
+		position relative
+		cursor pointer
+		display inline-block
+		white-space nowrap
+		padding 2px 0px 4px 0px
+		margin-right 1px
+		text-align center
+		no-select()
+		img
+			width 70px
+			height 100px
+			display block
+
+		&.active
+			background-color white
+			color black
+			padding 2px 2px 4px 2px
+
+		.circle
+			size = 26px
+			width size
+			height size
+			line-height size
+			border-radius size / 2
+			text-align center
+			background-color black
+			color white
+			position absolute
+			top 50px - (size / 2) // thumbnails are 70x100
+			z-index 5000
+
+			&.r
+				right -(size/2)
+
+			&.v
+				left -14px
+
+		&.active .circle
+			z-index 5001
+			background-color white
+			color black
+
+	.horizontal-only
+		height auto
+		min-height 130px
+
+#text-browser
+	display none // only on page load
+	background-image linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -o-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -moz-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -webkit-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -ms-linear-gradient(bottom, rgb(102,102,102) 0%, rgb(0,0,0) 76%)
+	background-image -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(102,102,102)),
+		color-stop(0.76, rgb(0,0,0))
+	)
+
+	#text-browser-filter
+		position absolute
+		top 9px
+		text-align center
+		width 100%
+
+		input
+			background #EEE
+			border-radius 1px
+			border none
+			padding 2px 4px
+			width 240px
+
+	ul
+		columns 200px auto
+		font-size 12px
+		height 200px
+		line-height 22px
+
+		li
+			cursor pointer
+			width 90%
+			overflow hidden
+			white-space nowrap
+			text-overflow ellipsis
+			no-select()
+
+			a
+				color white
+
+			.noteright
+				position static
+				color white
+
+			.superscript
+				display none
+
+	// .inner
+	// 	width 4600px
