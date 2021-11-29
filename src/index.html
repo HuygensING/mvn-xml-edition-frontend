@@ -52,37 +52,6 @@
 						</div>
 					</div>
 
-<<<<<<< HEAD
-	<!-- Templates -->
-	<script type="template/underscore" id="text-browser-tmpl">
-		<ul>
-			<% texts.sort().each(function (t, idx) {
-				%><li><a title="<%= t.get("first_line") %>" href="/tekst/<%= t.id %>/regel/<%= t.get('firstLineId') %>"><%= t.id %> <%= t.get("first_line") %></a></li><% if ((1+idx) % columnHeight == 0) { %></ul><ul><% } %><%
-			}); %>
-		</ul>
-		<div class="close">x</div>
-	</script>
-	<script type="template/underscore" id="folium-thumbnail-tmpl">
-		<a href="/folium/<%= folium %>"><img src="<%= image %>">
-		<div class="folium"><%= folium.replace(/\d+/,'') %></div>
-		<div class="circle <%= folium.replace(/\d+/,'') %>"><%= folium.replace(/[rv]/,'') %></div></a>
-	</script>
-	<script type="template/underscore" id="folium-in-text-tmpl">
-		<div class="folium folium-<%- folium %>">
-			<div class="left">
-				<h5>Folium <%= folium %></h5>
-				<a class="select-folium" href="/folium/<%= folium %>">
-					<img src="<%= image %>" alt="<%= folium %>">
-					Bekijk folium <%= folium %>
-				</a>
-			</div>
-			<div class="right text">
-				<%= ""+ text %>
-			</div>
-			<div style="clear: both;"></div>
-		</div><!--/.folium-->
-	</script>
-=======
 					<div id="search-view">
 						<div class="grey">
 							<div class="center">
@@ -94,7 +63,6 @@
 						<div class="results center">
 						</div>
 					</div>
->>>>>>> 0b41d1624376c5c82738e958adc6b6877f32ccce
 
 					<div id="view-options">
 						<div class="center">
@@ -121,16 +89,6 @@
 						</div>
 					</div>
 				</div>
-<<<<<<< HEAD
-			</div><!-- /#text -->
-		</div><!-- /#folium-view -->
-		<div id="sidebar">
-			<div class="belongs-to"></div>
-			<div class="annotations"></div>
-		</div><!-- #sidebar -->
-	</script>
-=======
->>>>>>> 0b41d1624376c5c82738e958adc6b6877f32ccce
 
 				<div id="main">
 					<div class="view"></div>
