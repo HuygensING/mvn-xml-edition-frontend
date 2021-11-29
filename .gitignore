@@ -1,3 +1,8 @@
 node_modules
+<<<<<<< HEAD
 .idea
 *.iml
+=======
+public
+build
+>>>>>>> 0b41d1624376c5c82738e958adc6b6877f32ccce

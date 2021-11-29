@@ -1,0 +1,99 @@
+#search-view
+	display none // only on load
+
+	.grey
+		background viewMenuActiveColor
+
+	.center
+		padding 25px 0
+
+	input	// text box
+		border 1px solid #DADADA
+		height 33px
+		line-height 33px
+		padding 0 10px
+		width 340px
+
+	button	// zoek knop
+		cursor pointer
+		line-height 33px
+		padding 0 20px
+		border 0
+		border-radius 3px
+		background #FBFBFB
+
+		&:hover
+			background #f5f5f5
+
+	.syntax-information
+		line-height 33px
+		vertical-align middle
+		margin-left 6px
+
+#search-results
+	margin 0 64px
+
+	.error
+		border-radius 3px
+		color red
+		display inline-block
+		font-size 1.5em
+		// font-weight bold
+		padding 1em 2em
+
+	.spinner
+		display none
+		line-height 32px
+		img
+			vertical-align middle
+			margin-right 1em
+
+	.number-of-results
+		line-height 36px
+		font-size 14px
+		font-weight 600
+
+		.num
+			font-weight 300
+
+	table
+		display none
+		padding 0
+		border-top 1px solid #c1c1c1
+		margin-top 10px
+		tr
+			padding-left 2px
+			line-height 36px
+			font-size 12px
+			border-bottom 1px solid #F0F0F0
+
+			&:hover
+				background-color #f0f0f0
+
+			em
+				color #008B88
+				font-weight bold
+
+			a
+				display block
+				color textColor
+				position relative
+				height 36px
+
+				&:hover
+					text-decoration underline
+
+				.f	// folium
+					position absolute
+					display inline-block
+					left 9em
+
+				.l	// line
+					position absolute
+					display inline-block
+					left 17em
+
+				.description
+					position absolute
+					display inline-block
+					left 22em

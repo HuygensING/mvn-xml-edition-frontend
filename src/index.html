@@ -3,108 +3,56 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="Cache-Control" content="public">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="/css/themes/style.css" />
-		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
-		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<link rel="stylesheet" type="text/css" href="/css/jquery.jscrollpane.css" />
-		<script data-main="/js/main.js" type="text/javascript" src="/js/require.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script>
-			var PROJECT_ID = location.pathname.replace(/^\/([^\/]+)\/?.*$/, "$1");
-			if(PROJECT_ID.match(/^[a-z]+$/)) {
-				location.href = location.pathname.replace(/^\/[^\/]+\/?(.*)$/, "/" + PROJECT_ID.toUpperCase() +	"/$1");
-			}
-			var SEARCH_ENV = location.hostname.split(".")[0] === "test" ? "test." : "";
+			const PROJECT_ID = location.pathname.split('/')[1]
 		</script>
 	</head>
-<body>
-	<div class="MVNReeks">
-		<div class="left">
+	<body>
+		<div class="MVNReeks">
+			<div class="left">
+			</div>
+			<div class="right">
+				<a href="http://www.huygens.knaw.nl/mvn/">Middeleeuwse Verzamelhandschriften in de Nederlanden</a>
+			</div>
 		</div>
-		<div class="right">
-			<a href="http://www.huygens.knaw.nl/mvn/">Middeleeuwse Verzamelhandschriften in de Nederlanden</a>
-		</div>
-	</div>
-	<header>
-		<h1>
-			<a id="title-tag" href=""></a>
-			<span id="signature-tag" class="signatuur"></span>
-		</h1>
-		<div class="navigation"></div>
-		<img src="/img/HuygensINGLogo.jpg" alt="Huygens ING">
-	</header>
-	<div id="container">
-		<div id="app">
-			<div id="spinner"><img src="/img/ajax-loader.gif"></div>
-			<div id="views">
-				<div id="tabs" class="center">
-					<ul>
-						<li class="folio-browser active"><div class="slant"></div>Foliobrowser</li>
-						<li class="text-browser">Tekstbrowser</li>
-						<li class="view-options">Weergaveopties</li>
-						<li class="search">Zoeken</li>
-						<li class="export-options">Export</li>
-					</ul>
-				</div><!-- /.center -->
-
-				<div id="folio-browser">
-					<div class="scroll-pane horizontal-only">
-						<div class="inner">
-						</div><!-- /.inner -->
-					</div><!--/.scroll-pane-->
-				</div><!-- /#folio-browser -->
-
-				<div id="text-browser">
-					<div class="scroll-pane horizontal-only">
-						<div class="inner">
-						</div><!-- /.inner -->
-					</div><!--/.scroll-pane-->
-				</div><!-- /#text-browser -->
-
-				<div id="search-view">
-					<div class="grey">
-						<div class="center">
-							<input type="text">
-							<button>Zoek</button>
-							<a onclick="location.href = 'http://mvn.huygens.knaw.nl/' + PROJECT_ID.toLowerCase() + '/help';" href="#" class="syntax-information"><img src="/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
-						</div><!-- /.center -->
-					</div><!-- /.grey -->
-					<div class="results center">
+		<header>
+			<h1>
+				<a id="title-tag" href=""></a>
+				<span id="signature-tag" class="signatuur"></span>
+			</h1>
+			<div class="navigation"></div>
+			<img src="/static/img/HuygensINGLogo.jpg" alt="Huygens ING">
+		</header>
+		<div id="container">
+			<div id="app">
+				<div id="spinner"><img src="/static/img/ajax-loader.gif"></div>
+				<div id="views">
+					<div id="tabs" class="center">
+						<ul>
+							<li class="folio-browser active"><div class="slant"></div>Foliobrowser</li>
+							<li class="text-browser">Tekstbrowser</li>
+							<li class="view-options">Weergaveopties</li>
+							<li class="search">Zoeken</li>
+							<li class="export-options">Export</li>
+						</ul>
 					</div>
-				</div><!-- /#search -->
 
-				<div id="view-options">
-					<div class="center">
-						<ul>
-							<li class="afkortingen"><span class="oplossen">Afkortingen oplossen</span>&nbsp;<span class="cursief">cursief</span></li>
-							<li class="weergave-schrijfproces">Weergave schrijfproces</li>
-							<li class="nummering">
-								<span class="nummering">Nummering</span>
-								<span class="opties">
-									<span class="regel">Regel</span>&nbsp;
-									<span class="vers">Vers</span>&nbsp;
-								</span>
-							</li>
-						</ul>
-					</div><!-- /.center -->
-				</div><!-- /#view-options -->
-				<div id="export-options">
-					<div class="center">
-						<ul>
-							<!-- TODO: edition id uit config.json voor export links -->
-							<li class="xml"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.xml'">Als XML</a></li>
-							<li class="txt"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.txt'">Als tekst</a></li>
-						</ul>
-					</div><!-- /.center -->
-				</div><!-- /#export-options -->
-			</div><!-- /#views -->
+					<div id="folio-browser">
+						<div class="scroll-pane horizontal-only">
+							<div class="inner">
+							</div>
+						</div>
+					</div>
 
-			<div id="main">
-				<div class="view"></div>
-			</div><!-- /#main -->
-		</div><!-- /#app -->
-	</div><!-- /#container -->
+					<div id="text-browser">
+						<div class="scroll-pane horizontal-only">
+							<div class="inner">
+							</div>
+						</div>
+					</div>
 
-
+<<<<<<< HEAD
 	<!-- Templates -->
 	<script type="template/underscore" id="text-browser-tmpl">
 		<ul>
@@ -134,20 +82,46 @@
 			<div style="clear: both;"></div>
 		</div><!--/.folium-->
 	</script>
+=======
+					<div id="search-view">
+						<div class="grey">
+							<div class="center">
+								<input type="text">
+								<button>Zoek</button>
+								<a onclick="location.href = 'http://mvn.huygens.knaw.nl/' + PROJECT_ID.toLowerCase() + '/help';" href="#" class="syntax-information"><img src="/static/img/i.png" alt="i" title="Uitleg over de zoeksyntax"></a>
+							</div>
+						</div>
+						<div class="results center">
+						</div>
+					</div>
+>>>>>>> 0b41d1624376c5c82738e958adc6b6877f32ccce
 
-	<script type="template/underscore" id="folium-view-tmpl">
-		<div id="folium-view">
-			<div id="folium">
-				<iframe style="border: 0; width: 100%; min-height: 600px"></iframe>
-			</div><!--/#folium -->
-			<div id="text">
-				<div class="nav">
-					<a href="" class="previous">&#9668; <span>1r</span></a>
-					<span class="folium">Folium <span>1v</span></span>
-					<a href="" class="next"><span>2r</span> &#9658;</a>
+					<div id="view-options">
+						<div class="center">
+							<ul>
+								<li class="afkortingen"><span class="oplossen">Afkortingen oplossen</span>&nbsp;<span class="cursief">cursief</span></li>
+								<li class="weergave-schrijfproces"><span>Weergave schrijfproces</span></li>
+								<li class="nummering" title="Schakelen tussen: regelnummering, versnummering en geen nummering">
+									<span class="nummering"></span>
+									<!-- <span class="opties">
+										<span class="regel">Regel</span>&nbsp;
+										<span class="vers">Vers</span>&nbsp;
+									</span> -->
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="export-options">
+						<div class="center">
+							<ul>
+								<!-- TODO: edition id uit config.json voor export links -->
+								<li class="xml"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.xml'">Als XML</a></li>
+								<li class="txt"><a onclick="location.href = '/docs/' + PROJECT_ID + '/' + PROJECT_ID + '.txt'">Als tekst</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div class="text">
-				</div>
+<<<<<<< HEAD
 			</div><!-- /#text -->
 		</div><!-- /#folium-view -->
 		<div id="sidebar">
@@ -155,50 +129,13 @@
 			<div class="annotations"></div>
 		</div><!-- #sidebar -->
 	</script>
+=======
+>>>>>>> 0b41d1624376c5c82738e958adc6b6877f32ccce
 
-	<script type="template/underscore" id="text-view-tmpl">
-		<div id="text-view">
-			<div class="heading">
-				<a href="" class="previous">&#9668; <span></span></a>
-				<span class="tekst">Tekst <span></span></span>
-				<a href="" class="next"><span></span> &#9658;</a>
+				<div id="main">
+					<div class="view"></div>
+				</div>
 			</div>
-			<div class="folio"></div>
-		</div><!-- /#text-view -->
-	</script>
-
-	<script type="template/underscore" id="belongs-to-tmpl">
-		<% if (f.get('texts').length == 1) { %>
-			Dit folium bevat (een deel van) <a href="/tekst/<%= f.get('texts')[0] %>">tekst <%= f.get('texts')[0] %></a>.
-		<% } else { %>
-			Dit folium bevat (delen van) de teksten:
-			<% _.each(f.get('texts'), function (t) { %>
-				<a href="/tekst/<%= String(t) %>"><%= t %></a>
-			<% }); %>
-		<% } %>
-	</script>
-
-<script type="template/underscore" id="search-view-tmpl">
-</script>
-
-	<script type="template/underscore" id="search-tmpl">
-		<div class="spinner"><img src="/img/ajax-loader.gif"> Aan het zoeken...</div>
-		<div class="results">
-			<div class="number-of-results"><span class="num"></span> resultaten</div>
 		</div>
-		<table class="results"></table>
-		<p class="no-search">Geen zoekopdracht opgegeven.</p>
-		<p class="error">Error</p>
-	</script>
-
-	<script type="template/underscore" id="results-tmpl">
-		<%	_.each(results, function (result) { %>
-			<tr>
-				<td class="t"><a href="/tekst/<%= result.textNum %>">Tekst <%= result.textNum %></a></td>
-				<td class="l"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>">Versregel <%= result.lineNum %></a></td>
-				<td class="f"><a href="/folium/<%= result.folio %>">Folium <%= result.folio %></a></td>
-				<td class="description"><a href="/folium/<%= result.folio %>/regel/<%= result.id %>"><%= result.kwic[0] %></a></td></tr>
-		<% }) %>
-	</script>
-</body>
+	</body>
 </html>

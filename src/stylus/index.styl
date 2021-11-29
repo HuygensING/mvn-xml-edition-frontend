@@ -1,0 +1,514 @@
+@font-face
+	font-family Junicode
+	src url('/static/fonts/Junicode.ttf') format('truetype')
+
+@font-face
+	font-family Samba
+	src url('/static/fonts/Samba-webfont.ttf') format('truetype')
+
+@import './variables'
+@import './functions'
+@import './header'
+@import './mvn-reeks'
+@import './browser'
+@import './search'
+
+body
+	font-family bodyFont
+	font-size 12px
+	padding 0
+	margin 0
+
+#container .text
+	&.vers-nummering
+		.versenum
+			visibility visible
+
+	&.regel-nummering
+		.linenum
+			visibility visible
+
+#container
+	margin-top 20px
+	font-size 12px
+
+a
+	text-decoration none
+	color defaultGray
+
+
+table
+	border-collapse collapse
+	width 100%
+
+table.half
+	width 50%
+
+table, th, td
+	border 0px solid black
+	text-align left
+
+.center
+	width mainWidth
+	margin 0 auto
+
+.no-select
+	no-select()
+
+#spinner
+	align-items center
+	display none
+	justify-items center
+	left 0
+	position absolute
+
+#views ul,	#view-options ul
+	list-style none
+	padding 0
+	// overflow auto
+
+#view-options ul
+	overflow auto
+
+#tabs ul
+	margin 0
+	overflow auto
+
+	li
+		float left
+		background viewMenuColor
+		color defaultGray
+		height 30px
+		line-height 30px
+		padding 0 10px
+		margin 8px 1px 0 0
+		cursor pointer
+		font-size 11px
+		no-select()
+
+		&.active
+			background-color viewMenuActiveColor
+			background-image url('../static/img/slant.png')
+			background-repeat no-repeat
+			background-size 100% auto
+			margin-top 0
+			padding-top 8px
+			color viewOptionsActiveColor
+
+		&.folio-browser.active,
+		&.text-browser.active
+			background-color black
+			color white
+
+#view-options,
+#export-options
+	display none
+	background viewMenuActiveColor
+	color defaultGray
+	line-height 33px
+	height 33px
+	margin-bottom 30px
+
+	.center
+		height 33px
+		background viewMenuActiveColor
+
+	ul
+		float right
+		margin 5px 0
+		padding 0
+		li
+			float left
+			margin-right 30px
+			// padding 0 6px
+			font-size 11px
+			line-height 23px
+			cursor pointer
+			no-select()
+
+			&:last-child
+				margin-right 0
+
+			&.nummering
+				width 120px
+
+			.oplossen + .cursief
+				display none
+
+			.oplossen.active + .cursief
+				display inline
+
+			span
+				background-color transparent
+				border-radius viewOptionsActiveRadius
+				color viewOptionsActiveColor
+				display inline-block
+				font-weight 700
+				padding 0 6px
+
+				&.active
+					background-color viewOptionsActiveBackground
+
+					&.cursief
+						font-style italic
+						font-weight normal
+						text-decoration underline
+						padding 0
+						background-color transparent
+
+#export-options
+	ul
+		float left
+
+// #folium, #text
+// 	position relative
+
+// #folium
+// 	width folioWidth
+// 	// margin-right foliumMargin
+// 	img	width folioWidth height auto
+
+
+	// .line
+	// 	margin-top 35px
+	// 	border-top 1px solid viewMenuActiveColor
+
+
+	// .annotations
+	// 	span.noteright
+	// 		// position absolute
+	// 		formatAsAnnotation()
+
+// #text
+// 	margin-left textGutterLeft
+// 	width textWidth
+
+// 	.nav
+// 		line-height 35px
+// 		height 35px
+// 		border-bottom 1px solid viewMenuActiveColor
+// 		margin-bottom 20px
+// 		text-align center
+
+// 		.previous
+// 			float left
+
+// 		.next
+// 			float right
+
+// 		.next, .previous
+// 			color bodyNavColor
+// 			cursor pointer
+// 			text-decoration none
+// 			no-select()
+
+// 		.folium
+// 			font-weight 500
+// 			font-size 18px
+
+#main
+	mainCenter()
+
+	a
+		color bodyNavColor
+
+#text-container
+	display grid
+	grid-template-rows 35px auto
+
+	&.folium
+		grid-template-columns auto totalTextWidth 32px 
+
+		& > .text, & > .heading
+			margin-left 64px
+
+		& > #folium
+			position sticky
+			top 30px
+
+		& > .text
+			span.fw
+				display: block
+				text-align: center
+
+	&.tekst
+		grid-template-columns auto (200px - textGutterLeft) + totalTextWidth auto
+
+		& > .text, & > .heading
+			margin-left 200px
+
+		& > .text
+			span.fw
+				display: none
+
+	& > .heading
+		text-align center
+		width textWidth
+		grid-column 2
+		grid-row 1
+
+		span.tekst
+			font-size 20px
+			font-weight 500
+
+		.previous
+			float left
+
+		.next
+			float right
+
+	& > .belongs-to
+		color defaultGray
+		grid-column 2
+		grid-row 1
+		justify-self end
+		max-width annotationColumnWidth
+
+	& > .text
+		border-top 1px solid viewMenuColor
+		font-family "Junicode", "Arial unicode MS", "times new roman", serif
+		font-size 16px
+		grid-column 2
+		grid-row 2
+		line-height 26px
+		margin-bottom 160px
+		padding-top 20px
+		position relative
+		text-align left
+		width textWidth
+
+		linegroup_start, linegroup_end
+			display block
+			padding .5em
+
+		linegroup_start + linegroup_end
+			padding 0
+
+		linegroup_start + br, linegroup_end + br
+			display none
+
+		.textnum + linegroup_start
+			padding 0
+
+		a
+			text-decoration none
+			color bodyNavColor
+			cursor pointer
+
+		&.solve
+			&.cursive
+				ex
+					font-style italic
+
+			choice
+				abbr
+					display none
+					font-style italic
+
+				expan
+					display inline
+
+		expan
+			display none
+
+
+		unclear:before
+			content '('
+
+		unclear:after
+			content ')'
+
+		.capitalsize4
+			display inline-block
+			font-size 2.8em
+			font-weight 200
+
+		.capitalsize3
+			display inline-block
+			font-size 2em
+			font-weight 100
+
+		.capitalsize2
+			display inline-block
+			font-size 1.4em
+			font-weight 300
+
+		.capitalsize1
+			display inline-block
+			font-size .9em
+			font-weight 300
+
+		span.rubric
+			display inline
+			color red
+		
+		span.rubricated
+			font-weight bold
+
+		.mentioned
+			font-style italic
+
+		.footnote
+			display block
+			float right
+			width 45%
+			position relative
+			left -2em
+			color grey
+
+		.grey
+			color grey
+
+		seg
+			display none
+
+			&.schrijfproces
+				display inline
+
+		.spaced
+			letter-spacing .25rem
+
+		.green
+			color green
+
+		.italic
+			font-style italic
+
+		.underline
+			text-decoration underline
+
+		.bold
+			font-weight bold
+
+		.superscript
+			position relative
+			bottom 0.5em
+			font-size 0.8em
+
+		span.del
+			text-decoration line-through
+			color blue
+
+		p > span:not([class])
+			formatAsAnnotation()
+
+		span.del,
+		span.add
+			& > span.noteright
+				formatAsAnnotation()
+
+		span.ital
+			font-style italic
+
+		span.moveleft
+			position relative
+			left 50px
+
+		span.restore
+			border thin solid purple
+
+		span.romannumber
+			font-variant small-caps
+
+		span.noteleft
+			border-radius 10px
+			font-size 16px
+			left -20px
+			line-height 10px
+			margin-top 6px
+			padding 2px
+			position absolute
+
+		span.noteright
+			position absolute
+			left textWidth + annotationMargin
+			formatAsAnnotation()
+
+			// abbr
+			// 	display inline
+			// 	font-size 14px
+
+		span.margin
+			width 100px
+			position absolute
+			left -120px
+
+		span.transl,
+		span.wvk,
+		span.comment,
+		span.intro,
+		span.annotwg,
+		span.annotvm,
+		span.annotvdg,
+		span.annotbd
+			display none
+			position absolute
+			left 450px
+
+		span.hide
+			display none
+
+		.versenum,
+		.linenum
+			display block
+			visibility hidden
+			font-family bodyFont
+			font-size 10px
+			color defaultGray
+			margin-left lineVerseNumPos
+			float left
+
+		.textnum,
+		.folionr
+			color bodyNavColor
+			cursor pointer
+
+		.textnum
+			float right
+			font-family bodyFont
+			font-size 11px
+
+			& + br
+				display none
+
+		.folionr
+			font-size 11px
+			position absolute
+			left -200px
+
+			h5
+				color defaultGray
+				font-weight normal
+				font-size 11px
+				padding 0
+				margin 0 0 20px
+
+			img
+				width 70px
+				height auto
+				display block
+
+			.select-folium
+				display inline-block
+				color bodyNavColor
+				no-select()
+
+
+.folium .text
+	position relative
+
+.folium span
+    font-size 18px
+
+span.spaced
+	letter-spacing: 3px
+
+span.ulr
+	text-decoration-color: red
+	text-decoration-line: underline
+
+span.nr
+	font-size: 18px !important
+
+#text .text span.noteleft span.rubric
+	line-height: 10px
