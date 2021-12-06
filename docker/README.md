@@ -11,6 +11,8 @@
 
 # production image
 
-`docker build -t mvn-frontend -f docker/Dockerfile .`
+`export version=$(jq --raw-output ".version" < package.json)`
+
+`docker build -t registry.diginfra.net/hi/mvn-frontend:$version -f docker/Dockerfile .`
 
 `docker run -t mvn-frontend -d -p80:80 mvn-frontend`
