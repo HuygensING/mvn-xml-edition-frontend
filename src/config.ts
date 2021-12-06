@@ -4,7 +4,7 @@ export const PROJECT_ID = window.location.pathname.split('/')[1]
 // export const PROJECT_ID = 'SERRURE'
 // export const PROJECT_ID = 'BS'
 
-const SEARCH_ENV = 'test.'
+// const SEARCH_ENV = 'test.'
 
 // TODO should this work? retrieve menu from /:id/external?
 
@@ -25,6 +25,7 @@ const SEARCH_ENV = 'test.'
 export const config = {
 	rootSelector: '#app',
 	// urlPrefix: '/' + PROJECT_ID + '/',
-	searchURL: 'http://' + SEARCH_ENV + 'api.mvn.huygens.knaw.nl/editions/' + PROJECT_ID +  '/search',
+// 	searchURL: 'http://' + SEARCH_ENV + 'api.mvn.huygens.knaw.nl/editions/' + PROJECT_ID +  '/search',
+	searchURL: '/api/editions/' + PROJECT_ID +  '/search',
 	headerURL: 'http://mvn.huygens.knaw.nl/?page_id=65'
 }
