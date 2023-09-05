@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", async function() {
 	})
 
 	$("#title-tag").html(dataStructure.get('title'));
-	$("#title-tag").attr('href', 'http://mvn.huygens.knaw.nl/' + dataStructure.get('id'));
+	$("#title-tag").attr('href', 'https://' + dataStructure.get('id').toLowerCase() + '.mvn.huygens.knaw.nl/');
 
 	$('.MVNReeks .left').html(dataStructure.get('subtitle'));
 	$("#signature-tag").html(dataStructure.get('signatuur'));
 	$("title").html(dataStructure.get('title'))
 	$('header').css({opacity: "1"})
 
-	$('body').prepend(`<div style="color: white; text-transform: uppercase; font-weight: bold; padding: 5px; text-align: center; transform: rotate(30deg); position: fixed; width: 285px; right: -97px; z-index: 9999; top: 18px; letter-spacing: 0.1em; background: #de0f0f; box-shadow: 0 0 12px black;">test<br/>version</div>`)
+// 	$('body').prepend(`<div style="color: white; text-transform: uppercase; font-weight: bold; padding: 5px; text-align: center; transform: rotate(30deg); position: fixed; width: 285px; right: -97px; z-index: 9999; top: 18px; letter-spacing: 0.1em; background: #de0f0f; box-shadow: 0 0 12px black;">test<br/>version</div>`)
 })
