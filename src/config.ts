@@ -8,19 +8,19 @@ export const PROJECT_ID = window.location.pathname.split('/')[1]
 
 // TODO should this work? retrieve menu from /:id/external?
 
-// export async function createConfig() {
-// 	// const id = PROJECT_ID.toLowerCase()
+export async function createConfig() {
+	const id = PROJECT_ID.toLowerCase()
 
-// 	// $.ajax("http://mvn.huygens.knaw.nl/" + id + "/external/", {
-// 	// 	crossDomain: true,
-// 	// 	complete: function(response) {
-// 	// 		if (response.status >= 200 && response.status < 300) {
-// 	// 			$("header .navigation").html(response.responseText)
-// 	// 		}
-// 	// 	}
-// 	// })
+	$.ajax("http://mvn.huygens.knaw.nl/" + id + "/external/", {
+		crossDomain: true,
+		complete: function(response) {
+			if (response.status >= 200 && response.status < 300) {
+				$("header .navigation").html(response.responseText)
+			}
+		}
+	})
 
-// }
+}
 
 export const config = {
 	rootSelector: '#app',
