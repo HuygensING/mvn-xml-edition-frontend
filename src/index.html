@@ -8,7 +8,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const PROJECT_ID = location.pathname.split('/')[1];
-        const WP_URL = 'https://'+PROJECT_ID+'.mvn.huygens.knaw.nl';
+        const WP_URL = 'https://' + PROJECT_ID.toLowerCase() + '.mvn.huygens.knaw.nl';
     </script>
 </head>
 <body>
@@ -26,24 +26,33 @@
         <span id="signature-tag" class="signatuur"></span>
     </h1>
     <div class="navigation">
-        <div class="menu-hoofdmenu-container">
+        <div class="menu-mainmenu-container">
             <ul id="menu-1" class="menu">
                 <li id="menu-item-916"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-916"><a
-                        onclick="location.href = WP_URL">Home</a></li>
-                <li id="menu-item-947" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-947"><a
-                        onclick="location.href = '/' + PROJECT_ID">Online editie</a></li>
+                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-916">
+                    <a onclick="location.href = WP_URL">Home</a>
+                </li>
+                <li id="menu-item-947" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-947">
+                    <a onclick="location.href = '/' + PROJECT_ID">Online editie</a>
+                </li>
                 <li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1265">
-                    <a onclick="location.href = WP_URL+'/inleiding/'">Inleiding</a></li>
+                    <a onclick="location.href = WP_URL + '/inleiding/'">Inleiding</a>
+                </li>
                 <li id="menu-item-1280" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1280">
-                    <a onclick="location.href = WP_URL+'/colofon/'">Colofon</a></li>
-                <li id="menu-item-919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-919"><a
-                        onclick="location.href = WP_URL+'/help/'">Help</a></li>
+                    <a onclick="location.href = WP_URL + '/colofon/'">Colofon</a>
+                </li>
+                <li id="menu-item-919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-919">
+                    <a onclick="location.href = WP_URL + '/help/'">Help</a>
+                </li>
             </ul>
         </div>
     </div>
-    <img src="https://cdn.huygens.knaw.nl/elaborate/images/logo-huygens-large.svg" alt="Huygens ING" width="92px"
-         height="66px">
+    <a href="https://www.huygens.knaw.nl/">
+        <img src="https://cdn.huygens.knaw.nl/elaborate/images/logo-huygens-large.svg"
+             alt="Huygens ING"
+             width="92px"
+             height="66px">
+    </a>
 </header>
 <div id="container">
     <div id="app">
