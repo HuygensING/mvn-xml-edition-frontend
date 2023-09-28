@@ -1,6 +1,6 @@
 {
   "name": "@elaborate4-frontend/mvn",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "",
   "scripts": {
     "dev": "webpack serve",
